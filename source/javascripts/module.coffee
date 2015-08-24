@@ -1,0 +1,1 @@
+window.mcmire = { me: {} }

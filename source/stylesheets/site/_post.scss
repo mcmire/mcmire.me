@@ -1,0 +1,147 @@
+.post {
+  header {
+    font-family: $heading-font-family;
+    font-size: $heading-font-size;
+    margin-bottom: $medium-spacing;
+  }
+
+  .post-title {
+    font-size: inherit;
+    margin-bottom: 0;
+  }
+
+  .post-date {
+    color: #999;
+    margin-bottom: 0;
+  }
+
+  pre, .image img {
+    box-shadow: 0px 2px 7px rgba(0,0,0,0.2);
+  }
+
+  .image {
+    text-align: center;
+    img {
+      border: 1px solid rgba(0,0,0,0.2);
+    }
+  }
+
+  blockquote {
+    border-left: 3px solid silver;
+    padding-left: 20px;
+    font-size: 0.9em;
+    line-height: 1.7em;
+  }
+
+  pre, code, tt {
+    font-family: $code-font-family;
+    letter-spacing: -0.5px;
+  }
+
+  pre > code {
+    font-size: inherit;
+  }
+
+  tt, :not(pre) > code {
+    font-size: 0.9em;
+  }
+
+  pre {
+    font-size: 0.85em;
+    padding: $medium-spacing $medium-spacing * 1.2;
+    overflow: auto;
+    margin: $large-spacing 0;
+  }
+
+  // for ols and uls
+  .spaced li {
+    margin-bottom: $base-spacing / 2;
+  }
+
+  hr {
+    height: 4px;
+    background-image: url(/images/dirty-shade.png);
+    margin-bottom: $base-spacing;
+  }
+
+  table {
+    font-size: 0.9em;
+    width: 100%;
+  }
+
+  th, td {
+    padding: 1px 20px 1px 5px
+  }
+
+  th {
+    border-top: 2px solid #ddd;
+    border-bottom: 2px solid #ddd
+  }
+  tr {
+    border-bottom: 1px solid #ddd
+  }
+
+  .hilite {
+    background-color: #FEF9C6;
+  }
+
+  .eoc {
+    padding-left: 4px;
+  }
+
+  .footnotes {
+    font-size: 0.8em;
+    line-height: $base-line-height;
+
+    p {
+      margin-bottom: 1em
+    }
+
+    a[rel=reference] {
+      padding-left: 5px;
+      position: relative;
+      top: 2px;
+    }
+  }
+
+  dl.spaced {
+    dd {
+      margin-bottom: $base-spacing;
+    }
+  }
+}
+
+#post-toc {
+  font-size: 0.75em;
+
+  p {
+    color: red
+  }
+
+  ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none
+  }
+
+  ul ul {
+    margin-left: 20px
+  }
+
+  p.top {
+    margin-top: $base-spacing;
+    margin-bottom: 0
+  }
+}
+
+#post-footer {
+  background-color: gray;
+  color: white;
+  border-radius: 3px;
+  padding: 6px;
+  font-size: 0.85em;
+  text-align: center;
+  text-shadow: 0px 1px 1px rgba(0,0,0,0.5);
+
+  a { color: #FDFBD4 }
+}

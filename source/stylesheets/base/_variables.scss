@@ -1,29 +1,35 @@
 // Typography
-$base-font-family: $helvetica;
-$heading-font-family: $base-font-family;
+$base-font-family: "usual", sans-serif;
+$heading-font-family: "abril-titling", serif;
+$code-font-family: "source-code-pro", monospace;
 
 // Font Sizes
-$base-font-size: 1em;
+$base-font-size: 18px;
+$heading-font-size: 1.3em;
 
 // Line height
-$base-line-height: 1.5;
-$heading-line-height: 1.2;
+$base-line-height: 1.8;
+$heading-line-height: 1.8;
 
 // Other Sizes
 $base-border-radius: 3px;
 $base-spacing: $base-line-height * 1em;
-$small-spacing: $base-spacing / 2;
+$small-spacing: $base-spacing * 0.5;
+$medium-spacing: $base-spacing * 0.75;
+$large-spacing: $base-spacing * 1.5;
 $base-z-index: 0;
 
 // Colors
-$blue: #477dca;
+$blue: #4483F5;
 $dark-gray: #333;
 $medium-gray: #999;
 $light-gray: #ddd;
+$text-color: #333;
 
 // Font Colors
 $base-background-color: #fff;
 $base-font-color: $dark-gray;
+$heading-font-color: black;
 $action-color: $blue;
 
 // Border

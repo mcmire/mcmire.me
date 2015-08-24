@@ -1,0 +1,29 @@
+.posts {
+  .post {
+    margin-bottom: 1.5em;
+    display: flex;
+    font-size: 0.9em;
+  }
+
+  .post-date {
+    flex: 0 0 10em;
+    color: $medium-gray;
+    text-transform: uppercase;
+    line-height: $heading-line-height * 1.25;
+    font-size: 0.9em;
+  }
+
+  .post-title-and-summary {
+    flex: 1 0 0;
+  }
+
+  .post-title,
+  p {
+    margin-bottom: $small-spacing;
+  }
+
+  .post-title {
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+}

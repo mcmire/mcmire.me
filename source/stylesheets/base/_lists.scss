@@ -2,6 +2,7 @@ ul,
 ol {
   list-style-type: none;
   margin: 0;
+  margin-bottom: $base-spacing;
   padding: 0;
 
   &%default-ul {
