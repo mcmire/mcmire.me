@@ -21,7 +21,7 @@ porttitor finibus metus, <a href="#">eu elementum lorem sodales eu</a>.
 Pellentesque consectetur pulvinar arcu, dapibus iaculis enim aliquam quis. Nam
 et mollis sem. Morbi vitae posuere sapien, sit amet ullamcorper libero.
 
-``` coffee
+``` coffeescript
 grade = (student, period=(if b? then 7 else 6), messages={"A": "Excellent"}) ->
   if student.excellentWork
     "A+"

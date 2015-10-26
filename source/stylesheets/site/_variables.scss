@@ -1,2 +1,9 @@
-$widget-vert-spacing: $base-spacing * 1.2;
-$widget-border: 1px dotted #ddd;
+$z-pre-overlay: 10;
+$z-pre-view-in-full: 20;
+$z-pre-border: 30;
+$z-modal-overlay: 100;
+$z-pre-expanded: 1000;
+$z-modal-close: 1100;
+
+$pre-transition-timing: ease-in-out;
+$pre-transition-duration: 0.15s;

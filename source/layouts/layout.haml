@@ -32,6 +32,10 @@
         <a href="http://heroku.com">Heroku</a>.
         The code is available on
         <a href="http://github.com/mcmire/mcmire.me">GitHub</a>.
+    .modal-overlay(data-role="code-modal")
+      .modal
+        %a.modal-close(href="#" data-role="modal-close") &times;
+        .modal-content(data-role="modal-content")
     %script(src="//use.typekit.net/ryx5vex.js")
     :javascript
       try { Typekit.load({ async: true }) }

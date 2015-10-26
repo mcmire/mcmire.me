@@ -112,9 +112,7 @@ set :images_dir, 'images'
 activate :directory_indexes
 
 set :markdown_engine, :redcarpet
-set :markdown, fenced_code_blocks: true, smartypants: true
-
-activate :syntax
+set :markdown, fenced_code_blocks: true, smartypants: true, prettify: true
 
 # Build-specific configuration
 configure :build do

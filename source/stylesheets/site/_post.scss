@@ -33,26 +33,6 @@
     line-height: 1.7em;
   }
 
-  pre, code, tt {
-    font-family: $code-font-family;
-    letter-spacing: -0.5px;
-  }
-
-  pre > code {
-    font-size: inherit;
-  }
-
-  tt, :not(pre) > code {
-    font-size: 0.9em;
-  }
-
-  pre {
-    font-size: 0.85em;
-    padding: $medium-spacing $medium-spacing * 1.2;
-    overflow: auto;
-    margin: $large-spacing 0;
-  }
-
   // for ols and uls
   .spaced li {
     margin-bottom: $base-spacing / 2;
@@ -108,6 +88,14 @@
     dd {
       margin-bottom: $base-spacing;
     }
+  }
+}
+
+.modal {
+  background: white;
+
+  pre {
+    background: transparent;
   }
 }
 
