@@ -201,9 +201,7 @@ td:hover {
 The board doesn't do a whole lot yet,
 but here's what it looks like so far:
 
-<p class="image">
-  <img src="http://s3.amazonaws.com/mcmire.me/posts/2015-08-14-minesweeper-1/minesweeper-step1.gif" alt="Minesweeper, v1">
-</p>
+<iframe height="300" width="100%" src="minesweeper-part-1.html" border="0"></iframe>
 
 In the next post,
 we'll add jQuery,

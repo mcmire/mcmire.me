@@ -1,5 +1,5 @@
 .posts
-  - page_articles.each_with_index do |article, i|
+  - blog.articles.each_with_index do |article, i|
     .post
       .post-date
         = article.date.strftime("%B %-d, %Y")

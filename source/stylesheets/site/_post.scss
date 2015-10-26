@@ -89,6 +89,11 @@
       margin-bottom: $base-spacing;
     }
   }
+
+  iframe {
+    border: 1px solid $light-gray;
+    margin: $tiny-spacing 0 $base-spacing;
+  }
 }
 
 .modal {

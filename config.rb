@@ -4,13 +4,26 @@
 
 # Time.zone = "UTC"
 
+# Make it so that any HTML files inside of subdirectories that hold files for a
+# blog post are not considered as "blog sources"
+Middleman::Blog::BlogTemplateProcessor.class_eval do
+  def self.match(name)
+    case name
+      when 'year' then '\d{4}'
+      when 'month' then '\d{2}'
+      when 'day' then '\d{2}'
+      else '[^/]*'
+    end
+  end
+end
+
 activate :blog do |blog|
   # This will add a prefix to all links, template references and source paths
   # blog.prefix = "blog"
 
   # blog.permalink = "{year}/{month}/{day}/{title}.html"
   # Matcher for blog source files
-  blog.sources = "blog/{year}/{month}/{day}-{title}"
+  blog.sources = "blog/{year}/{month}/{day}/{title}.html"
   # blog.taglink = "tags/{tag}.html"
   blog.layout = "article_layout"
   # blog.summary_separator = /(READMORE)/
@@ -32,7 +45,6 @@ activate :blog do |blog|
 
   page "sample-post.html", layout: :article_layout
 end
-
 
 ###
 # Compass
