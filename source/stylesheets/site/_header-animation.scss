@@ -1,0 +1,23 @@
+#site-header-background {
+  opacity: 0.5;
+}
+
+.animation-controls {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  z-index: 100;
+
+  button {
+    background: white;
+    color: black;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    opacity: 0.5;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+

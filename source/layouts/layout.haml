@@ -11,6 +11,11 @@
   %body(class="#{page_classes}")
     #site-wrapper
       #site-header-wrapper
+        .animation-controls.hide
+          %button(data-role="advance-frame-button") Next
+          %button(data-role="play-button") Play
+          %button(data-role="pause-button") Pause
+        %canvas#site-header-background(data-role="header-background")
         #site-header
           %h1
             %a(href="/") Technobabble
