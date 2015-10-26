@@ -1,6 +1,7 @@
 #= require ./module
 #= require ./code_block
 #= require ./code_modal
+#= require ./fonts
 #= require ./grid
 
 renderGrid = ->
@@ -35,3 +36,4 @@ mcmire.me.init = ->
   renderGrid()
   mcmire.me.codeModal = buildActivatedCodeModal()
   renderCodeBlocks()
+  mcmire.me.fonts.render()
