@@ -21,7 +21,12 @@
 
   .image {
     text-align: center;
+    float: right;
+    margin-left: 2em;
+    margin-bottom: 2em;
+
     img {
+      @extend %shadow;
       border: 1px solid rgba(0,0,0,0.2);
     }
   }
