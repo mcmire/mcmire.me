@@ -3,52 +3,70 @@
 }
 
 body {
-  margin: 1em 0;
+  margin: 0;
+  position: relative;
+}
+
+h2, h3, h4 {
+  font-weight: 600;
 }
 
 h2 {
   font-size: $heading-font-size;
 }
 
-h3, h4 {
-  font-weight: normal;
-}
-
 h3 {
-  font-size: $heading-font-size * 0.95;
+  font-size: $heading-font-size * 0.85;
 }
 
 h4 {
-  font-size: $heading-font-size * 0.85;
+  font-size: $heading-font-size * 0.7;
 }
 
 a:hover {
   text-decoration: underline;
 }
 
-#site-container {
-  margin: 0px auto;
-  max-width: 40em;
+#site-header-wrapper {
+  position: relative;
+  height: 5em;
 }
 
-#site-header {
-  border-bottom: $widget-border;
-  margin-bottom: $base-spacing;
-  overflow: hidden;
-  padding-bottom: 4px;
-  text-align: right;
+#site-header-background, #site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
-  &, a {
-    color: $medium-gray;
+#site-header-wrapper, #site-footer {
+  font-family: $heading-font-family;
+  background: #6c71c4;
+  color: #fdf6e3;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+
+  a {
+    color: white;
+    opacity: 0.5;
+    transition: opacity 0.3s;
   }
 
   a:hover {
-    color: $dark-gray;
+    opacity: 1;
     text-decoration: none;
   }
+}
+
+#site-header-wrapper {
+  overflow: hidden;
+  text-align: right;
+  box-shadow: 2px -3px 4px rgba(0, 0, 0, 0.1) inset;
+  position: relative;
 
   h1, nav {
-    line-height: $heading-line-height;
+    font-family: $heading-font-family;
+    line-height: 1;
   }
 
   h1 {
@@ -83,25 +101,40 @@ a:hover {
   }
 }
 
+#site-header {
+  top: auto;
+  bottom: 0;
+  height: auto;
+  padding: $medium-spacing $large-spacing;
+}
+
+#site-container {
+  background: white;
+  padding-top: $base-spacing;
+  padding-bottom: $base-spacing;
+}
+
 #content-container {
-  margin-bottom: $widget-vert-spacing;
+  margin: 0 auto;
+  max-width: $site-container-width;
+}
+
+#site-footer, #site-footer-push {
+  height: 6rem;
 }
 
 #site-footer {
-  color: $medium-gray;
-  border-top: 1px dotted #ddd;
-  padding: $small-spacing 0 $medium-spacing 0;
+  font-family: $heading-font-family;
+  padding: 1.3em 0 $medium-spacing 0;
   text-align: center;
-  font-size: 80%;
+  font-size: 0.8em;
   line-height: $base-line-height;
+}
 
-  a {
-    color: inherit;
-  }
-
-  &:hover {
-    a {
-      color: $action-color;
-    }
-  }
+#site-wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin-bottom: -6rem;
+  position: relative;
 }

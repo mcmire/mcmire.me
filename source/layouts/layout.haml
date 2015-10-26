@@ -9,37 +9,36 @@
     :javascript
       document.documentElement.classList.add('wf-loading')
   %body(class="#{page_classes}")
-    #site-container
-      %header#site-header
-        %h1
-          %a(href="/") Technobabble
-        %nav
-          %ul
-            %li
-              %a(href="http://github.com/mcmire") Code
-            %li
-              %a(href="http://twitter.com/mcmire") Tweets
-      #content-container
-        #content(data-role="content")
-          ~ yield
-      %footer#site-footer
-        Technobabble is written by Elliot Winkler,
-        a web developer out of Denver, Colorado.
-        %br
-        This site is powered by
-        <a href="http://middlemanapp.com">Middleman</a>
-        and hosted on
-        <a href="http://heroku.com">Heroku</a>.
-        The code is available on
-        <a href="http://github.com/mcmire/mcmire.me">GitHub</a>.
+    #site-wrapper
+      #site-header-wrapper
+        #site-header
+          %h1
+            %a(href="/") Technobabble
+          %nav
+            %ul
+              %li
+                %a(href="http://github.com/mcmire") Code
+              %li
+                %a(href="http://twitter.com/mcmire") Tweets
+      #site-container
+        #content-container
+          #content(data-role="content")
+            ~ yield
+      #site-footer-push
+    %footer#site-footer
+      Technobabble is written by Elliot Winkler,
+      a web developer out of Denver, Colorado.
+      %br
+      This site is powered by
+      <a href="http://middlemanapp.com">Middleman</a>
+      and hosted on
+      <a href="http://heroku.com">Heroku</a>.
+      The code is available on
+      <a href="http://github.com/mcmire/mcmire.me">GitHub</a>.
     .modal-overlay(data-role="code-modal")
       .modal
         %a.modal-close(href="#" data-role="modal-close") &times;
         .modal-content(data-role="modal-content")
-    %script(src="//use.typekit.net/ryx5vex.js")
-    :javascript
-      try { Typekit.load({ async: true }) }
-      catch (e) { }
     = javascript_include_tag "all"
     :javascript
       mcmire.me.init()

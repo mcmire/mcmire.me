@@ -7,16 +7,15 @@
 
   .post-title {
     font-size: inherit;
-    margin-bottom: 0;
+    margin-bottom: 0em;
   }
 
   .post-date {
     color: #999;
+    font-size: 0.85em;
     margin-bottom: 0;
-  }
-
-  pre, .image img {
-    box-shadow: 0px 2px 7px rgba(0,0,0,0.2);
+    font-size: 0.65em;
+    text-transform: uppercase;
   }
 
   .image {
