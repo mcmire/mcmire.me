@@ -13,13 +13,19 @@ felis. Etiam posuere neque sed tempus feugiat. Fusce leo nibh,
 <code>PostImporter#abracadabra</code> luctus sed congue sed, volutpat sodales
 purus.
 
+|------------------+------------------------|
+| This is a header | This is another header |
+|------------------+------------------------|
+| First | Second | Third |
+
 ### This is a Subheader
 
-Fusce volutpat, mauris sed iaculis consectetur, eros elit viverra leo, iaculis
-tincidunt mauris felis tristique nisl. Proin semper scelerisque libero. Ut
-porttitor finibus metus, <a href="#">eu elementum lorem sodales eu</a>.
-Pellentesque consectetur pulvinar arcu, dapibus iaculis enim aliquam quis. Nam
-et mollis sem. Morbi vitae posuere sapien, sit amet ullamcorper libero.
+Fusce volutpat, <span class="hilite">mauris sed iaculis consectetur</span>, eros
+elit viverra leo, iaculis tincidunt mauris felis tristique nisl. Proin semper
+scelerisque libero. Ut porttitor finibus metus, <a href="#">eu elementum lorem
+sodales eu</a>. Pellentesque consectetur pulvinar arcu, dapibus iaculis enim
+aliquam quis. Nam et mollis sem This is a footnote. Morbi vitae posuere sapien,
+sit amet ullamcorper libero.
 
 ``` coffeescript
 grade = (student, period=(if b? then 7 else 6), messages={"A": "Excellent"}) ->
@@ -135,3 +141,24 @@ aliquet vehicula.
 * Maecenas faucibus ante.
 * Non neque venenatis consequat.
 * Duis ex nunc, viverra nec tincidunt vel, rutrum sit amet est.
+
+### Colors!
+
+<div class="swatches">
+  <div class="base00-swatch"></div>
+  <div class="base01-swatch"></div>
+  <div class="base02-swatch"></div>
+  <div class="base03-swatch"></div>
+  <div class="base04-swatch"></div>
+  <div class="base05-swatch"></div>
+  <div class="base06-swatch"></div>
+  <div class="base07-swatch"></div>
+  <div class="base08-swatch"></div>
+  <div class="base09-swatch"></div>
+  <div class="base0A-swatch"></div>
+  <div class="base0B-swatch"></div>
+  <div class="base0C-swatch"></div>
+  <div class="base0D-swatch"></div>
+  <div class="base0E-swatch"></div>
+  <div class="base0F-swatch"></div>
+</div>
