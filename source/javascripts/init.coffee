@@ -5,7 +5,7 @@
 #= require ./code_modal
 #= require ./fonts
 #= require ./grid
-#= require ./header_animation_canvas
+#= require ./header_background
 #= require ./math_block
 #= require ./pause_button
 #= require ./play_button
