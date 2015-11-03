@@ -6,6 +6,7 @@
 #= require ./fonts
 #= require ./grid
 #= require ./header_animation_canvas
+#= require ./math_block
 #= require ./pause_button
 #= require ./play_button
 
@@ -75,9 +76,17 @@ initHeaderBackground = ->
 
   animation.advance()
 
+renderMathBlocks = ->
+  elements = document.querySelectorAll("script[type='math/katex']")
+
+  _.each elements, (element) ->
+    mathBlock = new mcmire.me.MathBlock({ element })
+    mathBlock.render()
+
 mcmire.me.init = ->
   renderGrid()
   mcmire.me.codeModal = buildActivatedCodeModal()
   renderCodeBlocks()
   initHeaderBackground()
   mcmire.me.fonts.render()
+  renderMathBlocks()

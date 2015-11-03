@@ -11,6 +11,9 @@ Middleman::Blog::BlogTemplateProcessor.class_eval do
   end
 end
 
+require_relative "kramdown_katex_engine"
+Kramdown::Converter.add_math_engine(:katex, KramdownKatexEngine)
+
 activate :blog do |blog|
   blog.sources = "blog/{year}/{month}/{day}/{title}.html"
   blog.layout = "article_layout"
@@ -51,7 +54,8 @@ set :images_dir, 'images'
 activate :directory_indexes
 
 set :markdown_engine, :kramdown
-set :markdown, input: "GFM", enable_coderay: false, hard_wrap: false
+set :markdown, input: "GFM", enable_coderay: false, hard_wrap: false,
+  math_engine: "katex"
 
 configure :build do
   # For example, change the Compass output style for deployment

@@ -110,6 +110,12 @@ ante quam, dapibus non ornare sed, consequat vitae mi. Quisque iaculis congue
 quam eget lobortis. Ut et est eu massa commodo auctor at nec odio. Nulla
 facilisi. Integer quis massa augue.
 
+$$
+f(x) = \int_{-\infty}^\infty
+    \hat f(\xi)\,e^{2 \pi i \xi x}
+    \,d\xi
+$$
+
 Proin dignissim erat id felis gravida, nec blandit eros gravida. Nullam
 tincidunt dolor quis mauris auctor, a porta tellus laoreet. Praesent et ultrices
 ex. Phasellus risus urna, lacinia et nisi vitae, molestie faucibus elit.
