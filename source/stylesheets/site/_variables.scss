@@ -29,6 +29,7 @@ $base16-colors: (
   "0F": #d33682
 );
 
+$action-color: map-get($base16-colors, "0E");
 $header-and-footer-background-color: map-get($base16-colors, "0E");
 $header-and-footer-text-color: map-get($base16-colors, "07");
 $header-and-footer-link-color: white;
