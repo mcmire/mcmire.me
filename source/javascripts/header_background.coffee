@@ -4,14 +4,14 @@ class mcmire.me.HeaderBackground
   randomAlpha = -> (Math.random() * 0.2)
 
   PROPERTIES_TO_DELEGATE = [
-    "unscaledWidth"
-    "unscaledHeight"
     "drawPixel"
+    "unscaledHeight"
+    "unscaledWidth"
   ]
 
   constructor: ({ @renderer }) ->
     _.each PROPERTIES_TO_DELEGATE, (property) =>
-      this[property] = @renderer[property]
+      @[property] = @renderer[property]
 
   draw: (delta) =>
     _.each [0..@unscaledHeight-1], (y) =>

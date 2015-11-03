@@ -5,6 +5,7 @@
 #= require ./code_modal
 #= require ./fonts
 #= require ./grid
+#= require ./header
 #= require ./header_background
 #= require ./math_block
 #= require ./pause_button
@@ -40,7 +41,7 @@ renderCodeBlocks = ->
     )
   _.invoke codeBlocks, "render"
 
-initRenderer = ->
+initHeaderRenderer = ->
   element = document.querySelector("[data-role='header-background']")
   renderer = new mcmire.me.PixelCanvasRenderer(
     element: element
@@ -63,9 +64,12 @@ initPlayButton = (animation) ->
   element = document.querySelector("[data-role='play-button']")
   new mcmire.me.PlayButton({ animation, element })
 
-initHeaderBackground = ->
-  renderer = initRenderer()
-  animation = new mcmire.me.Animation({ renderer })
+initAnimation = ->
+  renderer = initHeaderRenderer()
+  animation = new mcmire.me.Animation(
+    renderer: renderer
+    fps: 10
+  )
 
   if DEBUG_ANIMATION
     animation.addControl(initAdvanceFrameButton(animation))
@@ -75,6 +79,14 @@ initHeaderBackground = ->
     animation.renderControls()
 
   animation.advance()
+
+  animation
+
+initHeader = ->
+  element = document.querySelector("[data-role='header']")
+  animation = initAnimation()
+  header = new mcmire.me.Header({ element, animation })
+  header.activate()
 
 renderMathBlocks = ->
   elements = document.querySelectorAll("script[type='math/katex']")
@@ -87,6 +99,6 @@ mcmire.me.init = ->
   renderGrid()
   mcmire.me.codeModal = buildActivatedCodeModal()
   renderCodeBlocks()
-  initHeaderBackground()
+  initHeader()
   mcmire.me.fonts.render()
   renderMathBlocks()
