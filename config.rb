@@ -123,8 +123,8 @@ set :images_dir, 'images'
 
 activate :directory_indexes
 
-set :markdown_engine, :redcarpet
-set :markdown, fenced_code_blocks: true, smartypants: true, prettify: true
+set :markdown_engine, :kramdown
+set :markdown, input: "GFM", enable_coderay: false, hard_wrap: false
 
 # Build-specific configuration
 configure :build do

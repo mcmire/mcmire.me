@@ -10,6 +10,7 @@ gem "builder", "~> 3.0"
 
 gem "bourbon"
 gem "haml"
+gem "kramdown"
 gem "neat"
 gem "pry-byebug"
 gem "puma"
