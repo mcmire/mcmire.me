@@ -29,10 +29,10 @@ $base16-colors: (
   "0F": #d33682
 );
 
-$action-color: map-get($base16-colors, "0E");
-$header-and-footer-background-color: map-get($base16-colors, "0E");
-$header-and-footer-text-color: map-get($base16-colors, "07");
-$header-and-footer-link-color: white;
+$action-color: map-get($base16-colors, "0F");
+$header-and-footer-text-color: white;
+$header-background-color: map-get($base16-colors, "0E");
+$footer-background-color: map-get($base16-colors, "05");
 $overlay-button-color: #4f5b66;
 $post-date-color: #999;
 $hilite-color: map-get($base16-colors, "07");

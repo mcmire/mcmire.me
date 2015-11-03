@@ -42,12 +42,13 @@ a:hover {
 
 #site-header-wrapper, #site-footer {
   font-family: $heading-font-family;
-  background: $header-and-footer-background-color;
-  color: $header-and-footer-text-color;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
 
+  &, a {
+    color: $header-and-footer-text-color;
+  }
+
   a {
-    color: $header-and-footer-link-color;
     opacity: 0.5;
     transition: opacity $slow;
   }
@@ -63,6 +64,7 @@ a:hover {
   text-align: right;
   box-shadow: 2px -3px 4px rgba(0, 0, 0, 0.1) inset;
   position: relative;
+  background: $header-background-color;
 
   h1, nav {
     font-family: $heading-font-family;
@@ -129,6 +131,8 @@ a:hover {
   text-align: center;
   font-size: 0.8em;
   line-height: $base-line-height;
+  background: $footer-background-color;
+  box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.1) inset;
 }
 
 #site-wrapper {

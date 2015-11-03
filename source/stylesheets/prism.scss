@@ -68,7 +68,7 @@ pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
   color: map-get($base16-colors, "0C");
 }
 .token.selector {
-  color: $header-and-footer-background-color;
+  color: map-get($base16-colors, "0E");
 }
 .token.attr-name {
   color: map-get($base16-colors, "09");
