@@ -11,7 +11,7 @@ pre > code {
 tt, :not(pre) > code {
   font-size: 0.95em;
   padding: 0px 5px;
-  background-color: #eff1f5;
+  background-color: $code-background-color;
 }
 
 pre {
@@ -52,7 +52,7 @@ pre {
       left: 0;
       opacity: 0;
       position: absolute;
-      transition: opacity $pre-transition-timing $pre-transition-duration;
+      transition: opacity $fast;
       top: 0;
       width: 100%;
       z-index: $z-pre-overlay;

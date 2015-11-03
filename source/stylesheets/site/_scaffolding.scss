@@ -42,14 +42,14 @@ a:hover {
 
 #site-header-wrapper, #site-footer {
   font-family: $heading-font-family;
-  background: #6c71c4;
-  color: #fdf6e3;
+  background: $header-and-footer-background-color;
+  color: $header-and-footer-text-color;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
 
   a {
-    color: white;
+    color: $header-and-footer-link-color;
     opacity: 0.5;
-    transition: opacity 0.3s;
+    transition: opacity $slow;
   }
 
   a:hover {

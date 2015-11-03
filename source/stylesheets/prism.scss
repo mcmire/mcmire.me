@@ -10,8 +10,8 @@ Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/b
 
 :not(pre) > code,
 pre[class*="language-"] {
-  background: #fdf6e3;
-  color: #586e75;
+  background: map-get($base16-colors, "07");
+  color: map-get($base16-colors, "02");
 }
 
 pre[class*="language-"] {
@@ -35,18 +35,18 @@ pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selectio
 :not(pre) > code::-moz-selection, :not(pre) > code ::-moz-selection,
 pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
 :not(pre) > code::selection, :not(pre) > code ::selection {
-  background: #eee8d5;
+  background: map-get($base16-colors, "06");
 }
 
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: #839496;
+  color: map-get($base16-colors, "04");
 }
 
 .token.punctuation {
-  color: #586e75;
+  color: map-get($base16-colors, "02");
 }
 
 .token.namespace {
@@ -56,28 +56,28 @@ pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
 .token.operator,
 .token.boolean,
 .token.number {
-  color: #cb4b16;
+  color: map-get($base16-colors, "09");
 }
 .token.property {
-  color: #b58900;
+  color: map-get($base16-colors, "0A");
 }
 .token.tag {
-  color: #268bd2;
+  color: map-get($base16-colors, "0D");
 }
 .token.string {
-  color: #2aa198;
+  color: map-get($base16-colors, "0C");
 }
 .token.selector {
-  color: #6c71c4;
+  color: $header-and-footer-background-color;
 }
 .token.attr-name {
-  color: #cb4b16;
+  color: map-get($base16-colors, "09");
 }
 .token.entity,
 .token.url,
 .language-css .token.string,
 .style .token.string {
-  color: #2aa198;
+  color: map-get($base16-colors, "0C");
 }
 
 .token.attr-value,
@@ -85,18 +85,18 @@ pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
 .token.control,
 .token.directive,
 .token.unit {
-  color: #859900;
+  color: map-get($base16-colors, "0B");
 }
 
 .token.statement,
 .token.regex,
 .token.atrule {
-  color: #2aa198;
+  color: map-get($base16-colors, "0C");
 }
 
 .token.placeholder,
 .token.variable {
-  color: #268bd2;
+  color: map-get($base16-colors, "0D");
 }
 
 .token.deleted {
@@ -104,7 +104,7 @@ pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
 }
 
 .token.inserted {
-  border-bottom: 1px dotted #002b36;
+  border-bottom: 1px dotted map-get($base16-colors, "00");
   text-decoration: none;
 }
 
@@ -118,7 +118,7 @@ pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
 }
 
 .token.important {
-  color: #dc322f;
+  color: map-get($base16-colors, "08");
 }
 
 .token.entity {
@@ -126,6 +126,6 @@ pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
 }
 
 pre > code.highlight {
-  outline: .4em solid #dc322f;
+  outline: .4em solid map-get($base16-colors, "08");
   outline-offset: .4em;
 }

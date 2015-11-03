@@ -21,13 +21,13 @@ body.code-modal-open {
   &.open {
     visibility: visible;
     opacity: 1;
-    transition: opacity 0.3s;
+    transition: opacity $slow;
   }
 
   &.closed {
     visibility: hidden;
     opacity: 0;
-    transition: visibility 0s 0.3s, opacity 0.3s;
+    transition: visibility 0s $slow, opacity $slow;
   }
 
   .modal {
@@ -62,7 +62,7 @@ body.code-modal-open {
       position: fixed;
       right: 1rem;
       top: 0.7rem;
-      transition: 0.2s opacity;
+      transition: opacity $slow;
       z-index: $z-modal-close;
 
       &:hover {

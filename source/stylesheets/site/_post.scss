@@ -11,7 +11,7 @@
   }
 
   .post-date {
-    color: #999;
+    color: $post-date-color;
     font-size: 0.85em;
     margin-bottom: 0;
     font-size: 0.65em;
@@ -66,7 +66,8 @@
   }
 
   .hilite {
-    background-color: #FEF9C6;
+    background-color: $hilite-color;
+    padding: 2px 5px;
   }
 
   .eoc {
@@ -112,7 +113,7 @@
   font-size: 0.75em;
 
   p {
-    color: red
+    color: $post-toc-color;
   }
 
   ul, li {
@@ -132,13 +133,15 @@
 }
 
 #post-footer {
-  background-color: gray;
-  color: white;
+  background-color: $post-footer-background-color;
+  color: $post-footer-text-color;
   border-radius: 3px;
   padding: 6px;
   font-size: 0.85em;
   text-align: center;
   text-shadow: 0px 1px 1px rgba(0,0,0,0.5);
 
-  a { color: #FDFBD4 }
+  a {
+    color: $post-footer-link-color;
+  }
 }

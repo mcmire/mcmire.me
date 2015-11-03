@@ -5,7 +5,38 @@ $z-modal-overlay: 100;
 $z-pre-expanded: 1000;
 $z-modal-close: 1100;
 
-$pre-transition-timing: ease-in-out;
-$pre-transition-duration: 0.15s;
+$fast: 0.15s;
+$slow: 0.3s;
 
 $site-container-width: 40rem;
+
+$base16-colors: (
+  "00": #002b36,
+  "01": #073642,
+  "02": #586e75,
+  "03": #657b83,
+  "04": #839496,
+  "05": #93a1a1,
+  "06": #eee8d5,
+  "07": #fdf6e3,
+  "08": #dc322f,
+  "09": #cb4b16,
+  "0A": #b58900,
+  "0B": #859900,
+  "0C": #2aa198,
+  "0D": #268bd2,
+  "0E": #6c71c4,
+  "0F": #d33682
+);
+
+$header-and-footer-background-color: map-get($base16-colors, "0E");
+$header-and-footer-text-color: map-get($base16-colors, "07");
+$header-and-footer-link-color: white;
+$overlay-button-color: #4f5b66;
+$post-date-color: #999;
+$hilite-color: map-get($base16-colors, "07");
+$post-toc-color: red;
+$post-footer-background-color: gray;
+$post-footer-text-color: white;
+$post-footer-link-color: map-get($base16-colors, "07");
+$code-background-color: map-get($base16-colors, "06");
