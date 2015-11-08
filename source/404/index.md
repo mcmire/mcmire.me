@@ -2,8 +2,8 @@
 title: Four! O, Four
 ---
 
-## Well that's just great.
+![Oops](oops.png){: width="500"}
 
-Looks like ya done hit upon a page that don't exist.
+This page doesn't exist.
 
-Why dontcha go <a href="javascript:history.back()">back to where ya came from</a>.
+Sorry about that.
