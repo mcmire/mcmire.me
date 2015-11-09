@@ -1,3 +1,4 @@
+#= require scopedQuerySelectorShim/src/scopedQuerySelectorShim
 #= require ./module
 #= require ./transition_end_event_name
 
@@ -46,5 +47,5 @@ class mcmire.me.CodeModal
     @contentElement.innerHTML = ""
     @element.removeEventListener(transitionEndEventName, @_clear)
 
-  _stopPropagation: (event) =>
+  _stopPropagation: (event) ->
     event.stopPropagation()

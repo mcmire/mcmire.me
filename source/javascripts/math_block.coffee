@@ -1,4 +1,4 @@
-#= require ./katex.min.js
+#= require katex
 
 class mcmire.me.MathBlock
   constructor: ({ @element }) ->

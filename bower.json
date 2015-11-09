@@ -16,6 +16,9 @@
     "tests"
   ],
   "dependencies": {
+    "katex": "0.5.1",
+    "lodash": "3.x",
+    "scopedQuerySelectorShim": "git://github.com/lazd/scopedQuerySelectorShim.git",
     "source-code-pro": "git://github.com/adobe-fonts/source-code-pro.git#release",
     "source-sans-pro": "git://github.com/adobe-fonts/source-sans-pro.git#release",
     "roboto-fontface": "0.4.3"
