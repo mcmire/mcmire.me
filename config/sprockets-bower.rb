@@ -35,7 +35,7 @@ class SprocketsBower
     Pathname.glob(
       component_directory.join(
         "**",
-        "*.{png,gif,jpg,jpeg,svg,eot,otf,svc,woff,woff2,ttf,js}"
+        "*.{png,gif,jpg,jpeg,svg,eot,otf,svc,woff,woff2,ttf}"
       )
     )
   end
