@@ -2,12 +2,14 @@
   header {
     font-family: $heading-font-family;
     font-size: $heading-font-size;
-    margin-bottom: $medium-spacing;
+    margin-bottom: 1.5em;
+    line-height: 1.5em;
   }
 
   .post-title {
     font-size: inherit;
     margin-bottom: 0em;
+    line-height: inherit;
   }
 
   .post-date {
