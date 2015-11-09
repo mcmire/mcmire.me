@@ -1,4 +1,5 @@
 pre, code {
+  -webkit-font-smoothing: antialiased;
   font-family: $code-font-family;
   letter-spacing: -0.5px;
 }
@@ -9,9 +10,10 @@ pre > code {
 }
 
 tt, :not(pre) > code {
-  font-size: 0.95em;
-  padding: 0px 5px;
-  background-color: $code-background-color;
+  border-radius: $base-border-radius;
+  color: $text-color;
+  font-size: 0.9em;
+  padding: 0.2em 0.4em;
 }
 
 pre {

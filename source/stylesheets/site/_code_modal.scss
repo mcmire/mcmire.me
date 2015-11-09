@@ -55,6 +55,7 @@ body.code-modal-open {
     .modal-close {
       @include overlay-button;
 
+      background-color: $code-background-color;
       font-size: 1.7rem;
       line-height: 1;
       opacity: 0;
