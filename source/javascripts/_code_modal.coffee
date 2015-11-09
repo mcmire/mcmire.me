@@ -1,6 +1,6 @@
 #= require scopedQuerySelectorShim/src/scopedQuerySelectorShim
-#= require ./module
-#= require ./transition_end_event_name
+#= require ./_module
+#= require ./_transition_end_event_name
 
 copyCodeBlock = (codeBlock) ->
   copyOfCodeBlock = codeBlock.cloneNode(true)

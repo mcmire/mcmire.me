@@ -1,3 +1,3 @@
 #= require lodash
 #= require ./prism
-#= require ./init
+#= require ./_init

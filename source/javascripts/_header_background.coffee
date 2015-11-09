@@ -1,4 +1,4 @@
-#= require ./pixel_canvas_renderer
+#= require ./_pixel_canvas_renderer
 
 class mcmire.me.HeaderBackground
   randomAlpha = -> (Math.random() * 0.2)

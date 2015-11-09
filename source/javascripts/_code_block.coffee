@@ -1,4 +1,4 @@
-#= require ./module
+#= require ./_module
 
 class mcmire.me.CodeBlock
   constructor: ({ @codeModal, @element }) ->

@@ -1,4 +1,4 @@
-#= require ./module
+#= require ./_module
 
 # http://beej.us/blog/2010/02/html5s-canvas-part-ii-pixel-manipulation/
 setPixel = ({ imageData, position: { x, y }, color: { r, g, b, a } }) ->

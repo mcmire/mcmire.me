@@ -1,14 +1,14 @@
-#= require ./module
-#= require ./advance_frame_button
-#= require ./animation
-#= require ./code_block
-#= require ./code_modal
-#= require ./grid
-#= require ./header
-#= require ./header_background
-#= require ./math_block
-#= require ./pause_button
-#= require ./play_button
+#= require ./_module
+#= require ./_advance_frame_button
+#= require ./_animation
+#= require ./_code_block
+#= require ./_code_modal
+#= require ./_grid
+#= require ./_header
+#= require ./_header_background
+#= require ./_math_block
+#= require ./_pause_button
+#= require ./_play_button
 
 DEBUG_ANIMATION = false
 

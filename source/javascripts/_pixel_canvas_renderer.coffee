@@ -1,5 +1,5 @@
-#= require ./foreground_canvas
-#= require ./background_canvas
+#= require ./_foreground_canvas
+#= require ./_background_canvas
 
 class mcmire.me.PixelCanvasRenderer
   constructor: ({ element, @scale, clearBeforeRender }) ->
