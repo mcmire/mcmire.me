@@ -1,3 +1,7 @@
+require_relative "config/sprockets-bower"
+
+SprocketsBower.new(self).configure
+
 # Make it so that any HTML files inside of subdirectories that hold files for a
 # blog post are not considered as "blog sources"
 Middleman::Blog::BlogTemplateProcessor.class_eval do
@@ -56,6 +60,8 @@ activate :directory_indexes
 set :markdown_engine, :kramdown
 set :markdown, input: "GFM", enable_coderay: false, hard_wrap: false,
   math_engine: "katex"
+
+set :debug_assets, true
 
 configure :build do
   # For example, change the Compass output style for deployment

@@ -3,7 +3,6 @@
 #= require ./animation
 #= require ./code_block
 #= require ./code_modal
-#= require ./fonts
 #= require ./grid
 #= require ./header
 #= require ./header_background
@@ -100,5 +99,4 @@ mcmire.me.init = ->
   mcmire.me.codeModal = buildActivatedCodeModal()
   renderCodeBlocks()
   initHeader()
-  mcmire.me.fonts.render()
   renderMathBlocks()

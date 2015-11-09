@@ -1,7 +1,7 @@
 // Typography
-$base-font-family: "usual", "adelle-sans", "abril-text", "aktiv-grotesk", "usual", sans-serif;
-$heading-font-family: "usual", "adelle-sans", "abril-display", "abril-titling", serif;
-$code-font-family: "source-code-pro", monospace;
+$base-font-family: "Roboto", "Source Sans Pro", sans-serif;
+$heading-font-family: $base-font-family;
+$code-font-family: "Source Code Pro", monospace;
 
 // Font Sizes
 $base-font-size: 18px;
