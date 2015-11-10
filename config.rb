@@ -1,6 +1,6 @@
-require_relative "config/sprockets-bower"
+require_relative "config/sprockets_bower_fonts_integration"
 
-SprocketsBower.new(self).configure
+SprocketsBowerFontsIntegration.new(self).configure
 
 # Make it so that any HTML files inside of subdirectories that hold files for a
 # blog post are not considered as "blog sources"

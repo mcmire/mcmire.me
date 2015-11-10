@@ -1,6 +1,6 @@
 require "pathname"
 
-class SprocketsBower
+class SprocketsBowerFontsIntegration
   def initialize(context)
     @context = context
     @bower_components = Pathname.new(
