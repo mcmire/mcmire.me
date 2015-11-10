@@ -121,7 +121,7 @@ a:hover {
   max-width: $site-container-width;
 }
 
-#site-footer, #site-footer-push {
+#site-footer {
   height: 6rem;
 }
 
@@ -140,5 +140,6 @@ a:hover {
   height: auto !important;
   height: 100%;
   margin-bottom: -6rem;
+  padding-bottom: 6rem;
   position: relative;
 }
