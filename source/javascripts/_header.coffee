@@ -6,6 +6,5 @@ class mcmire.me.Header
       @animation.play()
 
     @element.addEventListener "mouseout", =>
-      console.log "pause"
       @animation.pause()
 
