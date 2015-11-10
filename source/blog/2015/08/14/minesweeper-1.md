@@ -21,9 +21,8 @@ and finally experiment with other frameworks and languages.
 
 ### The game
 
-<p class="image">
-  <img src="http://s3.amazonaws.com/mcmire.me/posts/2015-08-14-minesweeper-1/ms-minesweeper.png" alt="Microsoft Minesweeper">
-</p>
+![Microsoft Minesweeper][ms-minesweeper]
+{:class="image"}
 
 The game is simple.
 It's played on a grid of spaces,
@@ -53,6 +52,8 @@ depending on the state of the space:
 
 The player wins, then,
 by managing to uncover all spaces without blowing up.
+
+[ms-minesweeper]: http://assets.mcmire.me/posts/2015-08-14-minesweeper-1/ms-minesweeper.png
 
 ### Starting small
 
