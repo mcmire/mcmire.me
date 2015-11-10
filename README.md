@@ -10,6 +10,15 @@ This project comes with a self-setup script. Simply run:
 bin/setup
 ```
 
+## Writing
+
+You'll want the server running in order to preview changes. You can start that
+by saying:
+
+```
+bundle exec middleman
+```
+
 ## Deploying
 
 The site lives directly on S3, using its static website hosting feature.
