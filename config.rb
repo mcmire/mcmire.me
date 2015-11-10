@@ -4,6 +4,8 @@ activate :dotenv, env: ".env.local"
 
 SprocketsBowerFontsIntegration.new(self).configure
 
+sprockets.import_asset "katex/dist/katex.min.css"
+
 # Make it so that any HTML files inside of subdirectories that hold files for a
 # blog post are not considered as "blog sources"
 Middleman::Blog::BlogTemplateProcessor.class_eval do
