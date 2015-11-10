@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+if ! which bower &>/dev/null; then
+  npm install -g bower
+fi
+
+bower install
