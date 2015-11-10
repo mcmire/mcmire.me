@@ -1,5 +1,7 @@
 require_relative "config/sprockets_bower_fonts_integration"
 
+activate :dotenv, env: ".env.local"
+
 SprocketsBowerFontsIntegration.new(self).configure
 
 # Make it so that any HTML files inside of subdirectories that hold files for a
@@ -61,17 +63,27 @@ set :markdown_engine, :kramdown
 set :markdown, input: "GFM", enable_coderay: false, hard_wrap: false,
   math_engine: "katex"
 
-set :debug_assets, true
+activate :s3_sync do |s3_sync|
+  s3_sync.bucket = ENV.fetch("S3_BUCKET")
+  s3_sync.delete = false
+  s3_sync.encryption = false
+end
+
+configure :development do
+  set :debug_assets, true
+end
 
 configure :build do
+  set :debug_assets, false
+
   # For example, change the Compass output style for deployment
-  # activate :minify_css
+  activate :minify_css
 
   # Minify Javascript on build
-  # activate :minify_javascript
+  activate :minify_javascript
 
   # Enable cache buster
-  # activate :asset_hash
+  activate :asset_hash
 
   # Use relative URLs
   # activate :relative_assets

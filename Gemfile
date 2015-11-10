@@ -4,6 +4,8 @@ ruby "2.2.3"
 
 gem "middleman", github: "middleman/middleman", branch: "v3-stable"
 gem "middleman-blog", "~> 3.5.3"
+gem "middleman-dotenv", "~> 1.0"
+gem "middleman-s3_sync", "~> 3.0"
 
 # For feed.xml.builder
 gem "builder", "~> 3.0"
