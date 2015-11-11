@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+set -e
+
+bundle exec middleman build
+bundle exec middleman s3_sync
