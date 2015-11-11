@@ -81,12 +81,6 @@ initAnimation = ->
 
   animation
 
-initHeader = ->
-  element = document.querySelector("[data-role='header']")
-  animation = initAnimation()
-  header = new mcmire.me.Header({ element, animation })
-  header.activate()
-
 renderMathBlocks = ->
   elements = document.querySelectorAll("script[type='math/katex']")
 
@@ -98,5 +92,5 @@ mcmire.me.init = ->
   renderGrid()
   mcmire.me.codeModal = buildActivatedCodeModal()
   renderCodeBlocks()
-  initHeader()
+  initAnimation()
   renderMathBlocks()
