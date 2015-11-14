@@ -32,12 +32,21 @@ class SprocketsBowerFontsIntegration
   end
 
   def find_asset_files_within(component_directory)
-    Pathname.glob(
-      component_directory.join(
-        "**",
-        "*.{png,gif,jpg,jpeg,svg,eot,otf,svc,woff,woff2,ttf}"
+    if ["source-code-pro", "source-sans-pro"].include?(File.basename(component_directory))
+      Pathname.glob(
+        component_directory.join(
+          "{WOFF,WOFF2}/OTF",
+          "*.{woff,woff2}"
+        )
       )
-    )
+    else
+      Pathname.glob(
+        component_directory.join(
+          "**",
+          "*.{woff,woff2}"
+        )
+      )
+    end
   end
 
   def import_component_asset(component_directory, file)
