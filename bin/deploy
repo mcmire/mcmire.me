@@ -2,5 +2,33 @@
 
 set -e
 
+function abort_with_usage() {
+  echo "USAGE: $0 ENVIRONMENT"
+  echo "(where ENVIRONMENT is either 'staging' or 'production')"
+  exit 1
+}
+
+environment="$1"
+
+if [ -z "$environment" ]; then
+  echo "Missing environment."
+  echo
+  abort_with_usage
+fi
+
+case "$environment" in
+  production)
+    export S3_BUCKET="mcmire.me"
+    ;;
+  staging)
+    export S3_BUCKET="staging.mcmire.me"
+    ;;
+  *)
+    echo "Invalid environment."
+    echo
+    abort_with_usage
+    ;;
+esac
+
 bundle exec middleman build
 bundle exec middleman s3_sync
