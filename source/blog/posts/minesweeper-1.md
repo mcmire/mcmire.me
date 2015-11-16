@@ -17,8 +17,9 @@ such as Solitaire, Pegged, Taipei, and the like.
 In this post and the next several posts,
 we're going to be building Minesweeper in JavaScript.
 We're going to start by writing very procedural code using jQuery,
-then proceed by removing jQuery and adding more abstraction,
-and finally experiment with other frameworks and languages.
+proceed by removing jQuery and adding more abstraction,
+and close by experimenting with ways we can implement Minesweeper
+using other frameworks and languages.
 
 ### The game
 
@@ -58,10 +59,17 @@ by managing to uncover all spaces without blowing up.
 
 ### Starting small
 
-As you can see in the screenshot above,
+We'll start with two files:
+
+* *minesweeper.html*
+* *minesweeper.css*
+
+Judging by the screenshot above,
 we'll need to render a grid of cells.
-Let's keep it simple for right now
-and use tables:
+There are multiple ways to do this,
+but we don't want to have to right a bunch of CSS right now,
+so let's go with tables for now.
+Here's *minesweeper.html*:
 
 ``` html
 <!DOCTYPE html>
@@ -182,7 +190,8 @@ and use tables:
 We'll also sprinkle a few styles on top.
 We set the board to a reasonable size,
 and add some visual feedback to each cell
-when it's hovered over:
+when it's hovered over.
+Here's *minesweeper.css*:
 
 ``` css
 #board {
@@ -203,7 +212,7 @@ td:hover {
 The board doesn't do a whole lot yet,
 but here's what it looks like so far:
 
-<iframe height="300" width="100%" src="minesweeper-part-1.html" border="0"></iframe>
+<iframe height="300" width="100%" src="minesweeper.html" border="0"></iframe>
 
 In the next post,
 we'll add jQuery,
