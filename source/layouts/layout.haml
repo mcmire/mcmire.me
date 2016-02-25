@@ -3,45 +3,12 @@
   %head
     %meta(charset="utf-8")
     %meta(content="IE=edge,chrome=1" http-equiv="X-UA-Compatible")
-    %title= page_title
-    = feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Technobabble (Feed)"
-    = stylesheet_link_tag "all"
-    :javascript
-      document.documentElement.classList.add('wf-loading')
+    %title Elliot Winkler
+    = stylesheet_link_tag "home"
   %body(class="#{page_classes}")
     #site-wrapper
-      #site-header-wrapper(data-role="header")
-        .animation-controls.hide
-          %button(data-role="advance-frame-button") Next
-          %button(data-role="play-button") Play
-          %button(data-role="pause-button") Pause
-        %canvas#site-header-background(data-role="header-background")
-        #site-header
-          %h1
-            %a(href="/") Technobabble
-          %nav
-            %ul
-              %li
-                %a(href="http://github.com/mcmire") Code
-              %li
-                %a(href="http://twitter.com/mcmire") Tweets
       #site-container
         #content-container
           #content(data-role="content")
             ~ yield
-    %footer#site-footer
-      Technobabble is written by Elliot Winkler,
-      a web developer out of Denver, Colorado.
-      %br
-      This site was built using
-      <a href="http://middlemanapp.com">Middleman</a>
-      and is hosted on S3.
-      The code is available on
-      <a href="http://github.com/mcmire/mcmire.me">GitHub</a>.
-    .modal-overlay(data-role="code-modal")
-      .modal
-        %a.modal-close(href="#" data-role="modal-close") &times;
-        .modal-content(data-role="modal-content")
-    = javascript_include_tag "all"
-    :javascript
-      mcmire.me.init()
+    = javascript_include_tag "home"

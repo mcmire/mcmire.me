@@ -1,0 +1,14 @@
+= wrap_layout :blog do
+  .post
+    %header
+      %h2.post-title
+        - if current_article
+          = current_article.title
+        - else
+          = current_page.data.title
+      %p.post-date
+        - if current_article
+          = current_article.date.strftime("%b %e, %Y")
+        - else
+          = current_page.data.date.strftime("%b %e, %Y")
+    ~ yield

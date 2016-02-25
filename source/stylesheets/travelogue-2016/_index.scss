@@ -1,0 +1,31 @@
+#site-header-wrapper, #site-footer {
+  text-shadow: none;
+
+  &, a {
+    opacity: 1;
+    color: darken($base-border-color, 10%);
+  }
+
+  a:hover {
+    color: darken($base-border-color, 30%);
+  }
+}
+
+#site-header-wrapper {
+  box-shadow: none;
+  border-bottom: $base-border;
+  height: auto;
+}
+
+#site-header {
+  display: flex;
+  padding: $large-spacing $large-spacing $small-spacing;
+  position: relative;
+
+  h1, nav {
+    flex: 1;
+    font-size: 1em;
+    font-weight: normal;
+    text-transform: uppercase;
+  }
+}

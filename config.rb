@@ -22,17 +22,27 @@ end
 require_relative "kramdown_katex_engine"
 Kramdown::Converter.add_math_engine(:katex, KramdownKatexEngine)
 
-activate :blog do |blog|
-  blog.sources = "blog/{year}/{month}/{day}/{title}.html"
-  blog.layout = "article_layout"
-  blog.default_extension = ".md"
+blog_names = ["blog", "travelogue-2016"]
+blog_titles = {
+  "blog" => "Technobabble",
+  "travelogue-2016" => "Elliot's 2016 Travelogue"
+}
 
-  page "feed.xml", layout: false
-  page "sample-post.html", layout: :article_layout
+blog_names.each do |blog_name|
+  activate :blog do |blog|
+    blog.name = blog_name
+    blog.prefix = blog_name
+    blog.sources = "{year}/{month}/{title}.html"
+    blog.permalink = "{title}"
+    blog.layout = "#{blog_name}-article"
+    blog.default_extension = ".md"
+
+    page "#{blog_name}/feed.xml", layout: false
+  end
 end
 
 helpers do
-  def page_title
+  define_method :page_title do
     pieces = []
 
     if current_article
@@ -41,7 +51,7 @@ helpers do
       pieces << current_page.data.title
     end
 
-    pieces << "Technobabble"
+    pieces << blog_titles[blog.options.name]
 
     pieces.join(" ∙ ")
   end

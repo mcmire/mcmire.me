@@ -1,10 +1,23 @@
-.posts
-  - blog.articles.each_with_index do |article, i|
-    .post
-      .post-date
-        = article.date.strftime("%B %-d, %Y")
-      .post-title-and-summary
-        %h2.post-title
-          %a(href="#{article.url}")= article.title
-        .post-summary
-          = render_markdown(article.data.teaser)
+%p.avatar
+  = image_tag "mcmire.gif", width: 79, height: 79
+
+%p
+  Hi, I'm <b>Elliot Winkler</b>.
+
+%p
+  I'm a web developer based in Denver, Colorado.
+  I work at <a href="http://thoughtbot.com">thoughtbot</a>
+  and write about all things tech at
+  <a href="/blog">Technobabble</a>.
+
+%ul.links
+  %li
+    %a(href="http://github.com/mcmire") GitHub
+  %li
+    %a(href="http://twitter.com/mcmire") Twitter
+  %li
+    %a(href="http://linkedin.com/mcmire") LinkedIn
+  %li
+    %a(href="http://flickr.com/mcmire") Flickr
+  %li
+    %a(href="mailto:elliot.winkler@gmail.com") Contact

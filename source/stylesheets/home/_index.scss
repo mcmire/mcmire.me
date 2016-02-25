@@ -1,0 +1,36 @@
+.index {
+  text-align: center;
+
+  #content-container {
+    max-width: 30rem;
+  }
+
+  .avatar {
+    line-height: 1;
+
+    img {
+      border-radius: 40px;
+    }
+  }
+
+  .links {
+    border-bottom: $base-border;
+    border-top: $base-border;
+    font-size: 0.8em;
+    list-style: none;
+    padding: 0.5em 0;
+
+    li {
+      display: inline;
+      margin: 0;
+    }
+
+    li:after {
+      content: " ∙ ";
+    }
+
+    li:last-child:after {
+      content: "";
+    }
+  }
+}

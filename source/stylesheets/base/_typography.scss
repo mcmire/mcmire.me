@@ -15,7 +15,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+.header {
   color: $heading-font-color;
   font-family: $heading-font-family;
   font-size: $base-font-size;

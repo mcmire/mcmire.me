@@ -1,0 +1,25 @@
+!!! 5
+%html
+  %head
+    %meta(charset="utf-8")
+    %meta(content="IE=edge,chrome=1" http-equiv="X-UA-Compatible")
+    %title= page_title
+    = feed_tag :atom, "#{blog.options.prefix}/feed.xml", title: "Elliot's 2016 Travelogue (Feed)"
+    = stylesheet_link_tag "travelogue-2016"
+  %body(class="#{page_classes}")
+    #site-wrapper
+      #site-header-wrapper(data-role="header")
+        #site-header
+          %h1.text-left
+            %a(href="/") Home
+          %h1.text-center
+            %a(href="#{blog.options.prefix}") 2016 Travelogue
+          %nav.text-right
+            %ul
+              %li
+                %a(href="#{blog.options.prefix}/archive") Archive
+      #site-container
+        #content-container
+          #content(data-role="content")
+            ~ yield
+    = javascript_include_tag "travelogue-2016"
