@@ -15,6 +15,7 @@
   box-shadow: none;
   border-bottom: $base-border;
   height: auto;
+  text-align: left;
 }
 
 #site-header {
@@ -27,5 +28,30 @@
     font-size: 1em;
     font-weight: normal;
     text-transform: uppercase;
+  }
+}
+
+.posts {
+  h1 {
+    font-size: 1.5em;
+    line-height: 1;
+  }
+
+  .post-listing {
+    margin-bottom: $base-spacing;
+  }
+
+  .post-date-and-title {
+    margin-bottom: 0;
+  }
+
+  .post-features {
+    margin-left: $small-spacing;
+  }
+}
+
+.post {
+  .image {
+    float: none;
   }
 }

@@ -22,23 +22,31 @@ end
 require_relative "kramdown_katex_engine"
 Kramdown::Converter.add_math_engine(:katex, KramdownKatexEngine)
 
-blog_names = ["blog", "travelogue-2016"]
 blog_titles = {
   "blog" => "Technobabble",
   "travelogue-2016" => "Elliot's 2016 Travelogue"
 }
 
-blog_names.each do |blog_name|
-  activate :blog do |blog|
-    blog.name = blog_name
-    blog.prefix = blog_name
-    blog.sources = "{year}/{month}/{title}.html"
-    blog.permalink = "{title}"
-    blog.layout = "#{blog_name}-article"
-    blog.default_extension = ".md"
+activate :blog do |blog|
+  blog.name = "blog"
+  blog.prefix = "blog"
+  blog.sources = "{year}/{month}/{title}.html"
+  blog.permalink = "{title}"
+  blog.layout = "blog-article"
+  blog.default_extension = ".md"
 
-    page "#{blog_name}/feed.xml", layout: false
-  end
+  page "blog/feed.xml", layout: false
+end
+
+activate :blog do |blog|
+  blog.name = "travelogue-2016"
+  blog.prefix = "travelogue-2016"
+  blog.sources = "posts/{year}-{month}-{day}.html"
+  blog.permalink = "{year}-{month}-{day}"
+  blog.layout = "travelogue-2016-article"
+  blog.default_extension = ".md"
+
+  page "travelogue-2016/feed.xml", layout: false
 end
 
 helpers do
@@ -56,12 +64,69 @@ helpers do
     pieces.join(" ∙ ")
   end
 
-  def render_markdown(content)
+  def render_markdown(content, paragraph: true)
     tempfile = Tempfile.open("markdown")
     tempfile.write(content)
     tempfile.close
 
-    Tilt["md"].new(tempfile).render
+    html = Tilt["md"].new(tempfile).render
+
+    if !paragraph
+      html.sub!("<p>", "").sub("</p>", "")
+    end
+
+    html
+  end
+
+  def embed_yt_video(video_id, width: 560, height: 315, description: nil)
+    <<-HTML
+<figure class="embed">
+  <iframe
+    width="#{width}"
+    height="#{height}"
+    src="https://www.youtube.com/embed/#{video_id}"
+    frameborder="0"
+    allowfullscreen>
+  </iframe>
+  <figcaption>#{description}</figcaption>
+</figure>
+    HTML
+  end
+
+  def extract_flickr_photo_id_from(url)
+    regex = %r{\Ahttps://farm\d+\.staticflickr.com/\d+/([0-9]+)_[a-z0-9]+.jpg\Z}
+    match = url.match(regex)
+
+    if match
+      match.captures.first
+    else
+      raise "Couldn't extract Flickr photo id from: #{url}"
+    end
+  end
+
+  def embed_flickr_photo(static_url, orientation:, description:, width: 375, height: 500)
+    photo_id = extract_flickr_photo_id_from(static_url)
+
+    if orientation == :landscape
+      width, height = height, width
+    end
+
+    <<-HTML
+<figure class="image">
+  <a
+    data-flickr-embed="true"
+    href="https://www.flickr.com/photos/mcmire/#{photo_id}"
+    title="#{description}"
+    target="_blank">
+    <img
+      src="#{static_url}"
+      width="#{width}"
+      height="#{height}"
+      alt="#{description}">
+  </a>
+  <figcaption>#{description}</figcaption>
+</figure>
+    HTML
   end
 end
 

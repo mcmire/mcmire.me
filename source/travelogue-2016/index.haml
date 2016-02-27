@@ -4,15 +4,17 @@ layout: travelogue-2016
 ---
 
 .posts
+  %h1 All Posts
+
   - if blog.articles.any?
-    - blog.articles.each_with_index do |article, i|
-      .post
-        .post-date
-          = article.date.strftime("%B %-d, %Y")
-        .post-title-and-summary
-          %h2.post-title
-            %a(href="#{article.url}")= article.title
-          .post-summary
-            = render_markdown(article.data.teaser)
+    - blog.articles.reverse.each_with_index do |article, i|
+      .post-listing
+        %h2.post-date-and-title
+          %a(href="#{article.url}")
+            = article.date.strftime("%B %-d, %Y") + ": "
+            = article.title
+        .post-features
+          %i featuring:
+          = article.data.features.join(" ∙ ")
   - else
     %p.text-center There aren't any posts just yet!

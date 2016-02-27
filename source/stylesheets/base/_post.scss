@@ -20,16 +20,24 @@
     text-transform: uppercase;
   }
 
-  .image {
+  .embed, .image {
     text-align: center;
+  }
+
+  .embed iframe, .image img {
+    @extend %shadow;
+    border: 1px solid rgba(0,0,0,0.2);
+  }
+
+  .image {
     float: right;
     margin-left: 2em;
     margin-bottom: 2em;
+  }
 
-    img {
-      @extend %shadow;
-      border: 1px solid rgba(0,0,0,0.2);
-    }
+  figcaption {
+    font-size: 0.8em;
+    font-style: italic;
   }
 
   blockquote {
