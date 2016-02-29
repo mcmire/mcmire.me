@@ -2,7 +2,7 @@
 blog: blog
 title: Making Minesweeper in JavaScript, Part 1 and This Is Just a Really Long Title and Such and I'll Just Keep Going
 date: 2015-08-14
-layout: techblog-article
+layout: blog-article
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel mi lectus.
