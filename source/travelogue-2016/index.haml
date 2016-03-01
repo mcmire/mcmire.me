@@ -4,17 +4,10 @@ layout: travelogue-2016
 ---
 
 .posts
-  %h1 All Posts
+  %h2 Costa Rica
 
-  - if blog.articles.any?
-    - blog.articles.reverse.each_with_index do |article, i|
-      .post-listing
-        %h2.post-date-and-title
-          %a(href="#{article.url}")
-            = article.date.strftime("%B %-d, %Y") + ": "
-            = article.title
-        .post-features
-          %i featuring:
-          = article.data.features.join(" ∙ ")
-  - else
-    %p.text-center There aren't any posts just yet!
+  = partial "posts", locals: { category: "costa-rica" }
+
+  %h2 Asia
+
+  = partial "posts", locals: { category: "asia" }

@@ -41,8 +41,8 @@ end
 activate :blog do |blog|
   blog.name = "travelogue-2016"
   blog.prefix = "travelogue-2016"
-  blog.sources = "posts/{year}-{month}-{day}.html"
-  blog.permalink = "{year}-{month}-{day}"
+  blog.sources = "posts/{category}/{year}-{month}-{day}.html"
+  blog.permalink = "{title}"
   blog.layout = "travelogue-2016-article"
   blog.default_extension = ".md"
 

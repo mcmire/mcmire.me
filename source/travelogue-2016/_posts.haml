@@ -1,0 +1,14 @@
+- articles = blog.articles.reverse.select { |a| a.metadata[:page]['category'] == category }
+
+- if articles.any?
+  - articles.each do |article|
+    .post-listing
+      %h3.post-date-and-title
+        %a(href="#{article.url}")
+          = article.date.strftime("%B %-d, %Y") + ": "
+          = article.title.sub(/Costa Rica: |Asia: /, "")
+      .post-features
+        %i featuring:
+        = article.data.features.join(" ∙ ")
+- else
+  %p.text-center There aren't any posts just yet!
