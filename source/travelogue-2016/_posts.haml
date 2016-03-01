@@ -1,4 +1,4 @@
-- articles = blog.articles.reverse.select { |a| a.metadata[:page]['category'] == category }
+- articles = blog.articles.select { |a| a.metadata[:page]['category'] == category }
 
 - if articles.any?
   - articles.each do |article|
