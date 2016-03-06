@@ -6,7 +6,7 @@
     %title= page_title
     = feed_tag :atom, "#{blog.options.prefix}/feed.xml", title: "Elliot's 2016 Travelogue (Feed)"
     = stylesheet_link_tag "travelogue-2016"
-    %script(async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8")
+    = yield_content :head
   %body(class="#{page_classes}")
     #site-wrapper
       #site-header-wrapper(data-role="header")
