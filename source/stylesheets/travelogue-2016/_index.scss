@@ -63,4 +63,15 @@
   .image {
     float: none;
   }
+
+  .footnote {
+    font-size: 1.1em;
+    padding: 2px;
+  }
+
+  .footnotes {
+    border-top: $base-border;
+    margin-top: $large-spacing;
+    padding-top: $base-spacing;
+  }
 }
