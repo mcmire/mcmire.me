@@ -7,8 +7,9 @@
         %a(href="#{article.url}")
           = article.date.strftime("%B %-d, %Y") + ": "
           = article.title.sub(/Costa Rica: |Asia: /, "")
-      .post-features
-        %i featuring:
-        = article.data.features.join(" ∙ ")
+      - if article.data.features
+        .post-features
+          %i featuring:
+          = article.data.features.join(" ∙ ")
 - else
   %p.text-center There aren't any posts just yet!
