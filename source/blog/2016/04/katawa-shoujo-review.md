@@ -45,7 +45,7 @@ boilerplate.
 
 With that in mind, let's begin.
 
-## Visuals
+### Visuals
 
 I'm going to talk somewhat about the technical details of the game here, but
 stick with me. I said that visual novels are like picture books, but from a
@@ -72,7 +72,7 @@ one variation of her character -- it has a professional feel. As for
 backgrounds, they look different from characters: they seem to be real photos
 run under some kind of Photoshop filter to make them appear like watercolors.
 While I understand that this likely saved a lot of time, I wish that the artists
-had drawn these by hand, or perhaps removed some of the detail and left more of
+had drawn these by hand [^fn1], or perhaps removed some of the detail and left more of
 the scene to readers' imaginations. There are certain locations where the text
 describes something, such as a bench or table, that should be visible on-screen,
 but is not, because the photo doesn't capture enough of the space.
@@ -112,7 +112,7 @@ characters in the story.
 
 **Score: 7.5/10**
 
-## Text
+### Text
 
 Taken as a whole, the writing is fairly good, especially for a free game. The
 circumstances that place the protagonist in the story, Hisao, in the company of
@@ -182,7 +182,7 @@ order. I think this is a shame, because the stories are so much more than that.
 
 **Score: 7.5/10**
 
-## Audio
+### Audio
 
 While I was generally pleased with the way the visual novel looked and read, I
 had less than favorable thoughts about the audio.
@@ -241,7 +241,7 @@ was able to solely focus on the text.
 
 **Score: 4/10**
 
-## Overall experience
+### Overall experience
 
 As a free game, Katawa Shoujo is impressive. Although the backstory and setting
 are different from a typical romantic novel, they at least are believable, and
@@ -256,6 +256,9 @@ game is still perfectly enjoyable without it.
 
 **Final score: 7/10**
 
+[^fn1]: I [later learned][backgrounds] that the artists did consider this, but realized that they would have to draw over a hundred backgrounds, and that just wasn't feasible. A lot of work did go into selecting backgrounds and modifying them to suit the game. So I can't fault the art team too much.
+
 [itch]: http://itch.io
 [vndb]: http://vndb.com
 [vn-reddit]: http://reddit.com/r/visualnovel
+[backgrounds]: http://katawashoujo.blogspot.jp/2009/12/status-and-backgrounds.html
