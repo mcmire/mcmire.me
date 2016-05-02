@@ -8,6 +8,10 @@ date: 2016-04-29
 tags: visual-novel
 ---
 
+***Spoiler alert:** I've tried to keep this review spoiler-free, other than
+sharing certain opinions about the storylines. I would recommend playing
+through the game completely to see how you like it.*
+
 There are a large number of visual novels available on the internet, both free
 of charge and for sale on platforms like Steam and [itch.io][itch]. But I'm
 getting ahead of myself. What is a visual novel? I like to think of is an adult
@@ -169,7 +173,7 @@ aggressive in attempting to convince him to join the student council.
 The last thing to mention about the writing is that I did have one issue with
 the content itself. Personally, I didn't find the sex scenes to be completely
 necessary. I can understand that the characters in this story are all teenagers
-and that bishoujos wouldn't be proper bishoujos without some kind of sexual
+and that *bishoujos* wouldn't be proper *bishoujos* without some kind of sexual
 gratification. But there was no story (aside from Kenji's) where Hisao didn't
 wind up in bed with a girl, whether of his own free will or not. Emi's story,
 actually, is the only one where sex seems appropriate, as it actually
