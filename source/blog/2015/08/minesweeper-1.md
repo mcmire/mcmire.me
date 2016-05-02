@@ -5,6 +5,7 @@ teaser: >
   we introduce the project
   and start by making a simple board.
 date: 2015-08-14
+tags: programming
 ---
 
 If you owned a PC 15 years ago,

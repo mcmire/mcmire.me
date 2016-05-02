@@ -19,6 +19,8 @@ h2, h3, h4 {
 
 h2 {
   font-size: $heading-font-size;
+  margin-top: $medium-spacing;
+  margin-bottom: $small-spacing;
 }
 
 h3 {
