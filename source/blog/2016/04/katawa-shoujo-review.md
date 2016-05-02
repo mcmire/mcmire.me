@@ -27,7 +27,7 @@ them at the [Visual Novel Database][vndb], and there's a large community of
 people making and reading and talking about visual novels on
 [Reddit][vn-reddit].
 
-Today I'm going to review **Katawa Shoujo**, a very popular *bishoujo* and a
+Today I'm going to review [Katawa Shoujo][ks], a very popular *bishoujo* and a
 consistent favorite among visual novel readers. I have a few different factors
 that I'm going to grade it on. "Visuals" is a measure of how effective the
 illustrations are in communicating the story and representing the characters and
@@ -262,3 +262,4 @@ game is still perfectly enjoyable without it.
 [vndb]: http://vndb.com
 [vn-reddit]: http://reddit.com/r/visualnovel
 [backgrounds]: http://katawashoujo.blogspot.jp/2009/12/status-and-backgrounds.html
+[ks]: http://www.katawa-shoujo.com
