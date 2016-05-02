@@ -256,6 +256,19 @@ game is still perfectly enjoyable without it.
 
 **Final score: 7/10**
 
+### Addendum
+
+There's a certain amateurish quality to Katawa Shoujo, but don't get me wrong: I
+have a lot of respect for the team who developed the game. It took five years to
+make it, none of the people earned any money for it, and what's more, none of
+the people had made a visual novel before. Different writers and artists were in
+charge of each character's storyline and visuals, and they all had to
+collaborate in order to make something that meshes well. This is amazing to me,
+and I think it's clear that they succeeded.
+
+If you're interested in the process behind the game, then make sure to read the
+[blog].
+
 [^fn1]: I [later learned][backgrounds] that the artists did consider this, but realized that they would have to draw over a hundred backgrounds, and that just wasn't feasible. A lot of work did go into selecting backgrounds and modifying them to suit the game. So I can't fault the art team too much.
 
 [itch]: http://itch.io
@@ -263,3 +276,4 @@ game is still perfectly enjoyable without it.
 [vn-reddit]: http://reddit.com/r/visualnovel
 [backgrounds]: http://katawashoujo.blogspot.jp/2009/12/status-and-backgrounds.html
 [ks]: http://www.katawa-shoujo.com
+[blog]: http://katawashoujo.blogspot.com/2012/01/who-we-are.html
