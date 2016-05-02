@@ -8,9 +8,10 @@ date: 2016-04-29
 tags: visual-novel
 ---
 
-***Spoiler alert:** I've tried to keep this review spoiler-free, other than
-sharing certain opinions about the storylines. I would recommend playing
-through the game completely to see how you like it.*
+***Spoiler alert:** I've tried to keep this review spoiler-free, although there
+are a couple of them worth noting. I've blurred them out; you can click on
+them if you really want to know. I would recommend playing through the game
+completely to see how you like it.*
 
 There are a large number of visual novels available on the internet, both free
 of charge and for sale on platforms like Steam and [itch.io][itch]. But I'm
@@ -148,7 +149,22 @@ each storyline has some kind of soliloquy where he takes a moment to reflect on
 his life and whichever girl he happens to be interested in at the time. The
 problem is that by the fourth read-through, you have seen him "grow up" three
 other times, so it's difficult to understand why he can't just move past the
-problem effortlessly this time.
+problem effortlessly this time. In some places the text is a little too
+wordy, and two sentences that share similar information will be right next to
+each other. For instance:
+
+> **Misha:** "So... would you like to join us? Come on, you'll have a lot more fun
+> than just sitting here with your head on your desk~!"  
+> *I guess I won't be missing anything important; nor will I be missed.*  
+> **Hisao:** "All right, then, I don't think I'd be missing much. What do you
+> have in mind?"
+
+This could have simply read:
+
+> **Misha:** "So... would you like to join us? Come on, you'll have a lot more
+> fun than just sitting here with your head on your desk~!"  
+> *I guess I won't be missing anything important; nor will I be missed.*  
+> **Hisao:** "Uh... sure. What do you have in mind?"
 
 The game isn't just one story; it's actually a collection of individual
 storylines. Each storyline (apart from Kenji's) is divided into four acts, a
@@ -162,13 +178,14 @@ not be the reason why I found that the writing in the first act wasn't as good
 as any act after that.
 
 In any case, I thought that all of the storylines were all generally rewarding
-in their own way. Setting a trajectory for a new path, I was initially
-skeptical about the plot's direction in the same way that Hisao was skeptical
-about his own future, but by the end of the second act, I was hooked and
-couldn't stop reading. If I had to talk about each storyline individually, I
-would say that my favorite was Misha and Shizune's -- an unexpected surprise,
-given that when Hisao first arrives at the school, the girls are annoyingly
-aggressive in attempting to convince him to join the student council.
+in their own way. Setting a trajectory for a new path, I was initially skeptical
+about the plot's direction in the same way that Hisao was skeptical about his
+own future, but by the end of the second act, I was hooked and couldn't stop
+reading. If I had to talk about each storyline individually, I would say that my
+favorite was <span class="spoiler">Misha and Shizune's -- an unexpected
+surprise, given that when Hisao first arrives at the school, the girls are
+annoyingly aggressive in attempting to convince him to join the student
+council</span>.
 
 The last thing to mention about the writing is that I did have one issue with
 the content itself. Personally, I didn't find the sex scenes to be completely
@@ -176,13 +193,14 @@ necessary. I can understand that the characters in this story are all teenagers
 and that *bishoujos* wouldn't be proper *bishoujos* without some kind of sexual
 gratification. But there was no story (aside from Kenji's) where Hisao didn't
 wind up in bed with a girl, whether of his own free will or not. Emi's story,
-actually, is the only one where sex seems appropriate, as it actually
-exacerbates the division she has in her head between accepting Hisao's love for
-her or rejecting it altogether. But in the stories featuring other characters,
-the sex doesn't matter, as the decisions they make later, I think, would have
-been made regardless of the act. Hence, because sex is featured so heavily in
-the game, it -- or the act of getting it -- becomes the game itself in short
-order. I think this is a shame, because the stories are so much more than that.
+actually, is the only one where sex seems appropriate, as <span
+class="spoiler">it actually exacerbates the division she has in her head between
+accepting Hisao's love for her or rejecting it altogether</span>. But in the
+stories featuring other characters, the sex doesn't matter, as the decisions
+they make later, I think, would have been made regardless of the act. Hence,
+because sex is featured so heavily in the game, it -- or the act of getting it
+-- becomes the game itself in short order. I think this is a shame, because the
+stories are so much more than that.
 
 **Score: 7.5/10**
 

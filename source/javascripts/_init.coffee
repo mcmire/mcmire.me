@@ -9,6 +9,7 @@
 #= require ./_math_block
 #= require ./_pause_button
 #= require ./_play_button
+#= require ./_spoiler
 
 DEBUG_ANIMATION = false
 
@@ -88,9 +89,17 @@ renderMathBlocks = ->
     mathBlock = new mcmire.me.MathBlock({ element })
     mathBlock.render()
 
+initSpoilers = ->
+  elements = document.querySelectorAll(".spoiler")
+
+  _.each elements, (element) ->
+    spoiler = new mcmire.me.Spoiler({ element })
+    spoiler.activate()
+
 mcmire.me.init = ->
   renderGrid()
   mcmire.me.codeModal = buildActivatedCodeModal()
   renderCodeBlocks()
   initAnimation()
   renderMathBlocks()
+  initSpoilers()

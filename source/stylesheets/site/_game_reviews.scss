@@ -1,0 +1,10 @@
+.spoiler {
+  color: transparent;
+  text-shadow: 0 0 8px $text-color;
+  transition: all linear 0.3s;
+
+  &.revealed {
+    color: $text-color;
+    text-shadow: none;
+  }
+}
