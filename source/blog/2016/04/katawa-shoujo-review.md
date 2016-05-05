@@ -9,9 +9,8 @@ tags: visual-novel
 ---
 
 ***Spoiler alert:** I've tried to keep this review spoiler-free, although there
-are a couple of them worth noting. I've blurred them out; you can click on
-them if you really want to know. I would recommend playing through the game
-completely to see how you like it.*
+are a couple of them worth noting. I've blurred them out; you can click on them
+if you really want to know.*
 
 There are a large number of visual novels available on the internet, both free
 of charge and for sale on platforms like Steam and [itch.io][itch]. But I'm
@@ -124,7 +123,7 @@ circumstances that place the protagonist in the story, Hisao, in the company of
 the cast of characters he will ultimately befriend and, in some cases, date --
 the heart arrhythmia he experiences at the beginning of the game which leads him
 to attend a school for disabled students -- is definitely unconventional. I
-don't know that much about bishoujos, but from a writing perspective, this seems
+don't know that much about *bishoujos*, but from a writing perspective, this seems
 like a smart creative restriction. Because Hisao starts out humbled and somewhat
 apprehensive, he meekly seeks a way forward that will lead him to overcoming his
 situation and, ultimately, finding happiness. And as the player, you naturally
@@ -221,11 +220,11 @@ synthesized, its realism doesn't match the realism that the text is trying to
 create. Sometimes it felt like I was reading some kind of Victorian-era novel,
 playing a fishing game, watching a Hallmark movie, or some odd combination of
 all three. These aren't things you want associated with a serious story about a
-boy who has a serious heart condition and who is going through situations that
-will change the rest of his life. Not every song works with every scene, either.
-For instance, when Hisao walks into the nurse's office, some kind of funky track
-begins playing. This might be appropriate for a game featuring Mr. T, but it is
-completely out of place here.
+boy who has a life-threatening heart condition and who is going through
+situations that will change the rest of his life. Not every song works with
+every scene, either. For instance, when Hisao walks into the nurse's office,
+some kind of funky track begins playing. This might be appropriate for a game
+featuring Mr. T, but it is completely out of place here.
 
 There's a wide variety of songs to listen to, but because each scene has music
 associated with it to some extent, that means the game is dominated by music.
