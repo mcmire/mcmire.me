@@ -76,10 +76,10 @@ one variation of her character -- it has a professional feel. As for
 backgrounds, they look different from characters: they seem to be real photos
 run under some kind of Photoshop filter to make them appear like watercolors.
 While I understand that this likely saved a lot of time, I wish that the artists
-had drawn these by hand [^fn1], or perhaps removed some of the detail and left more of
-the scene to readers' imaginations. There are certain locations where the text
-describes something, such as a bench or table, that should be visible on-screen,
-but is not, because the photo doesn't capture enough of the space.
+had drawn these by hand [^fn1], or perhaps removed some of the detail and left
+more of the scene to readers' imaginations. There are certain locations where
+the text describes something, such as a bench or table, that should be visible
+on-screen, but is not, because the photo doesn't capture enough of the space.
 
 Speaking about the characters, in most situations, the poses and expressions
 that the game's artists have chosen and drawn for them work well. Besides, there
@@ -123,11 +123,11 @@ circumstances that place the protagonist in the story, Hisao, in the company of
 the cast of characters he will ultimately befriend and, in some cases, date --
 the heart arrhythmia he experiences at the beginning of the game which leads him
 to attend a school for disabled students -- is definitely unconventional. I
-don't know that much about *bishoujos*, but from a writing perspective, this seems
-like a smart creative restriction. Because Hisao starts out humbled and somewhat
-apprehensive, he meekly seeks a way forward that will lead him to overcoming his
-situation and, ultimately, finding happiness. And as the player, you naturally
-want him to succeed in this.
+don't know that much about *bishoujos*, but from a writing perspective, this
+seems like a smart creative restriction. Because Hisao starts out humbled and
+somewhat apprehensive, he meekly seeks a way forward that will lead him to
+overcoming his situation and, ultimately, finding happiness. And as the player,
+you naturally want him to succeed in this.
 
 Hisao is both the narrator as well as a character, so the text is cast in the
 first person, and the language style is fairly casual. Ordinarily this might be
@@ -181,10 +181,13 @@ in their own way. Setting a trajectory for a new path, I was initially skeptical
 about the plot's direction in the same way that Hisao was skeptical about his
 own future, but by the end of the second act, I was hooked and couldn't stop
 reading. If I had to talk about each storyline individually, I would say that my
-favorite was <span class="spoiler">Misha and Shizune's -- an unexpected
-surprise, given that when Hisao first arrives at the school, the girls are
-annoyingly aggressive in attempting to convince him to join the student
-council</span>.
+favorite was <span class="spoiler">Rin's</span>, although a close second was
+<span class="spoiler">Misha and Shizune's</span>. This is a surprise, because
+none of the characters are very likable at first, <span
+class="spoiler">Rin</span> especially. In either case, the writing seemed to
+have a little more depth -- seemed to come more from real experiences -- than
+the other storylines, and although there is plenty of text to read, the themes
+discussed were complex and interesting. 
 
 The last thing to mention about the writing is that I did have one issue with
 the content itself. Personally, I didn't find the sex scenes to be completely
