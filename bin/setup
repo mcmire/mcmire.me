@@ -1,7 +1,14 @@
 #!/usr/bin/env sh
 
+set -e
+
 if ! which bower &>/dev/null; then
+  echo "=== Installing Bower ==="
   npm install -g bower
 fi
 
+echo "=== Installing frontend dependencies ==="
 bower install
+
+echo "=== Installing backend dependencies ==="
+bundle install
