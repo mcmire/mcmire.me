@@ -2,11 +2,11 @@
 blog: blog
 title: Making Minesweeper in JavaScript, Part 1 and This Is Just a Really Long Title and Such and I'll Just Keep Going
 date: 2015-08-14
-layout: blog-article
+layout: blog_article
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel mi lectus.
-Maecenas scelerisque lectus vitae nisl elementum porttitor.
+Lorem ipsum dolor sit amet, <i>consectetur adipiscing elit</i>. Integer vel mi
+lectus. Maecenas scelerisque lectus vitae nisl elementum porttitor.
 
 Mauris convallis <code>Post::LoremIpsum</code> lorem quis vulputate interdum.
 <a href="#">Proin in metus sed nunc sagittis</a> interdum eu ut nibh. Aliquam
@@ -14,6 +14,30 @@ et viverra quam. In consequat justo dictum, commodo sapien eget, dapibus
 felis. Etiam posuere neque sed tempus feugiat. Fusce leo nibh,
 <code>PostImporter#abracadabra</code> luctus sed congue sed, volutpat sodales
 purus.
+
+Proin dignissim erat id felis gravida, nec blandit eros gravida. Nullam
+tincidunt dolor quis mauris auctor, a porta tellus laoreet. Praesent et ultrices
+ex. Phasellus risus urna, lacinia et nisi vitae, molestie faucibus elit.
+
+Mauris porttitor rhoncus vestibulum. Suspendisse potenti. Fusce lectus velit,
+maximus non est sit amet, elementum porta felis. Suspendisse potenti. Aliquam
+eget ultricies dui, ut pretium felis. Aenean fermentum faucibus sapien eu
+suscipit. In eget orci rutrum, scelerisque justo non, efficitur metus.
+
+1. In mi quam, rutrum non facilisis nec, blandit sit amet massa.
+   Vestibulum vel ultricies mauris. Nam eu nibh nulla. Praesent accumsan
+   pulvinar quam at eleifend. Proin lobortis ornare orci sed elementum. Vivamus
+   hendrerit lectus et rhoncus venenatis.
+1. Duis ex nunc, viverra nec tincidunt vel, rutrum sit amet est.
+1. Nam eu nibh nulla.
+
+Etiam ornare est lacus, sit amet faucibus orci maximus vitae. Praesent varius
+est eget odio varius, ut fermentum velit finibus. Nulla aliquam mi ac magna
+consectetur hendrerit at ut nulla. Nunc maximus porttitor lobortis.
+
+Duis at augue felis. Phasellus et elit at felis venenatis sollicitudin nec eget
+enim. Donec pharetra sit amet leo sit amet rhoncus. Quisque ut imperdiet est.
+Nulla ut risus leo.
 
 |------------------+------------------------|
 | This is a header | This is another header |
@@ -142,6 +166,40 @@ Aenean at hendrerit leo, id egestas leo. Etiam non sodales enim, a rutrum odio.
 Vivamus gravida posuere dui, a lobortis risus gravida ut. Mauris varius pretium
 magna, eget tincidunt erat ornare ultrices.
 
+``` ruby
+module Features
+  module Matchers
+    def have_row(expected_row)
+      HaveRowMatcher.new(self, expected_row)
+    end
+
+    class HaveRowMatcher
+      def initialize(context, expected_row)
+        @context = context
+        @expected_row = expected_row
+      end
+
+      def description
+        "should have row containing #{expected_row}"
+      end
+
+      def matches?(element)
+        @element = element
+        table = Table.new(context, element)
+        @actual_rows =
+          if expected_row.is_a?(Hash)
+            table.to_array_of_hashes
+          else
+            table.to_array_of_arrays
+          end
+
+        @actual_rows.include?(expected_row)
+      end
+    end
+  end
+end
+```
+
 Sed lacinia ante dignissim, ultrices metus ut, lobortis quam. Vestibulum
 lobortis nisi lectus, ut efficitur risus pretium vel. Pellentesque dictum dui et
 aliquet vehicula.
@@ -153,20 +211,7 @@ aliquet vehicula.
 ### Colors!
 
 <div class="swatches">
-  <div class="base00-swatch"></div>
-  <div class="base01-swatch"></div>
-  <div class="base02-swatch"></div>
-  <div class="base03-swatch"></div>
-  <div class="base04-swatch"></div>
-  <div class="base05-swatch"></div>
-  <div class="base06-swatch"></div>
-  <div class="base07-swatch"></div>
-  <div class="base08-swatch"></div>
-  <div class="base09-swatch"></div>
-  <div class="base0A-swatch"></div>
-  <div class="base0B-swatch"></div>
-  <div class="base0C-swatch"></div>
-  <div class="base0D-swatch"></div>
-  <div class="base0E-swatch"></div>
-  <div class="base0F-swatch"></div>
+  <div class="swatch blue-swatch">blue</div>
+  <div class="swatch dark-gray-swatch">dark gray</div>
+  <div class="swatch light-gray-swatch">light gray</div>
 </div>

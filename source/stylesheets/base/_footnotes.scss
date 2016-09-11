@@ -1,0 +1,12 @@
+.footnotes {
+  color: $medium-gray;
+  font-size: 0.9em;
+}
+
+.footnotes:before {
+  content: "✻   ✻   ✻   ✻   ✻";
+  display: block;
+  font-size: 1em;
+  margin-bottom: $small-spacing;
+  text-align: center;
+}

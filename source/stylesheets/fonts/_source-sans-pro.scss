@@ -1,0 +1,26 @@
+$source-sans-pro-fonts: (
+  (suffix: Light, weight: normal, style: normal),
+  (suffix: LightIt, weight: normal, style: italic),
+  (suffix: Semibold, weight: bold, style: normal),
+  (suffix: SemiboldIt, weight: bold, style: italic),
+);
+
+@each $font in $source-sans-pro-fonts {
+  @include font-face(
+    $font-family: "Source Sans Pro",
+    $file-path: "/fonts/WOFF2/OTF/SourceSansPro-#{map-get($font, "suffix")}.otf",
+    $file-formats: woff2
+  ) {
+    font-weight: map-get($font, "weight");
+    font-style: map-get($font, "style");
+  };
+
+  @include font-face(
+    $font-family: "Source Sans Pro",
+    $file-path: "/fonts/WOFF/OTF/SourceSansPro-#{map-get($font, "suffix")}.otf",
+    $file-formats: woff
+  ) {
+    font-weight: map-get($font, "weight");
+    font-style: map-get($font, "style");
+  };
+}

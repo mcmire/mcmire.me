@@ -7,8 +7,6 @@ layout: blog
   - if blog.articles.any?
     - blog.articles.each_with_index do |article, i|
       .post
-        .post-date
-          = article.date.strftime("%B %-d, %Y")
         .post-title-and-summary
           %h2.post-title
             %a(href="#{article.url}")= article.title

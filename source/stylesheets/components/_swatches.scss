@@ -1,0 +1,28 @@
+.swatches {
+  overflow: hidden;
+}
+
+.swatch {
+  float: left;
+  line-height: 50px;
+  margin-bottom: $small-spacing;
+  margin-right: $small-spacing;
+  min-width: 50px;
+  padding: 0 $small-spacing;
+  text-align: center;
+}
+
+.blue-swatch {
+  background-color: $blue;
+  color: white;
+}
+
+.dark-gray-swatch {
+  background-color: $dark-gray;
+  color: white;
+}
+
+.light-gray-swatch {
+  background-color: $light-gray;
+  border: $base-border;
+}

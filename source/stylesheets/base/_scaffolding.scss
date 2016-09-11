@@ -1,95 +1,50 @@
-$header-and-footer-text-color: $base-font-color !default;
-$header-background-color: $base-background-color !default;
-$footer-background-color: $base-background-color !default;
-$post-date-color: gray !default;
-$hilite-color: lightyellow !default;
+.site-container {
+  @include outer-container;
 
-* {
-  box-sizing: border-box;
+  border: $base-border;
+  border-top: none;
+  border-radius: $base-border-radius;
+  box-shadow: 0 4px 4px $shadow-color;
+  margin-bottom: $base-spacing;
 }
 
-body {
-  margin: 0;
-  position: relative;
-}
-
-h2, h3, h4 {
-  font-weight: 600;
-}
-
-h2 {
-  font-size: $heading-font-size;
-  margin-top: $medium-spacing;
-  margin-bottom: $small-spacing;
-}
-
-h3 {
-  font-size: $heading-font-size * 0.85;
-}
-
-h4 {
-  font-size: $heading-font-size * 0.7;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-#site-header-wrapper {
-  position: relative;
-  height: 5em;
-}
-
-#site-header-background, #site-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-#site-header-wrapper, #site-footer {
+.site-header {
+  align-items: center;
+  background-color: $blue;
+  display: flex;
   font-family: $heading-font-family;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+  font-size: 0.9em;
+  font-weight: bold;
+  padding: $quarter-spacing $base-spacing;
+  text-transform: uppercase;
 
   &, a {
-    color: $header-and-footer-text-color;
+    color: white;
+    border: none;
   }
 
-  a {
-    opacity: 0.5;
-    transition: opacity $slow;
+  a:hover, a:visited:hover {
+    color: inherit;
+    border-bottom: 1px solid tint($blue, 40%);
   }
-
-  a:hover {
-    opacity: 1;
-    text-decoration: none;
-  }
-}
-
-#site-header-wrapper {
-  overflow: hidden;
-  text-align: right;
-  box-shadow: 2px -3px 4px rgba(0, 0, 0, 0.1) inset;
-  position: relative;
-  background: $header-background-color;
 
   h1, nav {
-    font-family: $heading-font-family;
-    line-height: $site-title-font-size;
+    flex: 1 1 auto;
   }
 
   h1 {
-    float: left;
+    font-family: inherit;
+    font-size: inherit;
+    margin-top: 0;
     margin-bottom: 0;
-    text-transform: uppercase;
-    font-size: $site-title-font-size;
+    text-align: left;
   }
 
   nav {
-    float: right;
+    text-align: right;
 
     ul {
+      display: inline;
       list-style: none;
       margin: 0;
       padding: 0;
@@ -97,12 +52,11 @@ a:hover {
 
     li {
       display: inline;
-      text-transform: lowercase;
       margin-left: 0;
     }
 
     li:after {
-      content: " · ";
+      content: "  ·  ";
     }
 
     li:last-child:after {
@@ -111,43 +65,15 @@ a:hover {
   }
 }
 
-#site-header {
-  top: auto;
-  bottom: 0;
-  height: auto;
-  padding: $medium-spacing $large-spacing;
+.site-content {
+  background-color: white;
+  padding: $base-spacing;
 }
 
-#site-container {
-  background: white;
-  padding-top: $base-spacing;
-  padding-bottom: $base-spacing;
-}
-
-#content-container {
-  margin: 0 auto;
-  max-width: $site-container-width;
-}
-
-#site-footer {
-  height: 6rem;
-}
-
-#site-footer {
-  font-family: $heading-font-family;
-  padding: 1.3em 0 $medium-spacing 0;
+.site-footer {
+  background-color: $light-gray;
+  border-top: $base-border;
+  font-size: 0.85em;
+  padding: $small-spacing;
   text-align: center;
-  font-size: 0.8em;
-  line-height: $base-line-height;
-  background: $footer-background-color;
-  box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.1) inset;
-}
-
-#site-wrapper {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin-bottom: -6rem;
-  padding-bottom: 6rem;
-  position: relative;
 }

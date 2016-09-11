@@ -1,0 +1,19 @@
+figure {
+  margin: 0;
+}
+
+figcaption {
+  font-size: 0.85em;
+  font-style: italic;
+}
+
+img,
+picture {
+  margin: 0;
+  max-width: 100%;
+}
+
+iframe {
+  border: $base-border;
+  margin: $extra-spacing 0 $small-spacing-with-extra 0;
+}

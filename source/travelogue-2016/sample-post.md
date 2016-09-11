@@ -2,7 +2,7 @@
 blog: travelogue-2016
 title: This is Just a Really Really Long Title and Things and Such
 date: 2015-08-14
-layout: travelogue-2016-article
+layout: travelogue_2016_article
 ---
 
 Lorem ipsum dolor sit amet,

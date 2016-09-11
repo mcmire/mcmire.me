@@ -2,8 +2,8 @@
 
 - if articles.any?
   - articles.each do |article|
-    .post-listing
-      %h3.post-date-and-title
+    .post
+      %h3
         %a(href="#{article.url}")
           = article.date.strftime("%B %-d, %Y") + ": "
           = article.title.sub(/Costa Rica: |Asia: /, "")

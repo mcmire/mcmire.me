@@ -1,0 +1,42 @@
+.travelogue-2016 {
+  .posts {
+    .current-location, .announcement {
+      text-align: center;
+    }
+
+    .announcement {
+      margin-bottom: $base-spacing;
+    }
+
+    h2 {
+      font-size: 1.4em;
+      margin-top: $base-spacing;
+    }
+
+    h3 {
+      font-size: 1.1em;
+      margin-top: 0;
+      margin-bottom: $quarter-spacing;
+    }
+
+    .post {
+      margin-bottom: $small-spacing;
+    }
+
+    .post-features {
+      margin-left: $small-spacing;
+    }
+  }
+
+  .post {
+    .image {
+      float: none;
+      text-align: center;
+    }
+
+    iframe {
+      border: none;
+      margin-bottom: $base-spacing;
+    }
+  }
+}

@@ -8,9 +8,11 @@ date: 2016-04-29
 tags: visual-novel
 ---
 
-***Spoiler alert:** I've tried to keep this review spoiler-free, although there
-are a couple of them worth noting. I've blurred them out; you can click on them
-if you really want to know.*
+**Spoiler alert:** I've tried to keep this review spoiler-free, although there
+are a couple of them worth noting. I've marked them like this <span
+class="spoiler">(tada!)</span>; you can click on them if you really want to know
+secrets about the game.
+{:class="note"}
 
 There are a large number of visual novels available on the internet, both free
 of charge and for sale on platforms like Steam and [itch.io][itch]. But I'm
@@ -115,6 +117,7 @@ real creativity of the artists and provide an alternative perspective to the
 characters in the story.
 
 **Score: 7.5/10**
+{:class="verdict"}
 
 ### Text
 
@@ -205,6 +208,7 @@ because sex is featured so heavily in the game, it -- or the act of getting it
 stories are so much more than that.
 
 **Score: 7.5/10**
+{:class="verdict"}
 
 ### Audio
 
@@ -264,6 +268,7 @@ remainder of my play-through. That vastly improved the experience for me, as I
 was able to solely focus on the text.
 
 **Score: 4/10**
+{:class="verdict"}
 
 ### Overall experience
 
@@ -279,6 +284,7 @@ audio in the game doesn't hold up nearly as well as everything else, but the
 game is still perfectly enjoyable without it.
 
 **Final score: 7/10**
+{:class="verdict"}
 
 ### Addendum
 

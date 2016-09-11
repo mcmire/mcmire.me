@@ -1,0 +1,18 @@
+.embed {
+  text-align: center;
+}
+
+.embed iframe, .image img, .image iframe {
+  box-shadow: 0 3px 3px $darker-shadow-color;
+  border: 1px solid rgba(0,0,0,0.2);
+}
+
+.image {
+  float: right;
+  margin-left: $small-spacing;
+  margin-bottom: $small-spacing;
+
+  figcaption {
+    margin-top: $quarter-spacing;
+  }
+}

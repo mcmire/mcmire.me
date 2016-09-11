@@ -1,0 +1,69 @@
+
+// Grid settings
+$column: 90px;
+$gutter: 30px;
+$grid-columns: 10;
+$max-width: 40em;
+
+// Typography
+$base-font-family: "PT Serif";
+$heading-font-family: "Source Sans Pro";
+$code-font-family: "Source Code Pro";
+
+// Font Sizes
+$base-font-size: 17px;
+
+// Line height
+$base-line-height: 1.5;
+$heading-line-height: 1.2;
+
+// Vertical rhythm
+$base-spacing: $base-line-height * 1.5rem;
+$half-spacing: $base-spacing / 2;
+$small-spacing: $half-spacing;   // for Bitters
+$small-spacing-with-extra: $small-spacing * 1.3;
+$extra-spacing: $small-spacing * 0.3;
+$quarter-spacing: $base-spacing / 4;
+
+// Other Sizes
+$base-z-index: 0;
+
+// Colors
+$blue: #376dc3;
+$lighter-blue: tint($blue, 20%);
+$light-gray: #f9f9f9;
+$medium-gray: #999;
+$dark-gray: #333;
+$light-yellow: #fdfaf2;
+
+// Font Colors
+$base-font-color: $dark-gray;
+$action-color: $blue;
+$inactive-action-color: $medium-gray;
+$shadow-color: rgba(0, 0, 0, 0.15);
+$darker-shadow-color: rgba(0, 0, 0, 0.35);
+
+// Border
+$base-border-color: $light-gray;
+$base-border: 1px solid $base-border-color;
+$base-border-radius: 5px;
+
+// Background Colors
+$base-background-color: #fff;
+$secondary-background-color: tint($base-border-color, 75%);
+
+// Forms
+$form-box-shadow: inset 0 1px 3px rgba(#000, 0.06);
+$form-box-shadow-focus: $form-box-shadow, 0 0 5px adjust-color($action-color, $lightness: -5%, $alpha: -0.3);
+
+// Animations
+$base-duration: 150ms;
+$base-timing: ease;
+
+// Breakpoints
+$medium-screen: 600px;
+$large-screen: 900px;
+
+// Responsive breakpoints
+$tablet: new-breakpoint(max-width 768px 8);
+$mobile: new-breakpoint(max-width 480px 4);

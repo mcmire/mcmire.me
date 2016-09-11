@@ -1,0 +1,12 @@
+@import "prism-coy";
+
+code {
+  font-family: $code-font-family;
+  font-size: 0.9em;
+}
+
+pre {
+  background-color: $light-gray;
+  font-size: 0.9em;
+  margin: $small-spacing-with-extra 0;
+}

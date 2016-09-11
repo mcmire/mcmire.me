@@ -1,0 +1,19 @@
+a {
+  color: $action-color;
+  text-decoration: none;
+  transition: color $base-duration $base-timing;
+
+  &:hover, &:active {
+    color: $action-color;
+    border-bottom: 1px solid tint($blue, 20%);
+  }
+
+  &:visited {
+    color: $inactive-action-color;
+  }
+
+  &:visited:hover {
+    color: $inactive-action-color;
+    border-bottom: 1px solid tint($inactive-action-color, 20%);
+  }
+}

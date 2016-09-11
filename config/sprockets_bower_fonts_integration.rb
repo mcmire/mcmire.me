@@ -56,6 +56,7 @@ class SprocketsBowerFontsIntegration
         sub(%r{(?:/fonts)+}, "")
     )
 
+    puts "Adding to Sprockets path: #{input_path} -> #{output_path}"
     sprockets.import_asset(input_path) { output_path }
   end
 end

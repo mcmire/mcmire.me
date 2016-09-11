@@ -12,6 +12,7 @@ gem "middleman-s3_sync", "~> 3.0"
 gem "builder", "~> 3.0"
 
 gem "bourbon"
+gem "bitters"
 gem "haml"
 gem "kramdown"
 gem "neat"

@@ -1,0 +1,10 @@
+.spoiler {
+  color: transparent;
+  transition: all linear 0.3s;
+  background: image-url("spoiler.svg") repeat-x center 65%;
+
+  &.revealed {
+    color: $dark-gray;
+    background: none;
+  }
+}

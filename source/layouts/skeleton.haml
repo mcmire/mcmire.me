@@ -1,0 +1,18 @@
+!!! 5
+%html
+  %head
+    %meta(charset="utf-8")
+    %meta(content="IE=edge,chrome=1" http-equiv="X-UA-Compatible")
+    %title= page_title(default: yield_content(:default_title))
+    = stylesheet_link_tag "all"
+    = yield_content :head
+  %body(class="#{page_classes}")
+    .site-container
+      %header.site-header
+        = yield_content :header
+      %section.site-content(data-role="content")
+        ~ yield
+      = yield_content :bottom_of_container
+    = javascript_include_tag "all"
+    :javascript
+      mcmire.me.init()

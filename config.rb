@@ -22,17 +22,12 @@ end
 require_relative "kramdown_katex_engine"
 Kramdown::Converter.add_math_engine(:katex, KramdownKatexEngine)
 
-blog_titles = {
-  "blog" => "Technobabble",
-  "travelogue-2016" => "Elliot's 2016 Travelogue"
-}
-
 activate :blog do |blog|
   blog.name = "blog"
   blog.prefix = "blog"
   blog.sources = "{year}/{month}/{title}.html"
   blog.permalink = "{title}"
-  blog.layout = "blog-article"
+  blog.layout = "blog_article"
   blog.default_extension = ".md"
 
   page "blog/feed.xml", layout: false
@@ -43,23 +38,25 @@ activate :blog do |blog|
   blog.prefix = "travelogue-2016"
   blog.sources = "posts/{category}/{year}-{month}-{day}.html"
   blog.permalink = "{title}"
-  blog.layout = "travelogue-2016-article"
+  blog.layout = "travelogue_2016_article"
   blog.default_extension = ".md"
 
   page "travelogue-2016/feed.xml", layout: false
 end
 
 helpers do
-  define_method :page_title do
+  def page_title(default: nil)
     pieces = []
 
     if current_article
       pieces << current_article.title
     elsif current_page.data.title
       pieces << current_page.data.title
+    elsif default
+      pieces << default
     end
 
-    pieces << blog_titles[blog.options.name]
+    pieces << "Elliot Winkler"
 
     pieces.join(" ∙ ")
   end
@@ -152,13 +149,17 @@ activate :directory_indexes
 
 set :markdown_engine, :kramdown
 set :markdown, input: "GFM", enable_coderay: false, hard_wrap: false,
-  math_engine: "katex"
+  math_engine: "katex", smartypants: true
 
 activate :s3_sync do |s3_sync|
   s3_sync.bucket = ENV.fetch("S3_BUCKET")
   s3_sync.delete = false
   s3_sync.encryption = false
+  s3_sync.index_document = "index.html"
+  s3_sync.error_document = "404.html"
 end
+
+page "404.html", directory_index: false
 
 configure :development do
   set :debug_assets, true

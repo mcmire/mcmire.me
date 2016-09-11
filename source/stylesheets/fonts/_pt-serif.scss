@@ -1,0 +1,17 @@
+$pt-serif-fonts: (
+  (type: regular, weight: normal, style: normal),
+  (type: italic, weight: normal, style: italic),
+  (type: bold, weight: bold, style: normal),
+  (type: bold-italic, weight: bold, style: italic),
+);
+
+@each $font in $pt-serif-fonts {
+  @include font-face(
+    $font-family: "PT Serif",
+    $file-path: "/fonts/pt-serif/pt-serif-#{map-get($font, "type")}",
+    $file-formats: eot ttf woff woff2
+  ) {
+    font-weight: map-get($font, "weight");
+    font-style: map-get($font, "style");
+  };
+}

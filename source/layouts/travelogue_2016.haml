@@ -1,0 +1,7 @@
+= wrap_layout :skeleton do
+  - content_for :default_title do
+    2016 Travelogue
+  - content_for :header do
+    %h1
+      %a(href="#{blog.options.prefix}") 2016 Travelogue
+  ~ yield
