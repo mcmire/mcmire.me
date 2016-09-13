@@ -70,7 +70,11 @@ GEM
     compass-import-once (1.0.5)
       sass (>= 3.2, < 3.5)
     dotenv (1.0.2)
+    em-websocket (0.5.1)
+      eventmachine (>= 0.12.9)
+      http_parser.rb (~> 0.6.0)
     erubis (2.7.0)
+    eventmachine (1.2.0.1)
     excon (0.45.4)
     execjs (2.7.0)
     ffi (1.9.14)
@@ -99,6 +103,7 @@ GEM
     hike (1.2.3)
     hooks (0.4.1)
       uber (~> 0.0.14)
+    http_parser.rb (0.6.0)
     i18n (0.7.0)
     ipaddress (0.8.0)
     json (1.8.3)
@@ -115,6 +120,10 @@ GEM
     middleman-dotenv (1.1.1)
       dotenv (~> 1.0)
       middleman-core (>= 3.2)
+    middleman-livereload (3.4.6)
+      em-websocket (~> 0.5.1)
+      middleman-core (>= 3.3)
+      rack-livereload (~> 0.3.15)
     middleman-s3_sync (3.3.3)
       ansi (~> 1.5.0)
       fog-aws (>= 0.1.1)
@@ -159,6 +168,8 @@ GEM
     rack-contrib (1.4.0)
       git-version-bump (~> 0.15)
       rack (~> 1.4)
+    rack-livereload (0.3.16)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rb-fsevent (0.9.7)
@@ -204,6 +215,7 @@ DEPENDENCIES
   middleman!
   middleman-blog (~> 3.5.3)
   middleman-dotenv (~> 1.0)
+  middleman-livereload
   middleman-s3_sync (~> 3.0)
   neat
   pry-byebug
