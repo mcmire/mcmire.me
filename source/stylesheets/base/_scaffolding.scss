@@ -1,11 +1,10 @@
 .site-container {
-  @include outer-container;
-
   border: $base-border;
   border-top: none;
   border-radius: $base-border-radius;
   box-shadow: 0 4px 4px $shadow-color;
-  margin-bottom: $base-spacing;
+  margin: 0 auto $base-spacing auto;
+  max-width: $container-width;
 }
 
 .site-header {
