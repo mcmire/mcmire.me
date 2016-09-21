@@ -9,4 +9,8 @@
       Powered by <a href="http://middlemanapp.com" target="_blank">Middleman</a>
       and hosted on S3. Code available on
       <a href="http://github.com/mcmire/mcmire.me" target="_blank">GitHub</a>.
+  - content_for :javascript do
+    .modal-overlay(data-role="code-modal")
+      %a.modal-close(href="#" data-role="modal-close") &times;
+      .modal-content(data-role="modal-content")
   ~ yield

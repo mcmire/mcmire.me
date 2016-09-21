@@ -1,0 +1,63 @@
+body.code-modal-open {
+  overflow: hidden;
+
+  .site-container {
+    visibility: hidden;
+  }
+}
+
+.modal-overlay {
+  background: $light-gray;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  overflow: scroll;
+  padding: $small-spacing;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  visibility: hidden;
+  z-index: $modal-overlay-z-index;
+
+  &.open {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity $slower-duration;
+  }
+
+  &.closed {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s $slower-duration, opacity $slower-duration;
+  }
+
+  .modal-content {
+    display: inline-block;
+    z-index: $pre-expanded-z-index;
+
+    pre {
+      margin: 0;
+      background: transparent;
+      max-height: none;
+      overflow: visible;
+      padding: 0;
+    }
+  }
+
+  .modal-close {
+    @include overlay-button;
+
+    font-size: 1.7rem;
+    line-height: 0.9;
+    padding: $small-spacing;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: $modal-close-z-index;
+
+    &:hover {
+      color: black;
+      border: none;
+    }
+  }
+}

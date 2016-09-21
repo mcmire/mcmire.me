@@ -2,6 +2,18 @@
   margin-bottom: $small-spacing;
 
   h2 {
-    font-size: 1.4em;
+    font-size: 1.25em;
+
+    @media (min-width: $larger-screen) {
+      font-size: 1.4em;
+    }
+  }
+
+  p {
+    font-size: 0.95em;
+
+    @media (min-width: $larger-screen) {
+      font-size: 1em;
+    }
   }
 }

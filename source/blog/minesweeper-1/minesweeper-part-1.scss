@@ -1,0 +1,38 @@
+@import "shared-settings";
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 1em;
+}
+
+#board {
+  height: 80vh;
+  max-height: 200px;
+  width: 80vh;
+  max-width: 200px;
+
+  @media (min-width: $larger-screen) {
+    max-height: 300px;
+    max-width: 300px;
+  }
+}
+
+td {
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+td:hover {
+  background-color: #ddd;
+}

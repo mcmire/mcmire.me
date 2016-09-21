@@ -77,10 +77,8 @@ helpers do
 
   def embed_yt_video(video_id, width: 560, height: 315, description: nil)
     <<-HTML
-<figure class="embed">
+<figure class="embed video">
   <iframe
-    width="#{width}"
-    height="#{height}"
     src="https://www.youtube.com/embed/#{video_id}"
     frameborder="0"
     allowfullscreen>
@@ -109,7 +107,7 @@ helpers do
     end
 
     <<-HTML
-<figure class="image">
+<figure class="image photo #{orientation}">
   <a
     data-flickr-embed="true"
     href="https://www.flickr.com/photos/mcmire/#{photo_id}"
@@ -117,8 +115,6 @@ helpers do
     target="_blank">
     <img
       src="#{static_url}"
-      width="#{width}"
-      height="#{height}"
       alt="#{description}">
   </a>
   <figcaption>#{description}</figcaption>

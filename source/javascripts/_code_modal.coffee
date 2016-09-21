@@ -20,6 +20,7 @@ class mcmire.me.CodeModal
 
   open: (codeBlock) =>
     copyOfCodeBlock = copyCodeBlock(codeBlock)
+    copyOfCodeBlock.classList.add("expanded")
 
     @contentElement.innerHTML = ""
     @contentElement.appendChild(copyOfCodeBlock)

@@ -14,7 +14,7 @@
     }
 
     h3 {
-      font-size: 1.1em;
+      font-size: 1.2em;
       margin-top: 0;
       margin-bottom: $quarter-spacing;
     }
@@ -25,18 +25,109 @@
 
     .post-features {
       margin-left: $small-spacing;
+
+      ul {
+        display: inline;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+          display: inline;
+          margin-left: 0;
+        }
+
+        li:after {
+          content: "•";
+          padding-left: 0.4em;
+          padding-right: 0.4em;
+        }
+
+        li:last-child:after {
+          content: "";
+        }
+      }
     }
   }
 
   .post {
-    .image {
-      float: none;
-      text-align: center;
+    $media-widths: (
+      "base": 250px,
+      "mobile-large": 300px,
+      "tablet": 400px,
+    );
+    $video-aspect-ratio: 16 / 9;
+    $photo-aspect-ratio: 4 / 3;
+
+    .video iframe, .photo img {
+      width: map-get($media-widths, "base");
+
+      @media (min-width: $mobile-large) {
+        width: map-get($media-widths, "mobile-large");
+      }
+
+      @media (min-width: $tablet) {
+        width: map-get($media-widths, "tablet");
+      }
     }
 
-    iframe {
+    .video iframe {
+      height: map-get($media-widths, "base") / $video-aspect-ratio;
+
+      @media (min-width: $mobile-large) {
+        height: map-get($media-widths, "mobile-large") / $video-aspect-ratio;
+      }
+
+      @media (min-width: $tablet) {
+        height: map-get($media-widths, "tablet") / $video-aspect-ratio;
+      }
+    }
+
+    .landscape.photo img {
+      height: map-get($media-widths, "base") / $photo-aspect-ratio;
+
+      @media (min-width: $mobile-large) {
+        height: map-get($media-widths, "mobile-large") / $photo-aspect-ratio;
+      }
+
+      @media (min-width: $tablet) {
+        height: map-get($media-widths, "tablet") / $photo-aspect-ratio;
+      }
+    }
+
+    .portrait.photo img {
+      height: map-get($media-widths, "base") * $photo-aspect-ratio;
+
+      @media (min-width: $mobile-large) {
+        height: map-get($media-widths, "mobile-large") * $photo-aspect-ratio;
+      }
+
+      @media (min-width: $tablet) {
+        height: map-get($media-widths, "tablet") * $photo-aspect-ratio;
+      }
+    }
+
+    .video, .photo {
+      margin: $small-spacing-with-extra 0;
+    }
+
+    .video iframe {
       border: none;
-      margin-bottom: $base-spacing;
+      margin-bottom: 0;
+    }
+
+    .photo {
+      float: none;
+      margin-left: 0;
+      margin-right: 0;
+
+      @media (min-width: $larger-screen) {
+        margin-bottom: $base-spacing;
+      }
+
+      img {
+        max-width: none;
+      }
     }
   }
 }

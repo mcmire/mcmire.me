@@ -10,6 +10,8 @@
       - if article.data.features
         .post-features
           %i featuring:
-          = article.data.features.join(" ∙ ")
+          %ul
+            - article.data.features.each do |feature|
+              %li>= feature
 - else
   %p.text-center There aren't any posts just yet!

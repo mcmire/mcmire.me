@@ -1,0 +1,6 @@
+@mixin overlay-button {
+  color: $overlay-button-color;
+  position: absolute;
+  text-decoration: none;
+  transition: opacity $base-duration;
+}

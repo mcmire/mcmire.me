@@ -1,4 +1,6 @@
 = wrap_layout :skeleton do
+  - content_for :head do
+    %link{ rel: "icon", type: "image/gif", href: image_path("favicon.gif") }
   - content_for :header do
     %h1
       %a(href="/") Elliot Winkler
