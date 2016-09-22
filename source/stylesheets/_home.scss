@@ -27,13 +27,17 @@
   }
 
   .links {
-    font-size: 0.9em;
+    font-size: 1.1em;
     list-style: none;
     margin: 0;
-    font-style: italic;
+    border-top: $base-border;
+    padding-top: $quarter-spacing;
+    font-family: $heading-font-family;
+    text-transform: uppercase;
 
     @media (min-width: $larger-screen) {
-      padding: 0.5em 0;
+      font-size: 0.9em;
+      padding-top: $half-spacing;
     }
 
     li {
