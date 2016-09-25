@@ -28,16 +28,15 @@
 
   .links {
     font-size: 1.1em;
-    list-style: none;
-    margin: 0;
     border-top: $base-border;
-    padding-top: $quarter-spacing;
+    padding-top: $half-spacing;
     font-family: $heading-font-family;
-    text-transform: uppercase;
+    font-weight: bold;
 
-    @media (min-width: $larger-screen) {
-      font-size: 0.9em;
-      padding-top: $half-spacing;
+    ul {
+      list-style: none;
+      margin: 0;
+      margin-bottom: $half-spacing;
     }
 
     li {
