@@ -27,16 +27,26 @@
   }
 
   .links {
-    font-size: 1.1em;
     border-top: $base-border;
     padding-top: $half-spacing;
-    font-family: $heading-font-family;
-    font-weight: bold;
+    font-style: italic;
+
+    @media (min-width: $larger-screen) {
+      border: none;
+      font-size: 0.95em;
+      font-weight: normal;
+      margin-top: $base-spacing;
+      padding-top: 0;
+    }
 
     ul {
       list-style: none;
       margin: 0;
       margin-bottom: $half-spacing;
+    }
+
+    ul:last-child {
+      margin-bottom: 0;
     }
 
     li {
