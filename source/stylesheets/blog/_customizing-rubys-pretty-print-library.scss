@@ -1,0 +1,55 @@
+.code {
+  @include code-block;
+
+  /*line-height: 1;*/
+  /*margin-bottom: $half-spacing;*/
+  /*padding: $base-spacing / 6;*/
+
+  &.shell {
+    background-color: $dark-gray;
+    color: $off-white;
+  }
+
+  .line-unchanged {
+    margin-left: 1.65em;
+  }
+
+  /*
+  .line-with-additions,
+  .line-with-deletions {
+    padding: $base-spacing / 6;
+  }
+  */
+
+  .line-with-additions {
+    /*background-color: #E8FCE9;*/
+    background-color: #315031;
+    /*color: #E8FCE9;*/
+  }
+
+  .line-with-deletions {
+    /*background-color: #FCEBEC;*/
+    background-color: #6b2523;
+    /*color: #FCEBEC;*/
+  }
+
+  .added {
+    /*background-color: #A6F3A6;*/
+    background-color: #436d43;
+    /*color: #A6F3A6;*/
+    /*color: $dark-gray;*/
+  }
+
+  .deleted {
+    /*background-color: #F7CBCA;*/
+    background-color: #8c3230;
+    /*color: #F7CBCA;*/
+    /*color: $dark-gray;*/
+  }
+
+  .indicator {
+    /*background: none;*/
+    display: inline-block;
+    margin-right: 0.5em;
+  }
+}

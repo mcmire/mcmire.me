@@ -4,21 +4,19 @@ pre, code {
   font-family: $code-font-family;
 }
 
-tt, :not(pre) > code {
-  border-radius: $base-border-radius;
+:not(pre) > code {
+  background-color: $light-gray;
   font-size: 0.9em;
   padding: 0.2em 0.4em;
 }
 
 pre {
+  @include code-block;
+
   background-color: $light-gray;
-  border-radius: 0;
-  font-size: 0.9em;
   hyphens: none;
-  margin: $small-spacing-with-extra 0;
   max-height: 30em;
   overflow: hidden;
-  padding: $small-spacing;
   position: relative;
   tab-size: 2;
   white-space: pre;

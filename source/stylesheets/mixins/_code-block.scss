@@ -1,0 +1,6 @@
+@mixin code-block {
+  font-family: $code-font-family;
+  font-size: 0.9em;
+  margin: $small-spacing-with-extra 0;
+  padding: $small-spacing;
+}
