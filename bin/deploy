@@ -22,6 +22,7 @@ case "$environment" in
     ;;
   staging)
     export S3_BUCKET="staging.mcmire.me"
+    export PUBLISH_DRAFTS="true"
     ;;
   *)
     echo "Invalid environment."
