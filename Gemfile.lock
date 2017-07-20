@@ -216,7 +216,7 @@ DEPENDENCIES
   middleman!
   middleman-blog (~> 3.5.3)
   middleman-dotenv (~> 1.0)
-  middleman-livereload
+  middleman-livereload (~> 3.4)
   middleman-s3_sync (~> 3.0)
   pry-byebug
   puma
@@ -228,4 +228,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.13.0
+   1.13.6
