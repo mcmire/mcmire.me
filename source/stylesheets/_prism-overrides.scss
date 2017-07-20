@@ -1,20 +1,24 @@
-.token.keyword {
-  color: #3871e2;
-  font-style: italic;
-}
-
-.token.tag .token.tag {
-  color: #3871e2;
+.token.keyword,
+.token.tag .token.tag,
+.token.selector {
+  color: #3871e2;  // blue
 }
 
 .token.string,
 .token.char,
-.token.selector,
 .token.attr-value {
-  color: #549c0a;
+  color: #549c0a;  // green
 }
 
 .token.function,
 .token.attr-name {
-  color: #a465da;
+  color: #a465da;  // purple
+}
+
+.token.punctuation {
+  color: #b7bfc1;
+}
+
+.token.keyword {
+  font-style: italic;
 }
