@@ -15,7 +15,7 @@ for the game using HTML and by giving the board its appearance using CSS.
 
 <iframe height="300" width="100%" src="../minesweeper-1/minesweeper.html" border="0"></iframe>
 
-[previous post]: /minesweeper-1/
+[previous post]: /blog/minesweeper-1/
 
 ### Got repetition?
 
