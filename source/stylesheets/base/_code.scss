@@ -7,7 +7,6 @@ pre, code {
 tt, :not(pre) > code {
   border-radius: $base-border-radius;
   font-size: 0.9em;
-  padding: 0.2em 0.4em;
 }
 
 pre {
@@ -36,7 +35,7 @@ pre {
     }
 
     .horizontal-overflow-indicator {
-      background: image-url("horizontal-overflow-pattern.svg") repeat-y 2px 3px;
+      background: image-url("horizontal-overflow-pattern.svg") repeat-y 3px 3px;
       height: 100%;
       position: absolute;
       right: 0;
@@ -46,7 +45,7 @@ pre {
     }
 
     .vertical-overflow-indicator {
-      background: image-url("vertical-overflow-pattern.svg") repeat-x 3px 2px;
+      background: image-url("vertical-overflow-pattern.svg") repeat-x 3px 3px;
       bottom: 0;
       height: 7px;
       left: 0;
