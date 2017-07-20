@@ -4,7 +4,7 @@ teaser: >
   In the first post in this series,
   we introduce the project
   and start by making a simple board.
-date: 2015-08-14
+date: 2020-01-01
 tags: programming
 ---
 

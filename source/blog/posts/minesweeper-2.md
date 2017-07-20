@@ -3,7 +3,8 @@ title: Making Minesweeper in JavaScript, Part 2
 teaser: >
   In this post, we add jQuery to the project and generate the HTML for the board
   fully in JavaScript.
-date: 2015-11-14
+date: 2020-01-01
+tags: programming
 ---
 
 In the [previous post], we started building Minesweeper by creating the board
