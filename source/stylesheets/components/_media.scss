@@ -3,13 +3,25 @@
 }
 
 @media (min-width: $larger-screen) {
-  .embed iframe, .image img, .image iframe {
-    box-shadow: 0 3px 3px $darker-shadow-color;
-    border: 1px solid rgba(0,0,0,0.2);
+  .embed iframe,
+  .centered-image img,
+  .floating-image img,
+  .image iframe {
+    @include form-fitting-shadow(
+      $x-offset: 0px,
+      $y-offset: 5px,
+      $blur: 2px,
+      $color: rgba(0, 0, 0, 0.3)
+    );
   }
 }
 
-.image {
+.centered-image {
+  text-align: center;
+  margin: $small-spacing-with-extra $small-spacing;
+}
+
+.floating-image {
   margin: $half-spacing;
   text-align: center;
 
