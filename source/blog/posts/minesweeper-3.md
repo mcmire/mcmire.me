@@ -2,7 +2,8 @@
 title: Making Minesweeper in JavaScript, Part 3
 teaser: >
   In this post, we add mines.
-date: 2017-07-19
+date: 2020-01-01
+tags: programming
 ---
 
 ### Cleaning up the code a bit
