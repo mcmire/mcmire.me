@@ -25,7 +25,7 @@ Kramdown::Converter.add_math_engine(:katex, KramdownKatexEngine)
 activate :blog do |blog|
   blog.name = "blog"
   blog.prefix = "blog"
-  blog.sources = "{year}/{month}/{title}.html"
+  blog.sources = "posts/{title}.html"
   blog.permalink = "{title}"
   blog.layout = "blog_article"
   blog.default_extension = ".md"
