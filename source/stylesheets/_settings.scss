@@ -37,10 +37,12 @@ $modal-close-z-index: $base-z-index + 1100;
 // Colors
 $blue: #376dc3;
 $lighter-blue: tint($blue, 20%);
+$light-blue: #9cc2ff;
 $light-gray: #f9f9f9;
 $medium-gray: #999;
 $dark-gray: #333;
 $light-yellow: #fdfaf2;
+$light-red: #feecef;
 
 // Applied Colors
 $base-font-color: $dark-gray;

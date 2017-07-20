@@ -1,0 +1,30 @@
+.aside {
+  padding: $small-spacing;
+  margin-top: $small-spacing-with-extra;
+  margin-bottom: $small-spacing-with-extra;
+  font-size: 0.9em;
+
+  &::before {
+    position: relative;
+    top: 0.1em;
+    margin-right: 0.5em;
+  }
+}
+
+.aside--heads-up {
+  background-color: $light-red;
+
+  &::before {
+    content: "\f071";
+    font-family: Icomoon;
+  }
+}
+
+.aside--tip {
+  background-color: $light-yellow;
+
+  &::before {
+    content: "\e901";
+    font-family: Icomoon;
+  }
+}
