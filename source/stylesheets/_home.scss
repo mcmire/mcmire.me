@@ -22,7 +22,7 @@
     margin-right: auto;
 
     @media (min-width: $larger-screen) {
-      width: 30em;
+      max-width: 30em;
     }
   }
 
