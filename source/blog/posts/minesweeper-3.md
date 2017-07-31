@@ -11,7 +11,7 @@ generated via JavaScript when the page loads. This will be helpful later as it
 will allow us to update the board visually as the player interacts with the
 game.
 
-[last post]: minesweeper-2
+[last post]: /blog/minesweeper-2/
 
 Let's review what we have in our project so far:
 
@@ -44,7 +44,7 @@ for (let rowIndex = 0; rowIndex < 9; rowIndex++) {
 
 And so far the game looks like this:
 
-<iframe height="300" width="100%" src="../minesweeper-2-step-6/minesweeper.html" border="0"></iframe>
+<iframe height="300" width="100%" src="/blog/minesweeper-2-step-6/minesweeper.html" border="0"></iframe>
 
 Now for something a little more interesting.
 
@@ -121,9 +121,11 @@ non-mine cells.
 ```
 {:data-no-overflow="true"}
 
-[Here's](../minesweeper-3-step-1/minesweeper.html){:target="_blank"} what we get:
+[Here's][m3s2]{:target="_blank"} what we get:
 
-<iframe height="300" width="100%" src="../minesweeper-3-step-1/minesweeper.html" border="0"></iframe>
+[m3s2]: /blog/minesweeper-3-step-2/minesweeper.html
+
+<iframe height="300" width="100%" src="/blog/minesweeper-3-step-1/minesweeper.html" border="0"></iframe>
 
 ### Distributing mines
 
@@ -287,18 +289,26 @@ Now we can combine our changes and update `minesweeper.js`:
 ```
 {:data-no-overflow="true"}
 
-Finally, let's [take a look](../minesweeper-3-step-2/minesweeper.html){:target="blank"} at what we get:
+Finally, let's [take a look][m3s2]{:target="blank"} at what we get:
 
-<iframe height="300" width="100%" src="../minesweeper-3-step-2/minesweeper.html" border="0"></iframe>
+[m3s2]: /blog/minesweeper-3-step-2/minesweeper.html
+
+<iframe height="300" width="100%" src="/blog/minesweeper-3-step-2/minesweeper.html" border="0"></iframe>
 
 What do you know -- it worked!
 
 ### What's next
 
-Now that we have some rudimentary mines, the next step is to add interactivity
-so that clicking on the board reveals mines.
+Now that we have some rudimentary mines, the next step is to [add
+interactivity][minesweeper-4] so that clicking on the board reveals mines.
 
-[**Continue →**][m4]
-{:.text--right}
+[minesweeper-4]: /blog/minesweeper-4/
 
-[m4]: minesweeper-4/
+<div class="nav-wrapper">
+  <div class="nav nav--left">
+    <a href="/blog/minesweeper-2/">← Go back</a>
+  </div>
+  <div class="nav nav--right">
+    <a href="/blog/minesweeper-4/">Continue →</a>
+  </div>
+</div>

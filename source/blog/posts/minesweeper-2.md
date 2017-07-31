@@ -9,11 +9,11 @@ tags: programming
 
 In the [previous post], we started building Minesweeper by creating the board
 for the game using HTML and by giving the board its appearance using CSS.
-[Here's][minesweeper-1]{:target="blank"} what we have so far:
+[Here's][minesweeper-1]{:target="_blank"} what we have so far:
 
-[minesweeper-1]: ../minesweeper-1/minesweeper.html
+[minesweeper-1]: /blog/minesweeper-1/minesweeper.html
 
-<iframe height="300" width="100%" src="../minesweeper-1/minesweeper.html" border="0"></iframe>
+<iframe height="300" width="100%" src="/blog/minesweeper-1/minesweeper.html" border="0"></iframe>
 
 [previous post]: /blog/minesweeper-1/
 
@@ -33,14 +33,14 @@ Let's take another look at `minesweeper.html`:
 
 ``` html
 <!DOCTYPE html>
- 
+
 <html>
   <head>
     <title>Minesweeper</title>
     <link rel="stylesheet" href="minesweeper.css">
     <script src="minesweeper.js"></script>
   </head>
- 
+
   <body>
     <table id="board">
       <tr>
@@ -228,11 +228,12 @@ familiar with it.
 {:.aside.aside--tip}
 
 If you have never seen a line of jQuery code before, then you may wish to stop
-and take some time to introduce yourself to the library. [Khan Academy] has a
-great [video series][jquery-video-series-john-resig]{:target="_blank"} that's
-very gentle and bite-size. If that doesn't suit your fancy and you want
-something a little more conversational, Chris Coyier (of [CSS Tricks] fame) has
-an [equally good series][jquery-video-series-chris-coyier]{:target="_blank"} as
+and take some time to introduce yourself to the library. [Khan
+Academy][]{:target="_blank"} has a great [video
+series][jquery-video-series-john-resig]{:target="_blank"} that's very gentle and
+bite-size. If that doesn't suit your fancy and you want something a little more
+conversational, Chris Coyier (of [CSS Tricks][]{:target="_blank"} fame) has an
+[equally good series][jquery-video-series-chris-coyier]{:target="_blank"} as
 well.
 {:.aside.aside--heads-up}
 
@@ -244,12 +245,12 @@ well.
 First we need to install jQuery in our project. As jQuery is changed frequently,
 new updates are assigned different version numbers. The latest update as of this
 writing is version 3.2.1, although it may have changed by the time you read this
-post. You can download jQuery [here][download-jquery]. There are several links
-on this page, but the one we are interested in starts with "Download the
-uncompressed, development jQuery X.Y.Z" (where in place of "X.Y.Z" you will see
-a version number). Click on this link and download the resulting file to
-somewhere on your computer. Move it to your Minesweeper project directory and
-rename the file to `jquery.js`.
+post. You can download jQuery [here][download-jquery]{:target="_blank"}. There
+are several links on this page, but the one we are interested in starts with
+"Download the uncompressed, development jQuery X.Y.Z" (where in place of "X.Y.Z"
+you will see a version number). Click on this link and download the resulting
+file to somewhere on your computer. Move it to your Minesweeper project
+directory and rename the file to `jquery.js`.
 
 [download-jquery]: https://jquery.com/download/
 
@@ -276,7 +277,7 @@ rid of it:
 
 ``` html
 <!DOCTYPE html>
- 
+
 <html>
   <head>
     <title>Minesweeper</title>
@@ -284,7 +285,7 @@ rid of it:
     <script src="jquery.js"></script>
     <script src="minesweeper.js"></script>
   </head>
- 
+
   <body>
     <!-- We will fill this in! -->
   </body>
@@ -316,7 +317,7 @@ there, you should see a bunch of HTML elements that represent the page. Click on
 the arrow next to the `<body>` element and you should see something like this
 (Chrome and Firefox are shown below):
 
-[minesweeper-2-step-1]: ../minesweeper-2-step-1/minesweeper.html
+[minesweeper-2-step-1]: /blog/minesweeper-2-step-1/minesweeper.html
 
 ![Dev tools in Chrome](minesweeper-2/step-1a.png)
 {:class="centered-image"}
@@ -355,8 +356,9 @@ code that looks another way. And because we use code to make things happen on
 the screen or otherwise, code has an interface, too. Typically you'll hear it
 referred to as the *API*.
 
-jQuery has a concise and clear API. When the creator of jQuery, [John Resig],
-designed the library, he founded the API on two big ideas:
+jQuery has a concise and clear API. When the creator of jQuery, [John
+Resig][]{:target="_blank"}, designed the library, he founded the API on two big
+ideas:
 
 [John Resig]: https://johnresig.com/
 
@@ -468,7 +470,7 @@ here][minesweeper-2-step-2]{:target="_blank"}). Open up the Developer Tools
 Console tab (in Firefox it's an icon, but it's always the second tab). You
 should see something like this:
 
-[minesweeper-2-step-2]: ../minesweeper-2-step-2/minesweeper.html
+[minesweeper-2-step-2]: /blog/minesweeper-2-step-2/minesweeper.html
 
 ![body.length is missing](minesweeper-2/step-2.png)
 {:class="centered-image"}
@@ -514,7 +516,7 @@ body.length: 0
 document.body: null
 ```
 
-[minesweeper-2-step-3]: ../minesweeper-2-step-3/minesweeper.html
+[minesweeper-2-step-3]: /blog/minesweeper-2-step-3/minesweeper.html
 
 ### Order matters
 
@@ -570,7 +572,7 @@ $(function () {
 Now when we [run this code][minesweeper-2-step-4]{:target="_blank"} and open the
 Developer Tools, we will see that our table is present in the body. Perfect!
 
-[minesweeper-2-step-4]: ../minesweeper-2-step-4/minesweeper.html
+[minesweeper-2-step-4]: /blog/minesweeper-2-step-4/minesweeper.html
 
 ![table is now present](minesweeper-2/step-4.png)
 {:class="centered-image"}
@@ -586,13 +588,13 @@ So let's try changing our HTML file to the following:
 
 ``` html
 <!DOCTYPE html>
- 
+
 <html>
   <head>
     <title>Minesweeper</title>
     <link rel="stylesheet" href="minesweeper.css">
   </head>
- 
+
   <body>
     <script src="jquery.js"></script>
     <script src="minesweeper.js"></script>
@@ -615,7 +617,7 @@ after the `script` tags. That's something else that can be cleaned up as it
 looks a little out of order -- but it won't affect how the table actually
 appears on screen, so we won't worry about it right now.
 
-[minesweeper-2-step-5]: ../minesweeper-2-step-5/minesweeper.html
+[minesweeper-2-step-5]: /blog/minesweeper-2-step-5/minesweeper.html
 
 ![new and improved version](minesweeper-2/step-5.png)
 {:class="centered-image"}
@@ -678,8 +680,21 @@ And [here's][minesweeper-2-step-6]{:target="_blank"} our final result. If you've
 followed along this far, you should have a board that looks the same as the one
 below. Great job!
 
-[minesweeper-2-step-6]: ../minesweeper-2-step-6/minesweeper.html
+[minesweeper-2-step-6]: /blog/minesweeper-2-step-6/minesweeper.html
 
-<iframe height="300" width="100%" src="../minesweeper-2-step-6/minesweeper.html" border="0"></iframe>
+<iframe height="300" width="100%" src="/blog/minesweeper-2-step-6/minesweeper.html" border="0"></iframe>
 
-Stay tuned for the next post...
+### What's next
+
+Now we need to [display mines on the board][minesweeper-3].
+
+[minesweeper-3]: /blog/minesweeper-3/
+
+<div class="nav-wrapper">
+  <div class="nav nav--left">
+    <a href="/blog/minesweeper-1/">← Go back</a>
+  </div>
+  <div class="nav nav--right">
+    <a href="/blog/minesweeper-2/">Continue →</a>
+  </div>
+</div>

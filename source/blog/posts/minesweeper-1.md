@@ -262,8 +262,8 @@ far:
 
 ### What's next
 
-The [next step][minesweeper-2] is to use jQuery to display the board instead of
-straight HTML. Then, we need to populate the board with mines.
+Now we'll [use jQuery][minesweeper-2] to display the board instead of straight
+HTML.
 
 [minesweeper-2]: /blog/minesweeper-2/
 
