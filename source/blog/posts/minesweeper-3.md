@@ -13,22 +13,178 @@ game.
 
 [last post]: minesweeper-2
 
-Now for our next task. Since the game is all about revealing hidden mines, the
-first problem we have is to figure out how to designate some of the spaces that
-are on the board as mines. There's not much of a science to this: when the game
-is loading and we are filling out the board, we can decide, at random, whether a
-space is a mine or not. Once we've established where the mines are, the second
+Let's review what we have in our project so far:
+
+<ul class="file-tree">
+  <li class="directory"><span>minesweeper/</span><ul>
+      <li class="file">minesweeper.html</li>
+      <li class="file">minesweeper.css</li>
+      <li class="file">jquery.js</li>
+      <li class="file">minesweeper.js</li>
+    </ul>
+  </li>
+</ul>
+
+Our `minesweeper.js` looks like this:
+
+``` javascript
+const board = $("<table>").attr("id", "board");
+const body = $(document.body);
+body.append(board);
+
+for (let rowIndex = 0; rowIndex < 9; rowIndex++) {
+  const row = $("<tr>");
+  board.append(row);
+  for (let columnIndex = 0; columnIndex < 9; columnIndex++) {
+    const cell = $("<td>");
+    row.append(cell);
+  }
+}
+```
+
+Now for the next part. Since the game is all about revealing hidden mines, the
+first problem we have is to figure out how to designate mines. Some of the
+spaces will be mines and some won't, and the ones we've designated will change
+from game to game. Once we've established where the mines are, the second
 problem is to determine how to redraw those spaces as mines at the appropriate
-time. There are a couple of different ways to do this, but ultimately we need
-to use HTML, CSS, or both. To make things simple for right now, we will go with
-this definition: A mine is a space that has a `mine` class; a non-mine is a
-space that doesn't.
+time. There are a couple of different ways to do this, but ultimately we need to
+use HTML, CSS, or both. Since spaces are cells in our table, to make things
+simple for right now, we will settle on this definition: a mine is a cell that
+has a `mine` class and a non-mine is a cell that doesn't.
 
-So to start with, we'll need to place the mines at random locations throughout
-the board. 
+Let's tackle the second problem first. How do we assign a cell a class?
+Fortunately, jQuery has a built-in solution:
 
+``` javascript
+cell.addClass("cell");
+```
 
+So we can start by modifying our JavaScript code like so:
 
+``` diff
+ const board = $("<table>").attr("id", "board");
+ const body = $(document.body);
+ body.append(board);
+
+ for (var y = 0; y < 9; y++) {
+   const row = $("<tr>");
+   board.append(row);
+   for (var x = 0; x < 9; x++) {
+     const cell = $("<td>");
++    cell.addClass("mine");
+     row.append(cell);
+   }
+ }
+```
+
+What you see here is a way to represent changes to a particular piece of text.
+The exact format we're using is called a *diff* and it is commonly used. Added
+lines are indicated with a plus sign (`+`) at the beginning of them; deleted
+lines are indicated with a minus sign (`-`).
+{:.tip}
+
+This will add a `mine` class to every cell, but of course, that's not quite what
+we want. We said earlier that the mines we've designated will change from game
+to game. Some of the cells will be mines in one game, and others will be mines
+in another game. So when we add a cell to the board, we have to make a choice:
+should that cell become a mine or not? The tricky part is that sometimes we need
+the answer to be yes and sometimes we need it to be no. Effectively, we are
+flipping a coin. How do we translate this idea into JavaScript?
+
+Well, there are two parts to this. First, we need to represent "yes" or "no".
+Usually in programming we would use a *boolean* value: `true` or `false`. Okay,
+so what about that "sometimes" bit? Given that we don't know what the answer
+will be ahead of time, we need to introduce *randomness* into our code. As it
+turns out, JavaScript has a function to give us this:
+[`Math.random`][math-random]. However, this function is a little peculiar, as
+instead of returning `true` or `false`, it returns a random decimal between 0
+and 1:
+
+[math-random]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random 
+
+```
+> Math.random()
+0.5057105947315927
+Math.random()
+0.43924692114566244
+Math.random()
+0.5794767991781664
+Math.random()
+0.14856934326712845
+Math.random()
+0.6210856505259816
+```
+
+That's not what we want -- or is it?
+
+Can we represent "yes" and "no" using a number instead of a boolean? What if we
+defined "no" as the number 0 and "yes" as the number 1? If we drew a number
+line, with 0 on one side and 1 on the other, and we placed all the numbers we
+got back from `Math.random` on that line, we would see that they would fall
+somewhere in between the two:
+
+```
+|------------------------------------------------------------------------------|
+0       |                    |        |     |       |                          1
+        ` 0.1486             ` 0.4392 ` 0.5057       ` 0.6211
+                                            ` 0.5795
+```
+
+We could then say that any number before the halfway point represents `false`
+and any number after the halfway point represents `true`.
+
+Armed with this information, we can come up with the following pseudocode:
+
+```
+number = choose a random number between 0 and 1
+
+if the number is greater than 0.5
+  add the mine class to the cell
+else
+  don't worry about it
+```
+
+Now we can modify our code:
+
+``` diff
+ const board = $("<table>").attr("id", "board");
+ const body = $(document.body);
+ body.append(board);
+
+ for (var y = 0; y < 9; y++) {
+   const row = $("<tr>");
+   board.append(row);
+   for (var x = 0; x < 9; x++) {
+     const cell = $("<td>");
++    if (Math.random() > 0.5) {
+       cell.addClass("mine");
++    }
+     row.append(cell);
+   }
+ }
+```
+
+----
+
+**OLD STUFF**
+
+```
+if a cell is a mine
+  make a cell a mine
+```
+
+``` diff
+ for (var y = 0; y < 9; y++) {
+   const row = $("<tr>");
+   board.append(row);
+   for (var x = 0; x < 9; x++) {
+     const cell = $("<td>");
++
++    if (cell
+     row.append(cell);
+   }
+ }
+```
 
 1. How do we choose which spaces are mines and which ones aren't?
 1. How do we distinguish the two visually?
