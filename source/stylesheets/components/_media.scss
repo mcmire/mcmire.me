@@ -18,9 +18,14 @@
   }
 }
 
+.image,
+.centered-image {
+  margin-top: $small-spacing-with-extra;
+  margin-bottom: $small-spacing-with-extra;
+}
+
 .centered-image {
   text-align: center;
-  margin: $small-spacing-with-extra $small-spacing;
 }
 
 .floating-image {
