@@ -8,184 +8,125 @@ tags: programming
 ---
 
 It's no secret that JavaScript is a very important part of the web. It's been
-around for over 20 years, and as the Internet has expanded and evolved since
-then, JavaScript has quietly gained some serious muscle to take on larger roles.
-Time was that you'd only use the language to add gimmicks like falling
-snowflakes to your pages; now you can use it to build apps that run on your
-phone. Within the past 7 years alone, we've seen a major explosion of growth in
-the JavaScript ecosystem as the language itself has received much-needed
-modernizations and as power tools like Ember, Angular, and React have enabled
-people to do more with less. There are almost a half a million JavaScript
-modules that people have written and published to the larger community, and the
-number is constantly growing.
+around for over 20 years, and as the Internet has expanded and evolved,
+JavaScript has quietly gained some serious muscle to take on larger roles. Time
+was that you'd only use the language to add gimmicks like falling snowflakes to
+your pages; now you can use it to build apps that run on your phone. Within the
+past 7 years alone, we've seen a major explosion of growth in the JavaScript
+ecosystem as the language itself has received much-needed modernizations and as
+power tools like Ember, Angular, and React have enabled people to do more with
+less. There are almost a half a million JavaScript modules that people have
+written and published to the larger community, and the number is constantly
+growing.
 
 Since JavaScript has been around for so long, if you are learning web
-development or trying to brush on on your skills, there are resources left and
-right at your fingertips. But amid the multitude of choice it can be hard to
-find a foothold that will allow you to pull yourself along and gain real
-progress. And while the JavaScript community is busy taking the language to new
-heights, I feel that too often the fundamentals are left in the dust.
+development or trying to brush on on your skills, you're in luck, because there
+are resources left and right at your fingertips. But that choice comes at a
+price: it can be difficult to find a foothold that will allow you to pull
+yourself along and gain real progress. And while the JavaScript community is
+busy taking the language to new heights, I feel that they've left the
+fundamentals in the dust.
 
-That's why, in this series, we're going to build something -- something that we
-can finish in a reasonable amount of time but will demonstrate some of the key
-basics in using JavaScript for modern web development -- and something that
-gives us a platform we can to experiment with newer technologies.
+That's why, in this series of blog posts, we're going to work on a small project
+-- something that we can finish in a reasonable amount of time, that will
+demonstrate some of the key basics in using JavaScript for modern web
+development, and that will give us a platform we can use to experiment with
+newer technologies.
 
 ![Microsoft Minesweeper][ms-minesweeper]
 {:class="floating-image"}
 
-What we'll be making is a game called Minesweeper. You may have heard of it --
-until recently it was included on every Windows computer (along with Solitaire).
-Even if you are unfamiliar with the game, it's a good choice because the rules
-are simple and there are no animations, real-time play, or complicated logic.
-With that in mind, here are the steps that we'll follow in this series:
-
 [ms-minesweeper]: http://assets.mcmire.me/posts/2015-08-14-minesweeper-1/ms-minesweeper.png
 
+What we'll be making is a game called [Minesweeper]. You may have heard of it --
+for a long time, it was included on every Windows computer (along with FreeCell,
+3D Pinball, and others). Even if you are unfamiliar with the game, it's a good
+choice because the rules are simple and there are no animations, real-time play
+or complicated logic. Here are the topics we'll cover:
+
+[Minesweeper]: https://en.wikipedia.org/wiki/Microsoft_Minesweeper
+
 * Using HTML and CSS to display the board
-* Using [jQuery] to render the board dynamically
+* Using [jQuery][]{:target="_blank} to render the board dynamically
 * Organizing code into functions
-* Using the [JavaScript DOM API] in favor of jQuery
-* Using objects instead of functions
-* Re-implementing the game using React, Ember, and other tools
+* Using the [JavaScript DOM API][]{:target="_blank"} in favor of jQuery
+* Splitting the game logic and data from the display code
+* Substituting the view layer with React
+* Re-engineering the game using Ember and Angular
 
 [jQuery]: http://jquery.com
 [JavaScript DOM API]: https://www.w3.org/TR/html51/dom.html
 
+Before we begin, there are a few things that you should know. First, since this
+is a series focusing on JavaScript, you should already have some understanding
+of HTML and CSS. ([Khan Academy][intro-to-html-and-css]{:target="_blank"}
+provides a good overview if you need to brush up on your skills.) Second,
+although it's not absolutely required, it would help if you have a basic
+understanding of JavaScript already -- variables, functions, and the like.
+(Again, [Khan Academy][intro-to-javascript]{:target="_blank"} is a good
+resource.) Finally, as we progress I'm going to be providing all of the code,
+and you are free to just peruse if you like, but you're going to learn a lot
+more if you do the work yourself. I don't want you copying and pasting! You
+should write everything out by hand as I give it to you so that you have an
+opportunity to internalize it. That means that you should already be using a
+editor such as [Atom][]{:target="_blank"} to write code.
 
+[intro-to-html-and-css]: https://www.khanacademy.org/computing/computer-programming/html-css
+[intro-to-javascript]: https://www.khanacademy.org/computing/computer-programming/programming
+[Atom]: https://atom.io/
 
-
-
-
-That's why, whenever I learn a new
-language, I always think of a project I can work on, something that's
-interesting to me, something that's small enough to complete but large enough to
-give me a sandbox in which I can play and discover new ideas.
-
-Perhaps you're having trouble thinking of a project or you've tried to start one
-but placed it on pause because it became too daunting. Allow me to offer a
-suggestion -- why don't you write a game? There are many kinds of games, but 
-
-
-
-But as the
-landscape has changed, so too have people's opinions about how to write
-JavaScript, and it means that unless you find the right resources, you could
-easily be lost. 
-
-
-
-
-
-different ways to make use of its 
-
-As the web has grown, so too has the use of JavaScript. 
-as people have discovered and re-discovered its potential as
-well as its deficiencies. Lately 
-
-
-JavaScript is everywhere. It's used across the web, and it's even used offline
-as well. It's been around since the first browsers were created to access the
-Internet over 20 years ago, and as the web has changed, how people use
-JavaScript has changed, too. At first, websites were simple, and JavaScript was
-used to add gimmicks such as falling snow or countdown clocks. But over time,
-websites got more complicated and people started using the language to make
-
-JavaScript is a very capable and versatile language; it is used everywhere on
-the web. It is also as old as the modern web and has seen a lot of changes over
-the years. It's seen a lot of explosive growth over the last several years as
-new libraries have come and gone. Since JavaScript is so accessible there's a
-wealth of information out there and if you are new to the scene or have not been
-programming for a while you'll likely find a daunting variety of different tools
-and techniques telling you to do it this way or that. It's also very
-[misunderstood][javascript-misunderstood] -- and all these frameworks that exist
-don't really help.
-
-While that is fine I find
-that at some point you have to learn the basics in order to get better, and I
-don't feel that there aren't enough resources out there to do that. They may
-teach you how to get started but then what happens after that? At some point you
-have to fly.
-
-[javascript-misunderstood]: http://www.crockford.com/javascript/javascript.html
-
-One of the best ways I've found to level up your skills in any language is to
-work on a small, inconsequential project that you iteratively improve as time
-goes on. It helps a lot if the project is fun and bite size enough to where you
-can make something functional in a short amount of time. What better way than to
-build a game? We're not talking about a game that is complicated like Breakout
-or Asteroids (although I might cover those in future blog posts). There will be
-no talk of the game loop here. No, I wanted something that required interacting
-with the DOM and were the rules of the game were slightly complex so that it
-takes some effort to figure out. Finally, I wanted something that could be
-iterated on.
-
-
-
-
-
-. but if it's your first language or you
-are still building experience in programming, you may be daunted by the array of
-resources for writing code in JavaScript. There are many places you can go to
-get started and there are many toolkits you can use that use the language under
-the hood, but how do you get better? You have to actively seek out new
-techniques and try them out.
-
-
-
-If you owned a PC 15 years ago, you might remember Minesweeper. It's one of the
-classic Windows games and was bundled along with other diversions such as
-Solitaire, Pegged, Taipei, and the like.
-
-In this post and the next several posts, we're going to be building Minesweeper
-in JavaScript. We're going to start by writing very procedural code using
-jQuery, proceed by removing jQuery and adding more abstraction, and close by
-experimenting with ways we can implement Minesweeper using other frameworks and
-languages.
+Let's get down to it.
 
 ### The game
 
+Minesweeper is played on a board of spaces, typically 9 long and 9 wide. Across
+the board there are mines hidden within 10 random spaces. When the game starts,
+all of the spaces appear the same, and the player uncovers the true identity of
+a space by clicking on it. The space is marked in some way visually -- typically
+by pushing it in -- and then there are then three possibilities depending on the
+state of the space:
 
-The game is simple. It's played on a grid of spaces, typically 9 long and 9
-wide. There are 10 mines hidden at random spaces within the grid. The player
-uncovers spaces by clicking on them. There are then three possibilities
-depending on the state of the space:
-
-* If there are any mines adjacent to the space, the space is said to be
-  "dangerous". It is marked as uncovered in some way (typically by pushing in
-  that space visually), and the number of mines is shown within the space.
+* If there are any mines adjacent to the space, it is said to be "dangerous".
+  The number of mines is shown within the space.
 * If there are no mines adjacent to the space, the space is said to be "safe".
-  It is marked as uncovered, and if any of the adjacent spaces aren't mines,
-  they are uncovered, and *their* adjacent non-mine spaces are uncovered, and
-  this continues recursively until a perimeter of dangerous spaces have been
-  uncovered.
-* Finally, if the space is a mine, then all of the spaces are uncovered
-  (including other mines), and the game is over.
+  These spaces are uncovered, and *their* adjacent non-mine spaces are
+  uncovered, and this continues recursively until a perimeter of dangerous
+  spaces have been uncovered.
+* Finally, if the space is a mine itself, then all of the mines are uncovered,
+  and the game is over.
 
-The player wins, then, by managing to uncover all spaces without blowing up.
-
+The player wins, then, by managing to uncover all of the spaces that surround
+mines without actually triggering those mines.
 
 ### Starting small
 
-We'll start with two files:
+You'll want to make a directory on your computer and open that up in your code
+editor of choice. Give it a meaningful name like `minesweeper`, and create two
+files: `minesweeper.html` and `minesweeper.css`. We're going to be using this
+project for the entire series. You should have the following file structure:
 
-* *minesweeper.html*
-* *minesweeper.css*
+<ul class="file-tree">
+  <li class="directory"><span>minesweeper/</span><ul>
+      <li class="file">minesweeper.html</li>
+      <li class="file">minesweeper.css</li>
+    </ul>
+  </li>
+</ul>
 
-Judging by the screenshot above, we'll need to render a grid of cells. There are
-multiple ways to do this, but we don't want to have to right a bunch of CSS
-right now, so let's go with tables for now. Here's *minesweeper.html*:
+The first thing we need to do is to display the board. There are multiple ways
+to do this, but we don't want to have to write a bunch of CSS; tables will work
+just fine. Open `minesweeper.html` and type:
 
 ``` html
 <!DOCTYPE html>
- 
+
 <html>
   <head>
     <title>Minesweeper</title>
-    <link rel="stylesheet" href="game.css">
-    <script src="game.js"></script>
+    <link rel="stylesheet" href="minesweeper.css">
+    <script src="minesweeper.js"></script>
   </head>
- 
+
   <body>
     <table id="board">
       <tr>
@@ -292,9 +233,9 @@ right now, so let's go with tables for now. Here's *minesweeper.html*:
 </html>
 ```
 
-We'll also sprinkle a few styles on top. We set the board to a reasonable size,
-and add some visual feedback to each cell when it's hovered over. Here's
-*minesweeper.css*:
+To make a board look like a board, we'll also want to add some minimal CSS.
+We'll set the board to a reasonable size and add some visual feedback to each
+cell when it's hovered over. Open `minesweeper.css` and type:
 
 ``` css
 #board {
@@ -312,9 +253,22 @@ td:hover {
 }
 ```
 
-The board doesn't do a whole lot yet, but here's what it looks like so far:
+Great! Let's [take a look][minesweeper-1]{:target="_blank"} at what we have so
+far:
 
-<iframe height="300" width="100%" src="minesweeper.html" border="0"></iframe>
+[minesweeper-1]: /blog/minesweeper-1/minesweeper.html
 
-In the next post, we'll add jQuery, populate the board with mines, and reveal
-cells when they are clicked. Stay tuned!
+<iframe height="300" width="100%" src="/blog/minesweeper-1/minesweeper.html" border="0"></iframe>
+
+### What's next
+
+The [next step][minesweeper-2] is to use jQuery to display the board instead of
+straight HTML. Then, we need to populate the board with mines.
+
+[minesweeper-2]: /blog/minesweeper-2/
+
+<div class="nav-wrapper">
+  <div class="nav nav--right">
+    <a href="/blog/minesweeper-2/">Continue →</a>
+  </div>
+</div>
