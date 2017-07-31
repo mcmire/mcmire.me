@@ -16,8 +16,6 @@ pre {
   font-size: 0.9em;
   hyphens: none;
   margin: $small-spacing-with-extra 0;
-  max-height: 30em;
-  overflow: hidden;
   padding: $small-spacing;
   position: relative;
   tab-size: 2;
@@ -25,6 +23,14 @@ pre {
   word-break: normal;
   word-spacing: normal;
   word-wrap: normal;
+
+  &:not([data-no-overflow]) {
+    max-height: 30em;
+  }
+
+  &.overflows {
+    overflow: hidden;
+  }
 
   &.overflows:not(.expanded) {
     cursor: pointer;

@@ -51,7 +51,8 @@ class mcmire.me.CodeBlock
     element
 
   _doesOverflow: =>
-    @_doesOverflowHorizontally() || @_doesOverflowVertically()
+    !@element.dataset.noOverflow &&
+      (@_doesOverflowHorizontally() || @_doesOverflowVertically())
 
   _doesOverflowHorizontally: =>
     @element.scrollWidth > @element.clientWidth
