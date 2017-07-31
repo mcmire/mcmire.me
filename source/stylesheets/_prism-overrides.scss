@@ -1,6 +1,7 @@
 .token.keyword,
 .token.tag .token.tag,
-.token.selector {
+.token.selector,
+.token.response {
   color: #3871e2;  // blue
 }
 
@@ -16,7 +17,32 @@
 }
 
 .token.punctuation {
-  color: #b7bfc1;
+  color: #b7bfc1;  // light gray
+}
+
+.token.command_leader,
+.token.response_leader {
+  position: relative;
+  top: 1px;
+}
+
+.token.response_leader {
+  left: -1px;
+}
+
+.token.unchanged,
+.token.inserted,
+.token.deleted {
+  display: inline-block;
+  width: 100%;
+}
+
+.token.inserted {
+  background-color: #dffbd5;  // light green
+}
+
+.token.deleted {
+  background-color: #f5e2e2;  // light red
 }
 
 .token.keyword {
