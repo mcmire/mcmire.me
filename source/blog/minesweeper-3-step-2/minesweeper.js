@@ -2,12 +2,19 @@ const board = $("<table>").attr("id", "board");
 const body = $(document.body);
 body.append(board);
 
+const mineLocations = [];
+for (let i = 0; i < 10; i++) {
+  const mineLocation = Math.floor(Math.random() * 80);
+  mineLocations.push(mineLocation);
+}
+
 for (let rowIndex = 0; rowIndex < 9; rowIndex++) {
   const row = $("<tr>");
   board.append(row);
   for (let columnIndex = 0; columnIndex < 9; columnIndex++) {
     const cell = $("<td>");
-    if (Math.random() > 0.5) {
+    const possibleMineLocation = (rowIndex * 9) + columnIndex;
+    if (mineLocations.indexOf(possibleMineLocation) !== -1) {
       cell.addClass("mine");
     }
     row.append(cell);
