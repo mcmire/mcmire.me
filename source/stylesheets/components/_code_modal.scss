@@ -1,13 +1,17 @@
+.site-container {
+  transition: filter $base-duration;
+}
+
 body.code-modal-open {
   overflow: hidden;
 
   .site-container {
-    visibility: hidden;
+    filter: blur(4px);
   }
 }
 
 .modal-overlay {
-  background: $light-gray;
+  background: change-color($light-gray, $alpha: 0.5);
   height: 100%;
   left: 0;
   opacity: 0;
@@ -21,7 +25,7 @@ body.code-modal-open {
 
   &.open {
     visibility: visible;
-    opacity: 1;
+    opacity: 0.85;
     transition: opacity $slower-duration;
   }
 
@@ -33,6 +37,7 @@ body.code-modal-open {
 
   .modal-content {
     display: inline-block;
+    text-shadow: 1px 1px 0px white;
     z-index: $pre-expanded-z-index;
 
     pre {
