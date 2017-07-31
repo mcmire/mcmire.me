@@ -44,7 +44,7 @@ for (let rowIndex = 0; rowIndex < 9; rowIndex++) {
 
 And so far the game looks like this:
 
-<iframe height="300" width="100%" src="minesweeper-2-step-6/minesweeper.html" border="0"></iframe>
+<iframe height="300" width="100%" src="../minesweeper-2-step-6/minesweeper.html" border="0"></iframe>
 
 Now for something a little more interesting.
 
@@ -121,9 +121,9 @@ non-mine cells.
 ```
 {:data-no-overflow="true"}
 
-[Here's](minesweeper-3-step-1/minesweeper.html){:target="_blank"} what we get:
+[Here's](../minesweeper-3-step-1/minesweeper.html){:target="_blank"} what we get:
 
-<iframe height="300" width="100%" src="minesweeper-3-step-1/minesweeper.html" border="0"></iframe>
+<iframe height="300" width="100%" src="../minesweeper-3-step-1/minesweeper.html" border="0"></iframe>
 
 ### Distributing mines
 
@@ -287,9 +287,9 @@ Now we can combine our changes and update `minesweeper.js`:
 ```
 {:data-no-overflow="true"}
 
-Finally, let's [take a look](minesweeper-3-step-2/minesweeper.html){:target="blank"} at what we get:
+Finally, let's [take a look](../minesweeper-3-step-2/minesweeper.html){:target="blank"} at what we get:
 
-<iframe height="300" width="100%" src="minesweeper-3-step-2/minesweeper.html" border="0"></iframe>
+<iframe height="300" width="100%" src="../minesweeper-3-step-2/minesweeper.html" border="0"></iframe>
 
 What do you know -- it worked!
 
