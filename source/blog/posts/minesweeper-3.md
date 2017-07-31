@@ -262,8 +262,16 @@ would work:
 
 But notice how all of the mines are now clumped together in one place. Can you
 tell why this is happening? There doesn't seem to be enough randomness here.
-Perhaps if we dial down the chance that a cell can become a mine, we'll get a
-different [result](minesweeper-3-step-4/minesweeper.html){:target="_blank"}?
+How can we make those mines more dispersed?
+
+Look back at the number line we drew above. We are saying that whenever a number
+between 0.5 and 1 is chosen at random, our cell should turn into a mine. This is
+half of the numbers between 0 and 1, so there's a 50% chance that the cell will
+turn into a mine and a 50% chance that it will stay a cell. What if we were to
+change the range of numbers we are choosing among? If we slid the start of the
+range up to 0.8, then since this is 20% of the available numbers, there would be
+a 20% chance that the cell turned into a mine and an 80% chance that the cell
+stayed a cell. So we can change our code as follows:
 
 ``` diff
  const board = $("<table>").attr("id", "board");
@@ -288,16 +296,87 @@ different [result](minesweeper-3-step-4/minesweeper.html){:target="_blank"}?
 ```
 {:data-no-overflow="true"}
 
+Now let's [take a look](minesweeper-3-step-4/minesweeper.html){:target="_blank"}
+at what this gives us:
+
 <iframe height="300" width="100%" src="minesweeper-3-step-4/minesweeper.html" border="0"></iframe>
 
-### A different approach
+That's looking a lot better.
+
+### A cleaner approach
+
+But let's take a moment to pause here. The fact that we had to fine-tune the
+probability that a cell can become a mine in order to ensure that mines were
+properly dispersed across the board raises a bit of a red flag.
+
+We know that if the "chance of mine" is 50%, then all of the mines appear close
+together at the start of the board. In other words, the area that contains the
+mines is very small. What happened when we lowered the probability? The
+contained area grew bigger.
+
+Play with the slider below to adjust the number that represents that
+probability and notice how it changes the area that contains all of the mines.
+Which one makes the board looks the best to you?
+
+[interactive board here]
+
+How did you choose which number to use? 
+
+If you found that the best-looking probability is the one where the mine area is
+the whole board, you're on the right track here.
+
+Now for a wrinkle. Let
+
+We are making the assumption that our board is 9x9. But what if it
+
+
+
+Now, in our code, what probability should we ultimately choose? We chose 20%
+
+Here's the wrinkle: by using this approach, we're making the assumption that the
+board will always be the same size (9x9). After all, what if the board were
+bigger? What probability would we have to choose to cover the board in mines?
+Move the sliders below and try it out for yourself:
+
+
+
+tells us that our approach is "brittle" -- if 
+
+
+doesn't fit
+the problem in a scalable way. 
+
+What effect did changing the probability
+of a cell becoming a mine have on our board?
+
+isn't it a little funny that we had to play with the
+probability like that?
+
+Let's take another look at what done so far. We started
+with a idea:
+
+* As we build cells, "flip a coin" to determine whether the cell is a mine
+* Keep a tally of the number of mines as we create them and stop turning cells
+  into mines when the number reaches 10
+
+When you flip a coin, there is an equal (50%) chance that you will end up with
+heads or tails. In the same way, for each cell, there is a 50% chance that it
+could become a mine. We had to decrease the chance that a cell becomes a mine
+from 50% to 20%. But when we implemented this approach, we found that the logic
+that "flips a coin" didn't place the mines correctly.
+
+it doesn't fit the problem perfectly. 
 
 That kind of works, but if you refresh a few times, you may notice that some of
-the mines are still clumped together. Plus... our code is starting to look messy.
+the mines are still clumped together. Plus, our code is starting to look messy.
 Look at how many things our loop is doing: not only is it concerned with
 building HTML elements and adding them to the screen, but it's also concerned
 with determining whether a cell is a mine, as well as keeping track of how many
 mines exist. Perhaps there's another approach that we can take here.
+
+### Determine mines ahead of time
+
+<iframe height="300" width="100%" src="minesweeper-3-step-5/minesweeper.html" border="0"></iframe>
 
 ----
 
