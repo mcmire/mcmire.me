@@ -305,20 +305,29 @@ That's looking a lot better.
 
 ### A cleaner approach
 
-But let's take a moment to pause here. The fact that we had to fine-tune the
-probability that a cell can become a mine in order to ensure that mines were
-properly dispersed across the board raises a bit of a red flag.
+But let's take a moment to pause here. We want to distribute mines across the
+board in a different way each time; we don't want them to be in the same corner
+every gameplay. The fact that we had to fine-tune the probability that a cell
+turns into a mine in order to achieve this raises a bit of a red flag.
+
+To illustrate why, we've made an interactive version of the board. We've drawn a
+box around the area that all of the mines cover. The slider represents the
+probability as a percentage. What happens to the box when you move it?
+
+[interactive board here]
+
+When the probability is small, the area that we consider when placing mines is
+small. When the probability is large, 
 
 We know that if the "chance of mine" is 50%, then all of the mines appear close
 together at the start of the board. In other words, the area that contains the
 mines is very small. What happened when we lowered the probability? The
 contained area grew bigger.
 
-Play with the slider below to adjust the number that represents that
-probability and notice how it changes the area that contains all of the mines.
-Which one makes the board looks the best to you?
+We've illustrated this concept below. Move the slider to adjust the number that
+represents the "chance of mine" and notice what happens. What number would you
+choose to ensure that mines are spread out across the board?
 
-[interactive board here]
 
 How did you choose which number to use? 
 
