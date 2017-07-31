@@ -42,34 +42,40 @@ for (let rowIndex = 0; rowIndex < 9; rowIndex++) {
 }
 ```
 
-Now for the next part. Since the game is all about revealing hidden mines, the
-first problem we have is to figure out how to designate mines. Some of the
-spaces will be mines and some won't, and the ones we've designated will change
-from game to game. Once we've established where the mines are, the second
-problem is to determine how to redraw those spaces as mines at the appropriate
-time. There are a couple of different ways to do this, but ultimately we need to
-use HTML, CSS, or both. Since spaces are cells in our table, to make things
-simple for right now, we will settle on this definition: a mine is a cell that
-has a `mine` class and a non-mine is a cell that doesn't.
+And so far the game looks like this:
 
-Let's tackle the second problem first. How do we assign a cell a class?
-Fortunately, jQuery has a built-in solution:
+<iframe height="300" width="100%" src="minesweeper-2-step-6/minesweeper.html" border="0"></iframe>
+
+Now for something a little more interesting.
+
+### Drawing mines
+
+Since the game is all about revealing hidden mines, it seems that we ought to be
+able to draw those mines when the appropriate time comes. There are a couple of
+different ways to do this, but ultimately we need to use HTML, CSS, or both. To
+make things simple for right now, we will choose the CSS method. When we draw a
+space on the board, if a mine is inside of a space, then we will add a `mine`
+class to the table cell associated with the space.
+
+How do we add a class to a cell, or any HTML element, for that matter?
+Fortunately, jQuery has a built-in solution with the `addClass` method. We can
+use it like so:
 
 ``` javascript
-cell.addClass("cell");
+element.addClass("someClass");
 ```
 
-So we can start by modifying our JavaScript code like so:
+So we'll begin by modifying our JavaScript code like this:
 
 ``` diff
  const board = $("<table>").attr("id", "board");
  const body = $(document.body);
  body.append(board);
 
- for (var y = 0; y < 9; y++) {
+ for (let rowIndex = 0; rowIndex < 9; rowIndex++) {
    const row = $("<tr>");
    board.append(row);
-   for (var x = 0; x < 9; x++) {
+   for (let columnIndex = 0; columnIndex < 9; columnIndex++) {
      const cell = $("<td>");
 +    cell.addClass("mine");
      row.append(cell);
@@ -77,58 +83,105 @@ So we can start by modifying our JavaScript code like so:
  }
 ```
 
-What you see here is a way to represent changes to a particular piece of text.
-The exact format we're using is called a *diff* and it is commonly used. Added
-lines are indicated with a plus sign (`+`) at the beginning of them; deleted
-lines are indicated with a minus sign (`-`).
-{:.tip}
+This is a *diff*, a common way to represent changes to a piece of text. Lines
+that begin with a plus sign (`+`) are ones that we've added. You should add them
+too (but don't include the plus sign!). Lines that begin with a minus sign
+(`-`), on the contrary, are those that we've removed, and you should remove them
+as well.
+{:.aside.aside--tip}
 
-This will add a `mine` class to every cell, but of course, that's not quite what
-we want. We said earlier that the mines we've designated will change from game
-to game. Some of the cells will be mines in one game, and others will be mines
-in another game. So when we add a cell to the board, we have to make a choice:
-should that cell become a mine or not? The tricky part is that sometimes we need
-the answer to be yes and sometimes we need it to be no. Effectively, we are
-flipping a coin. How do we translate this idea into JavaScript?
+Now we'll update `minesweeper.css` so that mines appear as black cells, and so
+that the hover effect that we'd previously placed on all cells only applies to
+non-mine cells.
 
-Well, there are two parts to this. First, we need to represent "yes" or "no".
-Usually in programming we would use a *boolean* value: `true` or `false`. Okay,
-so what about that "sometimes" bit? Given that we don't know what the answer
-will be ahead of time, we need to introduce *randomness* into our code. As it
-turns out, JavaScript has a function to give us this:
-[`Math.random`][math-random]. However, this function is a little peculiar, as
-instead of returning `true` or `false`, it returns a random decimal between 0
-and 1:
+``` diff
+ #board {
+   height: 200px;
+   left: 50%;
+   margin-left: -100px;
+   margin-top: -100px;
+   position: absolute;
+   top: 50%;
+   width: 200px;
+ }
+
+ td {
+   border: 1px solid black;
+   cursor: pointer;
+ }
+
+-td:hover {
++td:not(.mine):hover {
+   background-color: #ddd;
+ }
++
++.mine {
++  background-color: black;
++}
+```
+{:data-no-overflow="true"}
+
+[Here's](minesweeper-3-step-1/minesweeper.html){:target="_blank"} what we get:
+
+<iframe height="300" width="100%" src="minesweeper-3-step-1/minesweeper.html" border="0"></iframe>
+
+### Determining mines
+
+Well, that doesn't look right. Every cell is now a mine, but really, only some
+of them should be mines, and those mines should be dispersed over the board. In
+fact, mines shouldn't be in the same places from game to game, but should show up
+in different cells on each gameplay.
+
+In order to achieve this, we can change our code so that whenever we add a cell
+to the board, we ask a question, "Should that cell become a mine or not?", and
+we assign the `mine` class based on the answer. That means we need an `if`
+statement, and in pseudocode it would look something like this:
+
+```
+if (the cell should become a mine) {
+  cell.addClass("mine");
+}
+```
+
+The tricky part is, in order to change up the board from one game to the next,
+the answer to "should a cell become a mine or not" should sometimes be yes and
+sometimes be no. How do we implement the idea of "sometimes" in JavaScript? If
+you think about it, we're effectively flipping a coin: heads means yes and tails
+means no. Well, a coin may land on heads half the time and tails half the time
+on average, but for any given flip, it's impossible to know ahead of time what's
+going to happen -- at the end of the day, it's a *random* event. So we need
+something that randomly gives us a `true` or `false` answer.
+
+As it turns out, JavaScript has a function to give us randomness:
+[`Math.random`][math-random]{:target="_blank"}. However, this function is a
+little peculiar, as instead of returning `true` or `false`, it returns a random
+decimal number between 0 and 1:
 
 [math-random]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random 
 
-```
+``` prompt
 > Math.random()
-0.5057105947315927
-Math.random()
-0.43924692114566244
-Math.random()
-0.5794767991781664
-Math.random()
-0.14856934326712845
-Math.random()
-0.6210856505259816
+< 0.5057105947315927
+> Math.random()
+< 0.43924692114566244
+> Math.random()
+< 0.5794767991781664
+> Math.random()
+< 0.14856934326712845
+> Math.random()
+< 0.6210856505259816
 ```
 
 That's not what we want -- or is it?
 
-Can we represent "yes" and "no" using a number instead of a boolean? What if we
-defined "no" as the number 0 and "yes" as the number 1? If we drew a number
-line, with 0 on one side and 1 on the other, and we placed all the numbers we
-got back from `Math.random` on that line, we would see that they would fall
-somewhere in between the two:
+Can we represent "yes" and "no" using a number instead of `true` or `false`?
+What if we defined "no" as the number 0 and "yes" as the number 1? If we drew a
+number line, with 0 on one side and 1 on the other, and we placed all the
+numbers we got back from `Math.random` on that line, we would see that they
+would fall somewhere in between the two:
 
-```
-|------------------------------------------------------------------------------|
-0       |                    |        |     |       |                          1
-        ` 0.1486             ` 0.4392 ` 0.5057       ` 0.6211
-                                            ` 0.5795
-```
+![random numbers](/images/minesweeper-3/random-numbers.svg)
+{:.image}
 
 We could then say that any number before the halfway point represents `false`
 and any number after the halfway point represents `true`.
@@ -138,23 +191,22 @@ Armed with this information, we can come up with the following pseudocode:
 ```
 number = choose a random number between 0 and 1
 
-if the number is greater than 0.5
-  add the mine class to the cell
-else
-  don't worry about it
+if (the number is greater than 0.5) {
+  cell.addClass("mine");
+}
 ```
 
-Now we can modify our code:
+Great. Now let's implement it!
 
 ``` diff
  const board = $("<table>").attr("id", "board");
  const body = $(document.body);
  body.append(board);
 
- for (var y = 0; y < 9; y++) {
+ for (let rowIndex = 0; rowIndex < 9; rowIndex++) {
    const row = $("<tr>");
    board.append(row);
-   for (var x = 0; x < 9; x++) {
+   for (let columnIndex = 0; columnIndex < 9; columnIndex++) {
      const cell = $("<td>");
 +    if (Math.random() > 0.5) {
        cell.addClass("mine");
@@ -163,6 +215,89 @@ Now we can modify our code:
    }
  }
 ```
+
+That brings us to [this](minesweeper-3-step-2/minesweeper.html){:target="_blank"}:
+
+<iframe height="300" width="100%" src="minesweeper-3-step-2/minesweeper.html" border="0"></iframe>
+
+Try refreshing the page. Notice how the board looks different every time!
+
+### Limiting the number of mines
+
+That's great, but if we were to implement the game functionality right now, it
+would be very hard to play, as we have way too many mines! According to the
+game, we should only have ten.
+
+So we need to restrict the number of mines that we place somehow. We might be
+tempted to change our JavaScript to add some kind of counter to keep track of
+the number of mines as we place them:
+
+``` diff
+ const board = $("<table>").attr("id", "board");
+ const body = $(document.body);
+ body.append(board);
+
++let numberOfMines = 0;
++
+ for (let rowIndex = 0; rowIndex < 9; rowIndex++) {
+   const row = $("<tr>");
+   board.append(row);
+   for (let columnIndex = 0; columnIndex < 9; columnIndex++) {
+     const cell = $("<td>");
+-    if (Math.random() > 0.5) {
++    if (Math.random() > 0.5 && numberOfMines < 10) {
+       cell.addClass("mine");
++      numberOfMines++;
+     }
+     row.append(cell);
+   }
+ }
+```
+{:data-no-overflow="true"}
+
+And technically, [this](minesweeper-3-step-3/minesweeper.html){:target="_blank"}
+would work:
+
+<iframe height="300" width="100%" src="minesweeper-3-step-3/minesweeper.html" border="0"></iframe>
+
+But notice how all of the mines are now clumped together in one place. Can you
+tell why this is happening? There doesn't seem to be enough randomness here.
+Perhaps if we dial down the chance that a cell can become a mine, we'll get a
+different [result](minesweeper-3-step-4/minesweeper.html){:target="_blank"}?
+
+``` diff
+ const board = $("<table>").attr("id", "board");
+ const body = $(document.body);
+ body.append(board);
+
+ let numberOfMines = 0;
+
+ for (let rowIndex = 0; rowIndex < 9; rowIndex++) {
+   const row = $("<tr>");
+   board.append(row);
+   for (let columnIndex = 0; columnIndex < 9; columnIndex++) {
+     const cell = $("<td>");
+-    if (Math.random() > 0.5 && numberOfMines < 10) {
++    if (Math.random() > 0.8 && numberOfMines < 10) {
+       cell.addClass("mine");
+       numberOfMines++;
+     }
+     row.append(cell);
+   }
+ }
+```
+{:data-no-overflow="true"}
+
+<iframe height="300" width="100%" src="minesweeper-3-step-4/minesweeper.html" border="0"></iframe>
+
+### A different approach
+
+That kind of works, but if you refresh a few times, you may notice that some of
+the mines are still clumped together. Plus... our code is starting to look messy.
+Look at how many things our loop is doing: not only is it concerned with
+building HTML elements and adding them to the screen, but it's also concerned
+with determining whether a cell is a mine, as well as keeping track of how many
+mines exist. Perhaps there's another approach that we can take here.
 
 ----
 
