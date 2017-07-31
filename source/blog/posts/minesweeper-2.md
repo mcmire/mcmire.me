@@ -148,27 +148,25 @@ Let's take another look at `minesweeper.html`:
 ```
 
 As you can see, all of the HTML that displays the board is present in this file.
-But we won't want to do this forever; we'll want to change this. Why? For one,
-this code is repetitive -- we end up having to type `<td>` over and over -- and
-since we are making a nine-by-nine table, it's repetitive in a way that can be
-distilled into a set of instructions, instructions that a computer is good at
-carrying out. And for another, as we start building the game and making the
-board more interactive, we will need to make changes to the HTML (and we will
-explore different ways of doing that throughout this series). So it would be
-better in the long run if we generated the board HTML using JavaScript.
+But we won't want to do this forever; we'll want to change this. Why? One reason
+is that this code is repetitive -- we end up having to type `<td>` over and over
+-- and we can easily instruct the computer to do this work for us instead. But
+another reason is that we will need the ability to update the game's appearance
+as the player progresses in the game. This involves updating the HTML structure
+that makes up the game board as the game is being played, and the only way to do
+with is with JavaScript.
 
 ### Planning our approach
 
 At this point, we could jump right into code, but let's not do that quite yet.
 Whenever we come across a problem that we'd like to solve, it's more helpful to
-stop, take a step back, and write down a set of instructions, in whatever
-language we happen to speak, that *we* would have to follow in order to fully
-solve that problem ourselves. First, just what is our problem? Well, we need to
-come up with a way to build HTML elements and place them onto the page, so that
-we end up with the same HTML that we coded by hand. So if we took the HTML that
-we have right now and came up with a set of instructions that the computer could
-follow to achieve the same code, what would those instructions look like? Let's
-see:
+stop, take a step back, and write down a set of instructions, that *we* would
+have to follow in order to fully solve that problem ourselves. First, just what
+is our problem? Well, we need to come up with a way to build HTML elements and
+place them onto the page, so that we end up with the same HTML that we coded by
+hand. So if we took the HTML that we have right now and came up with a set of
+instructions that the computer could follow to achieve the same code, what would
+those instructions look like? Let's see:
 
 * Build a `<table>` element
 * Assign it an `id` of `board` (so that it retains the styling it has right now)
@@ -203,9 +201,10 @@ them? Like this:
     * Build a `<td>` element
     * Add the `<td>` element to the `<tr>`
 
-That's a lot better, isn't it? And as it turns out, we can convert this into
-code easily, because we have the same ability to repeat steps in JavaScript as
-we do in English.
+That's a lot better, isn't it? And as it turns out, we can convert these English
+instructions -- what we commonly call *pseudocode* -- into real code easily,
+because we have the same ability to repeat steps in JavaScript as we do in
+English.
 
 ### Making room for our new code
 
@@ -249,14 +248,15 @@ post. You can download jQuery [here][download-jquery]{:target="_blank"}. There
 are several links on this page, but the one we are interested in starts with
 "Download the uncompressed, development jQuery X.Y.Z" (where in place of "X.Y.Z"
 you will see a version number). Click on this link and download the resulting
-file to somewhere on your computer. Move it to your Minesweeper project
-directory and rename the file to `jquery.js`.
+file to somewhere on your computer. Move it to your `minesweeper` directory and
+rename the file to `jquery.js`.
 
 [download-jquery]: https://jquery.com/download/
 
-We'll also need a new file in the project to hold the JavaScript that we are
-about to write. We'll call it `minesweeper.js`. That means our project now looks
-like:
+Next we need to add a new file in the project to hold the JavaScript that we are
+about to write. We'll call it `minesweeper.js`.
+
+That means our project now looks like:
 
 <ul class="file-tree">
   <li class="directory"><span>minesweeper/</span><ul>
@@ -294,11 +294,11 @@ rid of it:
 
 ### Writing the code
 
-Great! Now that we've done all the prep work, we can start converting the
-English instructions we wrote earlier -- what we call *pseudocode* -- into real
-code. The first three steps we've written tells us that we need to build a table
-element, give it an ID, and add it to the `<body>` element. Let's *implement*
-these steps using jQuery by adding this code to `minesweeper.js`:
+Great! Now that we've done all the prep work, we can dive into the JavaScript.
+Take another look at the pseudocode we wrote earlier. The first three steps tell
+us that we need to build a table element, give it an ID, and add it to the
+`<body>` element. Let's *implement* these steps using jQuery by adding this code
+to `minesweeper.js`:
 
 ``` javascript
 const board = $("<table>").attr("id", "board");
@@ -351,10 +351,10 @@ that allows you to do this more easily "feels" much different than a blender
 that doesn't.
 
 In the same way design is used to create physical objects, design is also used
-to create code as well. Code that looks one way may also "feel" different than
-code that looks another way. And because we use code to make things happen on
-the screen or otherwise, code has an interface, too. Typically you'll hear it
-referred to as the *API*.
+to create code. Code that looks one way may also "feel" different than code that
+looks another way. And because we use code to make things happen on the screen
+or otherwise, code has an interface, too. Typically you'll hear it referred to
+as the *API*.
 
 jQuery has a concise and clear API. When the creator of jQuery, [John
 Resig][]{:target="_blank"}, designed the library, he founded the API on two big
@@ -642,8 +642,8 @@ is one simple best practice you can follow to do that.
 
 ### Drawing the whole board
 
-Whew! We've covered a lot in this post so far. Let's wrap it up by adding the
-remaining code so that the entire board appears on-screen again.
+Whew! We've covered a lot in this post. Let's wrap it up by adding the remaining
+code so that the entire board appears on-screen again.
 
 Remember the pseudocode we wrote at the beginning? It went something like this:
 
