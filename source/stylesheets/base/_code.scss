@@ -29,6 +29,10 @@ pre {
     max-height: 30em;
   }
 
+  &[data-no-overflow] {
+    overflow: auto;
+  }
+
   &.overflows:not(.expanded) {
     cursor: pointer;
 

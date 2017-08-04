@@ -7,11 +7,12 @@ body.code-modal-open {
 
   .site-container {
     filter: blur(4px);
+    transition: filter $base-duration;
   }
 }
 
 .modal-overlay {
-  background: change-color($light-gray, $alpha: 0.5);
+  background: white;
   height: 100%;
   left: 0;
   opacity: 0;
@@ -37,7 +38,6 @@ body.code-modal-open {
 
   .modal-content {
     display: inline-block;
-    text-shadow: 1px 1px 0px white;
     z-index: $pre-expanded-z-index;
 
     pre {

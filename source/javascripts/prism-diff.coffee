@@ -6,11 +6,17 @@ Prism.languages.diff =
     /^@@.*@@$/m,
     # Match coord lines in normal diff (starts with a number).
     /^\d+.*$/m
-  ],
+  ]
 
   # Match inserted and deleted lines. Support both +/- and >/< styles.
-  deleted: /^[-<].*$/m,
-  inserted: /^[+>].*$/m,
+  deleted:
+    pattern: /^[-<].*$/m
+    inside:
+      marker: /^[-<]/
+  inserted:
+    pattern: /^[+>].*$/m
+    inside:
+      marker: /^[+>]/
 
   # Match "different" lines (prefixed with "!") in context diff.
   diff:
@@ -19,3 +25,5 @@ Prism.languages.diff =
 
   unchanged:
     pattern: /^(.+)$/m
+    inside:
+      marker: /^[ ]+/
