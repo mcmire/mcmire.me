@@ -83,11 +83,10 @@ So we'll begin by modifying our JavaScript code like this:
  }
 ```
 
-This is a *diff*, a common way to represent changes to a piece of text. Lines
-that begin with a plus sign (`+`) are ones that we've added. You should add them
-too (but don't include the plus sign!). Lines that begin with a minus sign
-(`-`), on the contrary, are those that we've removed, and you should remove them
-as well.
+This is a *diff*, a common way to represent changes to a piece of text. We're
+adding a line to `minesweeper.js`, so we've indicated that by placing a plus
+sign (`+`) at the beginning of the line. You should add this line to your copy
+too.
 {:.aside.aside--tip}
 
 Now we'll update `minesweeper.css` so that mines appear as black cells, and so
@@ -149,8 +148,13 @@ identify a particular space across the board.
 If that's true, then we need some sort of value in code to represent a space's
 location. What if we were to assign a number to each space? That would work,
 although we would want to start from 0 instead of 1 (not only is it more common
-in programming to do so, but it will come in handy later). As a result, the last
-location would not be the number of total cells (81), but one less (80).
+in programming to do so, but it will come in handy later):
+
+![board numbering](images/minesweeper-3/board-numbering.svg)
+{:.image}
+
+Note how the last location is not the number of total cells (81), but one less
+(80).
 
 Okay! Let's write some pseudocode to make these ideas more concrete:
 
@@ -175,7 +179,7 @@ Defining an empty array and adding a number to an array are easy enough, but
 what about the drawing-from-a-hat bit? What we really need here is a random
 number, and JavaScript gives us one function to achieve this:
 [`Math.random`][math-random]{:target="_blank"}. This function returns a number
-between 0 and 1:
+between 0 and 1 (excluding 1 itself):
 
 [math-random]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 
@@ -191,8 +195,7 @@ between 0 and 1:
 Hmm. We need a wider range here. Is there some way we can customize the
 function? Not directly, but we can use a little math: since 0 × any number is 0,
 and 1 × any number is that number, we can multiply the number that `Math.random`
-returns by 80 to get a number between 0 and 80:
-
+returns by 80 to get a number between 0 and 80 (excluding 80 itself):
 
 ``` prompt
 > Math.random() * 80
