@@ -1,0 +1,25 @@
+svg {
+  rect,
+  path,
+  ellipse {
+    fill: none;
+    stroke: none;
+  }
+
+  .stroke {
+    stroke: black;
+  }
+
+  .white-fill {
+    fill: #fff;
+  }
+
+  .grey-fill {
+    fill: #ddd;
+  }
+
+  text {
+    font-family: "PT Serif";
+    font-size: 23px;
+  }
+}

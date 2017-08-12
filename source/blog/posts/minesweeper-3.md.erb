@@ -4,6 +4,7 @@ teaser: >
   In this post, we draw mines and distribute them randomly across the board.
 date: 2020-01-01
 tags: programming
+vi: ft=ghmarkdown
 ---
 
 In the [last post] we wrote code so that the visuals for Minesweeper are
@@ -132,13 +133,24 @@ Now every cell is a mine, but of course what we really need is to scatter them
 across the board, putting them in random spots so that each gameplay is
 different.
 
-How would that work exactly? Well, we'd have to first start out with a list of
-all of the possible places where mines could live -- in other words, all the
-spaces on the board. Then, we'd place those spaces in a virtual hat and draw
-from that hat ten times to give us ten spaces. To use those spaces to draw
-mines, we'd modify the loop that draws cells, asking each cell if it corresponds
-to one of the ten spaces determined previously. If the answer is yes, we'd add
-the `mine` class to the cell, otherwise we'd leave the cell empty.
+How will that work exactly? Well, we'll first need some way of assigning
+tangible values to the spaces on the board so we can work with them in code. The
+simplest thing to use is numbers, but for reasons we'll see in a bit, we'll
+choose 0 for the first space instead of 1:
+
+<p class="image"><%= embed_svg("minesweeper-3/board-numbering.svg") %></p>
+
+Once we have a set of numbers, we can place those numbers in a virtual "hat" and
+draw from that hat ten times to give us the locations of ten mines:
+
+<div class="image illustration-wrapper" data-illustration="choosing-mine-locations">
+  <%= embed_svg("minesweeper-3/choosing-mine-locations.svg") %>
+</div>
+
+To draw the
+mines, we modify the loop that draws cells, asking each cell if it corresponds
+to one of the ten locations. If the answer is yes, we add the `mine` class to
+the cell, otherwise we leave the cell empty.
 
 That's a good plan, but it begs the question: if we are drawing spaces from a
 "hat" and checking through them as we build cells, just what *is* a space? It'd
@@ -149,9 +161,6 @@ If that's true, then we need some sort of value in code to represent a space's
 location. What if we were to assign a number to each space? That would work,
 although we would want to start from 0 instead of 1 (not only is it more common
 in programming to do so, but it will come in handy later):
-
-![board numbering](images/minesweeper-3/board-numbering.svg)
-{:.image}
 
 Note how the last location is not the number of total cells (81), but one less
 (80).

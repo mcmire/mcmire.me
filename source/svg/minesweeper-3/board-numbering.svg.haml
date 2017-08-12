@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+%svg(viewBox="0 0 841 361" xmlns="http://www.w3.org/2000/svg")
+  %g
+    %rect(class="stroke white-fill" x="0.5" y="0.5" width="360" height="360")
+    - 40.5.step(to: 320.5, by: 40) do |i|
+      %line(class="stroke" x1="#{i}" y1="0" x2="#{i}" y2="360.5")
+    - 40.5.step(to: 320.5, by: 40) do |i|
+      %line(class="stroke" x1="0" y1="#{i}" x2="360.5" y2="#{i}")
+  %g
+    - 9.times do |y|
+      - 9.times do |x|
+        %text(x="#{(40 * x) + 20.5}" y="#{(40 * y) + 20.5}"
+          text-anchor="middle"
+          alignment-baseline="central"
+          dominant-baseline="central")<
+          = ((9 * y) + x) + 1
+  %polygon(class="stroke grey-fill"
+    points="383.5 171.5 428.5 171.5 428.5 151.5 458.5 181.5 428.5 211.5 428.5 191.5 383.5 191.5")
+  %g
+    %rect(class="stroke white-fill" x="480.5" y="0.5" width="360" height="360")
+    - 520.5.step(to: 800.5, by: 40) do |i|
+      %line(class="stroke" x1="#{i}" y1="0" x2="#{i}" y2="360.5")
+    - 40.5.step(to: 320.5, by: 40) do |i|
+      %line(class="stroke" x1="480.5" y1="#{i}" x2="840.5" y2="#{i}")
+  %g
+    - 9.times do |y|
+      - 9.times do |x|
+        %text(x="#{(40 * x) + 500.5}" y="#{(40 * y) + 20.5}"
+          text-anchor="middle"
+          alignment-baseline="central"
+          dominant-baseline="central")<
+          = (9 * y) + x

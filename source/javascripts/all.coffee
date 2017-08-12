@@ -1,4 +1,4 @@
-#= require lodash
+#= require lodash/lodash
 #= require ./prism
 #= require ./prism-diff
 #= require ./prism-prompt

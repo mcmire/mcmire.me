@@ -76,6 +76,13 @@ helpers do
     html
   end
 
+  def render_haml(content)
+    tempfile = Tempfile.open("haml")
+    tempfile.write(content)
+    tempfile.close
+    Tilt["haml"].new(tempfile).render
+  end
+
   def embed_yt_video(video_id, width: 560, height: 315, description: nil)
     <<-HTML
 <figure class="embed video">
@@ -136,11 +143,76 @@ helpers do
 </iframe>
     HTML
   end
+
+  # Source: <https://gist.github.com/bitmanic/0047ef8d7eaec0bf31bb>
+  def embed_svg(path, attributes = {})
+    svg_content = read_svg(path)
+
+    if svg_content
+      doc = Nokogiri::HTML::DocumentFragment.parse(svg_content)
+      svg = doc.at_css("svg")
+
+      attributes.each do |key, value|
+        svg[key] = value
+      end
+
+      SvgOptimizer.optimize(svg.to_xml)
+    else
+      <<-SVG
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 400 30"
+          height="30px"
+        >
+          <text font-size="16" x="8" y="20" fill="#cc0000">
+            Error: "#{filename}" could not be found.
+          </text>
+          <rect
+            x="1"
+            y="1"
+            width="398"
+            height="28"
+            fill="none"
+            stroke-width="1"
+            stroke="#cc0000"
+          />
+        </svg>
+      SVG
+    end
+  end
+
+  def read_svg(path)
+    asset = sprockets.find_asset(path)
+    svg_directory = Pathname.new(root).join("source", "svg")
+
+    if asset
+      asset.source.force_encoding("UTF-8")
+    else
+      available_paths =
+        if path.start_with?("/")
+          [path, "#{path}.haml"]
+        else
+          [svg_directory.join(path), svg_directory.join("#{path}.haml")]
+        end
+
+      found_path = available_paths.find { |path| File.exist?(path) }
+
+      if found_path
+        content = File.read(found_path)
+
+        if found_path.to_s.end_with?(".haml")
+          render_haml(content)
+        else
+          content
+        end
+      end
+    end
+  end
 end
 
-set :css_dir, 'stylesheets'
-set :js_dir, 'javascripts'
-set :images_dir, 'images'
+set :css_dir, "stylesheets"
+set :js_dir, "javascripts"
+set :images_dir, "images"
 
 activate :directory_indexes
 
@@ -157,6 +229,8 @@ activate :s3_sync do |s3_sync|
 end
 
 page "404.html", directory_index: false
+
+page "*.svg", layout: false
 
 configure :development do
   set :debug_assets, true

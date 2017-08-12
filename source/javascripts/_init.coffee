@@ -5,6 +5,9 @@
 #= require ./_header
 #= require ./_math_block
 #= require ./_spoiler
+#= require ./_illustration_registry
+#= require ./_illustration_wrapper
+#= require_tree ./illustrations/minesweeper-3
 
 DEBUG_ANIMATION = false
 
@@ -52,6 +55,19 @@ initSpoilers = ->
     spoiler = new mcmire.me.Spoiler({ element })
     spoiler.activate()
 
+initIllustrations = ->
+  for element in document.querySelectorAll("[data-illustration]")
+    illustrationName = element.getAttribute("data-illustration")
+    illustrationConstructor =
+      mcmire.me.illustrationRegistry.find(illustrationName)
+    if illustrationConstructor
+      illustrationWrapper = new mcmire.me.IllustrationWrapper({
+        element,
+        illustrationConstructor
+      })
+      illustrationWrapper.activate()
+      illustrationWrapper.render()
+
 mcmire.me.init = ->
   renderGrid()
 
@@ -63,3 +79,4 @@ mcmire.me.init = ->
 
   renderMathBlocks()
   initSpoilers()
+  initIllustrations()

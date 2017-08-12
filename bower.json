@@ -17,10 +17,12 @@
   ],
   "dependencies": {
     "katex": "0.5.1",
-    "lodash": "3.x",
+    "lodash": "4.x",
+    "physics": "1.x",
+    "pt-serif": "1.x",
     "scopedQuerySelectorShim": "git://github.com/lazd/scopedQuerySelectorShim.git",
     "source-code-pro": "git://github.com/adobe-fonts/source-code-pro.git#release",
     "source-sans-pro": "git://github.com/adobe-fonts/source-sans-pro.git#release",
-    "pt-serif": "latest"
+    "svg.js": "2.x"
   }
 }

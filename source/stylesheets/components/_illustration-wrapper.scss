@@ -1,0 +1,66 @@
+.illustration-wrapper {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    flex: 1 1 auto;
+  }
+
+  .invisible {
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity $base-duration;
+  }
+
+  button {
+    background: transparent;
+    padding: 0;
+  }
+
+  .play::after,
+  .replay::after {
+    font-family: Icomoon;
+    font-size: 50px;
+    color: $overlay-button-color;
+    text-shadow: 0px 0px 20px white;
+    text-stroke: 10px white;
+  }
+
+  .play::after {
+    content: "\f04b";
+  }
+
+  .replay::after {
+    content: "\f01e";
+  }
+
+  &:not(.is-playing):hover {
+    cursor: pointer;
+
+    .play::after,
+    .replay::after {
+      color: black;
+    }
+  }
+}

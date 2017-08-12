@@ -12,3 +12,8 @@ bower install
 
 echo "=== Installing backend dependencies ==="
 bundle install
+
+if ! which svgo &>/dev/null; then
+  echo "=== Installing svgo ==="
+  npm install -g svgo
+fi
