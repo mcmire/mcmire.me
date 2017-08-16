@@ -185,6 +185,7 @@ those instructions look like? Let's see:
 * Build a `<td>` element
 * Add the `<td>` element to the `<tr>`
 * ...
+{:.pseudocode}
 
 Like the HTML we wrote earlier, there are lot of steps here that we're
 repeating. It's quite a mouthful, too. What if we grouped together those
@@ -200,6 +201,7 @@ them? Like this:
   * *Repeating the following for a total of 9 times:*
     * Build a `<td>` element
     * Add the `<td>` element to the `<tr>`
+{:.pseudocode}
 
 That's a lot better, isn't it? And as it turns out, we can convert these English
 instructions -- what we commonly call *pseudocode* -- into real code easily,
@@ -657,6 +659,7 @@ Remember the pseudocode we wrote at the beginning? It went something like this:
   * *Repeating the following for a total of 9 times:*
     * Build a `<td>` element
     * Add the `<td>` element to the `<tr>`
+{:.pseudocode}
 
 We know how to do the first three steps, so what about the rest? First we'll
 take our repeated sections and turn them into loops. Then we'll use jQuery to

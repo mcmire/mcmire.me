@@ -2,7 +2,7 @@
   background-color: $light-blue;
   font-size: 0.9em;
   padding: $small-spacing;
-  margin-left: 0;
+  margin: $small-spacing-with-extra 0;
 
   &, ul {
     list-style: none;
