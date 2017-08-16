@@ -1,6 +1,8 @@
 .pseudocode {
-  color: $blue;
+  background-color: $light-blue;
   font-size: 0.9em;
+  padding: $small-spacing;
+  margin-left: 0;
 
   &, ul {
     list-style: none;
@@ -8,5 +10,10 @@
 
   ul {
     margin-left: $small-spacing;
+    margin-bottom: 0;
+  }
+
+  li:last-child {
+    margin-bottom: 0;
   }
 }

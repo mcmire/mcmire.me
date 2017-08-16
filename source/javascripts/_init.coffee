@@ -39,7 +39,7 @@ renderCodeBlocks = ->
       codeModal: mcmire.me.codeModal
       element: element
     )
-  _.invoke codeBlocks, "render"
+  _.invokeMap codeBlocks, "render"
 
 renderMathBlocks = ->
   elements = document.querySelectorAll("script[type='math/katex']")

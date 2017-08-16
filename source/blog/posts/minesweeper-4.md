@@ -39,11 +39,10 @@ as long as we can, so what can we work on next?
 As before, let's start by writing some pseudocode so we have something to work
 with:
 
-```
-when a space is clicked
-  if the space is a mine
-    uncover all mines: add a "mine" class to each mine space
-```
+* When a space is clicked
+  * If the space is a mine
+    * **Uncover all mines:** Add a "mine" class to each mine space
+{:.pseudocode}
 
 We'll take another look at our JavaScript code:
 
@@ -52,22 +51,29 @@ const board = $("<table>").attr("id", "board");
 const body = $(document.body);
 body.append(board);
 
+const hatOfMineLocations = [];
+for (let n = 0; n <= 80; n++) {
+  hatOfMineLocations.push(n);
+}
+
 const mineLocations = [];
 for (let i = 0; i < 10; i++) {
-  const mineLocation = Math.floor(Math.random() * 80);
-  mineLocations.push(mineLocation);
+ const mineLocationIndex = Math.floor(Math.random() * hatOfMineLocations.length);
+ const mineLocation = hatOfMineLocations[mineLocationIndex];
+ mineLocations.push(mineLocation);
+ hatOfMineLocations.splice(mineLocationIndex, 1);
 }
 
 for (let rowIndex = 0; rowIndex < 9; rowIndex++) {
   const row = $("<tr>");
   board.append(row);
   for (let columnIndex = 0; columnIndex < 9; columnIndex++) {
-    const space = $("<td>");
+    const cell = $("<td>");
     const possibleMineLocation = (rowIndex * 9) + columnIndex;
     if (mineLocations.indexOf(possibleMineLocation) !== -1) {
-      space.addClass("mine");
+      cell.addClass("mine");
     }
-    row.append(space);
+    row.append(cell);
   }
 }
 ```
@@ -94,6 +100,7 @@ for now:
    }
  }
 ```
+{:data-no-overflow="true"}
 
 Now we need to make space for our new code. We know that we want to do something
 "when a space is clicked". That tells us that the new code is specific to a `td`
@@ -120,6 +127,7 @@ our pseudocode there, commenting it out so it serves as a placeholder:
    }
  }
 ```
+{:data-no-overflow="true"}
 
 Here's a question: How do we something when an element gets clicked? It may seem
 that we need an `if` statement. But that wouldn't work, as that would assume
@@ -169,15 +177,16 @@ use like this:
    }
  }
 ```
+{:data-no-overflow="true"}
 
 Here we're calling `on` with the name of the event, `"click"`. This registers an
 event listener, which is a JavaScript function.
 
-Where's the function? Here we're using the "fat arrow" syntax (`() => { ... }`
-vs. `function () { ... }`). This may look funny, but it's often used when
-passing a function as an argument to another function like this. The formal name
-for this style is an *arrow function*, and you can learn all about them and what
-they do [here][arrow-functions].
+Wait, where's the function we're passing to `on`? Here we're using the "fat
+arrow" syntax (`() => { ... }` vs. `function () { ... }`). This may look funny,
+but it's often used when passing a function as an argument to another function
+like this. The formal name for this style is an *arrow function*, and you can
+learn all about them and what they do [here][arrow-functions].
 {:.aside.aside--tip}
 
 [arrow-functions]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions#Arrow_functions
