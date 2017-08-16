@@ -4,15 +4,14 @@ layout: false
 ---
 
 <!DOCTYPE html>
-
 <html>
   <head>
     <title>Minesweeper</title>
-    <link rel="stylesheet" href="<%= asset_path(:css, "./minesweeper") %>" />
+    <link rel="stylesheet" href="<%= asset_path(:css, "../minesweeper-common/minesweeper-2") %>" />
   </head>
 
   <body>
-    <script src="<%= asset_path(:js, './jquery') %>"></script>
+    <script src="<%= asset_path(:js, '../minesweeper-common/jquery') %>"></script>
     <script src="<%= asset_path(:js, './minesweeper') %>"></script>
   </body>
 </html>

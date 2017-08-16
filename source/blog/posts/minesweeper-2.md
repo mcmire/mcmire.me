@@ -699,6 +699,6 @@ Now we need to [display mines on the board][minesweeper-3].
     <a href="/blog/minesweeper-1/">← Go back</a>
   </div>
   <div class="nav nav--right">
-    <a href="/blog/minesweeper-2/">Continue →</a>
+    <a href="/blog/minesweeper-3/">Continue →</a>
   </div>
 </div>
