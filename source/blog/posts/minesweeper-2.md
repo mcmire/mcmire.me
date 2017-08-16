@@ -1,5 +1,5 @@
 ---
-title: Making Minesweeper in JavaScript, Part 2
+title: "Building Minesweeper in JavaScript: Part 2"
 teaser: >
   In this post, we add jQuery to the project and generate the HTML for the board
   fully in JavaScript.

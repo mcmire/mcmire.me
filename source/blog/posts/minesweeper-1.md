@@ -1,5 +1,5 @@
 ---
-title: Making Minesweeper in JavaScript, Part 1
+title: "Building Minesweeper in JavaScript: Part 1"
 teaser: >
   In the first post in this series, we introduce the project by making a simple
   board.

@@ -1,5 +1,5 @@
 ---
-title: Making Minesweeper in JavaScript, Part 4
+title: "Building Minesweeper in JavaScript: Part 4"
 teaser: >
   In this post, we start to add the core game logic by revealing all spaces when
   a mine is clicked.
