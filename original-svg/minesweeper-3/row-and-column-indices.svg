@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 401 401" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <g transform="matrix(1, 0, 0, 1, 40, 40)">
+    <g>
+      <rect class="black-stroke white-fill" height="360" width="360" x="0.5" y="0.5" style="fill: rgb(255, 255, 255); stroke: rgb(0, 0, 0);"/>
+      <line class="black-stroke" x1="40.5" x2="40.5" y1="0.5" y2="360.5" style="stroke: rgb(0, 0, 0); fill: rgb(255, 255, 255);"/>
+      <line class="black-stroke" x1="80.5" x2="80.5" y1="0.5" y2="360.5" style="stroke: rgb(0, 0, 0); fill: rgb(255, 255, 255);"/>
+      <line class="black-stroke" x1="120.5" x2="120.5" y1="0.5" y2="360.5" style="stroke: rgb(0, 0, 0); fill: rgb(255, 255, 255);"/>
+      <line class="black-stroke" x1="160.5" x2="160.5" y1="0.5" y2="360.5" style="stroke: rgb(0, 0, 0); fill: rgb(255, 255, 255);"/>
+      <line class="black-stroke" x1="200.5" x2="200.5" y1="0.5" y2="360.5" style="stroke: rgb(0, 0, 0); fill: rgb(255, 255, 255);"/>
+      <line class="black-stroke" x1="240.5" x2="240.5" y1="0.5" y2="360.5" style="stroke: rgb(0, 0, 0); fill: rgb(255, 255, 255);"/>
+      <line class="black-stroke" x1="280.5" x2="280.5" y1="0.5" y2="360.5" style="stroke: rgb(0, 0, 0); fill: rgb(255, 255, 255);"/>
+      <line class="black-stroke" x1="320.5" x2="320.5" y1="0.5" y2="360.5" style="stroke: rgb(0, 0, 0); fill: rgb(255, 255, 255);"/>
+      <line class="black-stroke" x1="0.5" x2="360.5" y1="40.5" y2="40.5" style="stroke: rgb(0, 0, 0); fill: rgb(255, 255, 255);"/>
+      <line class="black-stroke" x1="0.5" x2="360.5" y1="80.5" y2="80.5" style="stroke: rgb(0, 0, 0); fill: rgb(255, 255, 255);"/>
+      <line class="black-stroke" x1="0.5" x2="360.5" y1="120.5" y2="120.5" style="stroke: rgb(0, 0, 0); fill: rgb(255, 255, 255);"/>
+      <line class="black-stroke" x1="0.5" x2="360.5" y1="160.5" y2="160.5" style="stroke: rgb(0, 0, 0); fill: rgb(255, 255, 255);"/>
+      <line class="black-stroke" x1="0.5" x2="360.5" y1="200.5" y2="200.5" style="stroke: rgb(0, 0, 0); fill: rgb(255, 255, 255);"/>
+      <line class="black-stroke" x1="0.5" x2="360.5" y1="240.5" y2="240.5" style="stroke: rgb(0, 0, 0); fill: rgb(255, 255, 255);"/>
+      <line class="black-stroke" x1="0.5" x2="360.5" y1="280.5" y2="280.5" style="stroke: rgb(0, 0, 0); fill: rgb(255, 255, 255);"/>
+      <line class="black-stroke" x1="0.5" x2="360.5" y1="320.5" y2="320.5" style="stroke: rgb(0, 0, 0); fill: rgb(255, 255, 255);"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 0, -40)">
+      <text class="cell-text black-fill" x="20.5" y="20.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 20px; text-anchor: middle; white-space: pre; alignment-baseline: central;">0</text>
+      <text class="cell-text black-fill" x="60.5" y="20.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 20px; text-anchor: middle; white-space: pre; alignment-baseline: central;">1</text>
+      <text class="cell-text black-fill" x="100.5" y="20.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 20px; text-anchor: middle; white-space: pre; alignment-baseline: central;">2</text>
+      <text class="cell-text black-fill" x="140.5" y="20.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 20px; text-anchor: middle; white-space: pre; alignment-baseline: central;">3</text>
+      <text class="cell-text black-fill" x="180.5" y="20.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 20px; text-anchor: middle; white-space: pre; alignment-baseline: central;">4</text>
+      <text class="cell-text black-fill" x="220.5" y="20.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 20px; text-anchor: middle; white-space: pre; alignment-baseline: central;">5</text>
+      <text class="cell-text black-fill" x="260.5" y="20.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 20px; text-anchor: middle; white-space: pre; alignment-baseline: central;">6</text>
+      <text class="cell-text black-fill" x="300.5" y="20.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 20px; text-anchor: middle; white-space: pre; alignment-baseline: central;">7</text>
+      <text class="cell-text black-fill" x="340.5" y="20.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 20px; text-anchor: middle; white-space: pre; alignment-baseline: central;">8</text>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, -40, 0)">
+      <text class="cell-text black-fill" x="20.5" y="60.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 20px; text-anchor: middle; white-space: pre; alignment-baseline: central;">1</text>
+      <text class="cell-text black-fill" x="20.5" y="100.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 20px; text-anchor: middle; white-space: pre; alignment-baseline: central;">2</text>
+      <text class="cell-text black-fill" x="20.5" y="140.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 20px; text-anchor: middle; white-space: pre; alignment-baseline: central;">3</text>
+      <text class="cell-text black-fill" x="20.5" y="180.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 20px; text-anchor: middle; white-space: pre; alignment-baseline: central;">4</text>
+      <text class="cell-text black-fill" x="20.5" y="220.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 20px; text-anchor: middle; white-space: pre; alignment-baseline: central;">5</text>
+      <text class="cell-text black-fill" x="20.5" y="260.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 20px; text-anchor: middle; white-space: pre; alignment-baseline: central;">6</text>
+      <text class="cell-text black-fill" x="20.5" y="300.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 20px; text-anchor: middle; white-space: pre; alignment-baseline: central;">7</text>
+      <text class="cell-text black-fill" x="20.5" y="340.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 20px; text-anchor: middle; white-space: pre; alignment-baseline: central;">8</text>
+      <text class="cell-text black-fill" x="20.5" y="60.5" transform="matrix(1, 0, 0, 1, 1.5559716304284734, -42.946378564781405)" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 20px; text-anchor: middle; white-space: pre; alignment-baseline: central;">0</text>
+    </g>
+    <g>
+      <text class="cell-text black-fill" x="220.5" y="180.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 16px; text-anchor: middle; white-space: pre; alignment-baseline: central;">(5,4)</text>
+      <text class="cell-text black-fill" x="99.317" y="99.793" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 16px; text-anchor: middle; white-space: pre; alignment-baseline: central;">(2,2)</text>
+      <text class="cell-text black-fill" x="181.122" y="338.515" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 16px; text-anchor: middle; white-space: pre; alignment-baseline: central;">(8,4)</text>
+    </g>
+    <g style="visibility: hidden;">
+      <text class="cell-text black-fill" x="60.5" y="60.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">11</text>
+      <text class="cell-text black-fill" x="100.5" y="60.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">12</text>
+      <text class="cell-text black-fill" x="140.5" y="60.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">13</text>
+      <text class="cell-text black-fill" x="180.5" y="60.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">14</text>
+      <text class="cell-text black-fill" x="220.5" y="60.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">15</text>
+      <text class="cell-text black-fill" x="260.5" y="60.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">16</text>
+      <text class="cell-text black-fill" x="300.5" y="60.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">17</text>
+      <text class="cell-text black-fill" x="340.5" y="60.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">18</text>
+      <text class="cell-text black-fill" x="60.5" y="100.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">20</text>
+      <text class="cell-text black-fill" x="100.5" y="100.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">21</text>
+      <text class="cell-text black-fill" x="140.5" y="100.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">22</text>
+      <text class="cell-text black-fill" x="180.5" y="100.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">23</text>
+      <text class="cell-text black-fill" x="220.5" y="100.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">24</text>
+      <text class="cell-text black-fill" x="260.5" y="100.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">25</text>
+      <text class="cell-text black-fill" x="300.5" y="100.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">26</text>
+      <text class="cell-text black-fill" x="340.5" y="100.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">27</text>
+      <text class="cell-text black-fill" x="60.5" y="140.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">29</text>
+      <text class="cell-text black-fill" x="100.5" y="140.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">30</text>
+      <text class="cell-text black-fill" x="140.5" y="140.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">31</text>
+      <text class="cell-text black-fill" x="180.5" y="140.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">32</text>
+      <text class="cell-text black-fill" x="220.5" y="140.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">33</text>
+      <text class="cell-text black-fill" x="260.5" y="140.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">34</text>
+      <text class="cell-text black-fill" x="300.5" y="140.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">35</text>
+      <text class="cell-text black-fill" x="340.5" y="140.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">36</text>
+      <text class="cell-text black-fill" x="60.5" y="180.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">38</text>
+      <text class="cell-text black-fill" x="100.5" y="180.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">39</text>
+      <text class="cell-text black-fill" x="140.5" y="180.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">40</text>
+      <text class="cell-text black-fill" x="180.5" y="180.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">41</text>
+      <text class="cell-text black-fill" x="220.5" y="180.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">42</text>
+      <text class="cell-text black-fill" x="260.5" y="180.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">43</text>
+      <text class="cell-text black-fill" x="300.5" y="180.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">44</text>
+      <text class="cell-text black-fill" x="340.5" y="180.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">45</text>
+      <text class="cell-text black-fill" x="60.5" y="220.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">47</text>
+      <text class="cell-text black-fill" x="100.5" y="220.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">48</text>
+      <text class="cell-text black-fill" x="140.5" y="220.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">49</text>
+      <text class="cell-text black-fill" x="180.5" y="220.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">50</text>
+      <text class="cell-text black-fill" x="220.5" y="220.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">51</text>
+      <text class="cell-text black-fill" x="260.5" y="220.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">52</text>
+      <text class="cell-text black-fill" x="300.5" y="220.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">53</text>
+      <text class="cell-text black-fill" x="340.5" y="220.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">54</text>
+      <text class="cell-text black-fill" x="60.5" y="260.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">56</text>
+      <text class="cell-text black-fill" x="100.5" y="260.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">57</text>
+      <text class="cell-text black-fill" x="140.5" y="260.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">58</text>
+      <text class="cell-text black-fill" x="180.5" y="260.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">59</text>
+      <text class="cell-text black-fill" x="220.5" y="260.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">60</text>
+      <text class="cell-text black-fill" x="260.5" y="260.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">61</text>
+      <text class="cell-text black-fill" x="300.5" y="260.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">62</text>
+      <text class="cell-text black-fill" x="340.5" y="260.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">63</text>
+      <text class="cell-text black-fill" x="60.5" y="300.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">65</text>
+      <text class="cell-text black-fill" x="100.5" y="300.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">66</text>
+      <text class="cell-text black-fill" x="140.5" y="300.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">67</text>
+      <text class="cell-text black-fill" x="180.5" y="300.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">68</text>
+      <text class="cell-text black-fill" x="220.5" y="300.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">69</text>
+      <text class="cell-text black-fill" x="260.5" y="300.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">70</text>
+      <text class="cell-text black-fill" x="300.5" y="300.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">71</text>
+      <text class="cell-text black-fill" x="340.5" y="300.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">72</text>
+      <text class="cell-text black-fill" x="60.5" y="340.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">74</text>
+      <text class="cell-text black-fill" x="100.5" y="340.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">75</text>
+      <text class="cell-text black-fill" x="140.5" y="340.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">76</text>
+      <text class="cell-text black-fill" x="180.5" y="340.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">77</text>
+      <text class="cell-text black-fill" x="220.5" y="340.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">78</text>
+      <text class="cell-text black-fill" x="260.5" y="340.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">79</text>
+      <text class="cell-text black-fill" x="300.5" y="340.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">80</text>
+      <text class="cell-text black-fill" x="340.5" y="340.5" style="dominant-baseline: central; font-family: &quot;PT Serif&quot;; font-size: 23px; text-anchor: middle; white-space: pre; alignment-baseline: central;">81</text>
+    </g>
+  </g>
+</svg>

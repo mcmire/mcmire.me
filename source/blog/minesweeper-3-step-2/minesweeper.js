@@ -2,10 +2,17 @@ const board = $("<table>").attr("id", "board");
 const body = $(document.body);
 body.append(board);
 
+const hatOfMineLocations = [];
+for (let n = 0; n <= 80; n++) {
+  hatOfMineLocations.push(n);
+}
+
 const mineLocations = [];
 for (let i = 0; i < 10; i++) {
-  const mineLocation = Math.floor(Math.random() * 80);
-  mineLocations.push(mineLocation);
+ const mineLocationIndex = Math.floor(Math.random() * hatOfMineLocations.length);
+ const mineLocation = hatOfMineLocations[mineLocationIndex];
+ mineLocations.push(mineLocation);
+ hatOfMineLocations.splice(mineLocationIndex, 1);
 }
 
 for (let rowIndex = 0; rowIndex < 9; rowIndex++) {

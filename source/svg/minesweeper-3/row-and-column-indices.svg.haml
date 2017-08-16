@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+%svg(viewBox="0 0 401 401" xmlns="http://www.w3.org/2000/svg")
+  %g(transform="translate(40, 40)")
+    %rect(class="black-stroke white-fill" x="0.5" y="0.5" width="360" height="360")
+    - 40.5.step(to: 320.5, by: 40) do |i|
+      %line(class="black-stroke" x1="#{i}" y1="0.5" x2="#{i}" y2="360.5")
+    - 40.5.step(to: 320.5, by: 40) do |i|
+      %line(class="black-stroke" x1="0.5" y1="#{i}" x2="360.5" y2="#{i}")
+  %g
+    - (0..8).each do |i|
+      %text(class="cell-text" x="#{(40 * i) + 60.5}" y="20.5")<
+        = i
+  %g
+    - (0..8).each do |i|
+      %text(class="cell-text" x="20.5" y="#{(40 * i) + 60.5}")<
+        = i
+  %g
+    %text(class="small-text" x="260.5" y="220.5")<
+      (5,4)
+    %text(class="small-text" x="140.5" y="140.5")<
+      (2,2)
+    %text(class="small-text" x="220.5" y="380.5")<
+      (4,8)

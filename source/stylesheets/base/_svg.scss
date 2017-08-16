@@ -2,24 +2,15 @@ svg {
   rect,
   path,
   ellipse {
-    fill: none;
-    stroke: none;
-  }
-
-  .stroke {
-    stroke: black;
-  }
-
-  .white-fill {
-    fill: #fff;
-  }
-
-  .grey-fill {
-    fill: #ddd;
+    fill: inherit;
+    stroke: inherit;
   }
 
   text {
-    font-family: "PT Serif";
-    font-size: 23px;
+    font-family: $base-font-family;
+    font-size: inherit;
+    text-anchor: inherit;
+    alignment-baseline: inherit;
+    dominant-baseline: inherit;
   }
 }

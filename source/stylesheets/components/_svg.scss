@@ -1,0 +1,50 @@
+svg {
+  .cell text,
+  .cell-text,
+  .small-text {
+    text-anchor: middle;
+    alignment-baseline: central;
+    dominant-baseline: central;
+  }
+
+  .cell text, .cell-text {
+    font-size: 23px;
+  }
+
+  .small-text {
+    font-size: 15px;
+  }
+
+  .black-stroke {
+    stroke: black;
+  }
+
+  .white-stroke {
+    stroke: white;
+  }
+
+  .dashed {
+    stroke-dasharray: 2px;
+  }
+
+  .white-fill {
+    fill: white;
+  }
+
+  .black-fill {
+    fill: black;
+  }
+
+  .grey-fill {
+    fill: #ddd;
+  }
+
+  .dark-grey-fill {
+    fill: #999;
+  }
+
+  use {
+    fill: inherit;
+    stroke: inherit;
+  }
+}

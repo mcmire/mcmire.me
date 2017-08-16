@@ -149,14 +149,15 @@ helpers do
     svg_content = read_svg(path)
 
     if svg_content
-      doc = Nokogiri::HTML::DocumentFragment.parse(svg_content)
+      doc = Nokogiri::XML.parse(svg_content)
       svg = doc.at_css("svg")
 
       attributes.each do |key, value|
         svg[key] = value
       end
 
-      SvgOptimizer.optimize(svg.to_xml)
+      # SvgOptimizer.optimize(doc.to_xml)
+      doc.to_xml
     else
       <<-SVG
         <svg

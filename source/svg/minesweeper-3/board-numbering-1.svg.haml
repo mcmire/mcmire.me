@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+%svg(viewBox="0 0 361 361" xmlns="http://www.w3.org/2000/svg")
+  %g
+    %rect(class="black-stroke white-fill" x="0.5" y="0.5" width="360" height="360")
+    - 40.5.step(to: 320.5, by: 40) do |i|
+      %line(class="black-stroke" x1="#{i}" y1="0.5" x2="#{i}" y2="360.5")
+    - 40.5.step(to: 320.5, by: 40) do |i|
+      %line(class="black-stroke" x1="0.5" y1="#{i}" x2="360.5" y2="#{i}")
+  %g
+    - 9.times do |y|
+      - 9.times do |x|
+        %text(class="cell-text black-fill" x="#{(40 * x) + 20.5}" y="#{(40 * y) + 20.5}")<
+          = ((9 * y) + x) + 1

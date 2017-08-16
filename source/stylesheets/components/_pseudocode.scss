@@ -1,0 +1,12 @@
+.pseudocode {
+  color: $blue;
+  font-size: 0.9em;
+
+  &, ul {
+    list-style: none;
+  }
+
+  ul {
+    margin-left: $small-spacing;
+  }
+}

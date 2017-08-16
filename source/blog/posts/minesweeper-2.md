@@ -316,6 +316,7 @@ called the "Developer Tools". You can bring up this pane by pressing
 there, you should see a bunch of HTML elements that represent the page. Click on
 the arrow next to the `<body>` element and you should see something like this
 (Chrome and Firefox are shown below):
+{:#developer-tools}
 
 [minesweeper-2-step-1]: /blog/minesweeper-2-step-1/minesweeper.html
 
