@@ -38,18 +38,41 @@ precompilers up front.
 [javascript-daily]: https://twitter.com/javascriptdaily
 [javascript-fatigue]: https://medium.com/@ericclemmons/javascript-fatigue-48d4011b6fc4
 
-What we'll be making is a game called [Minesweeper]. You may have heard of it;
-for a long time, it was included on every Windows computer. Even if you are
-unfamiliar with the game, don't worry. The rules are simple, and there are no
-animations or complicated logic for us to implement.
+**What we'll be making is a game called [Minesweeper]**. (In fact, the animation
+at the top of this post is the end result.) You may have heard of it; for a long
+time, it was included on every Windows computer. Even if you are unfamiliar with
+the game, don't worry. The rules are simple, and there are no animations or
+complicated logic for us to implement.
 
 [Minesweeper]: https://en.wikipedia.org/wiki/Microsoft_Minesweeper
+
+### The game
+
+![Microsoft Minesweeper](/images/minesweeper-1/ms-minesweeper.png)
+{:.floating-image}
+
+Minesweeper is played on a board of spaces, typically 9 long and 9 wide. Across
+the board there are mines hidden within 10 random spaces. When the game starts,
+all of the spaces appear the same, and the player can uncover a space by
+clicking on it. The algorithm to uncover a space has three possible pathways
+depending on the true identity of the space:
+
+* If any of the space's neighbors are a mine, the number of mines is counted and
+  displayed inside the space.
+* If none of the space's neighbors are mines, no number is displayed inside the
+  space. However, any neighbors that have no mine neighbors themselves are
+  uncovered, then *their* neighbors that have no mine neighbors are uncovered,
+  and so forth and so on.
+* If the space is a mine, all of the mines are uncovered and the game ends.
+
+The player wins, then, by managing to uncover all of the spaces around mines
+without actually triggering any of them.
 
 ### An overview of this series
 
 If you're getting started in web development, or if you haven't kept up with all
-of the updates that have been made to JavaScript lately, then this series is for
-you! Here are the topics that we'll cover:
+of the updates that have been made to JavaScript in a while, then this series is
+for you! Here are the topics that we'll cover:
 
 * Using HTML and CSS to display the game board statically
 * Using [jQuery][]{:target="_blank"} to render the game board
@@ -65,6 +88,8 @@ you! Here are the topics that we'll cover:
 [JavaScript DOM API]: https://www.w3.org/TR/html51/dom.html
 
 ### What you'll need to know
+
+Before we get started, there are a few prerequisites.
 
 First, since I'm going to focus on JavaScript in this series, I have to make the
 assumption that you have some understanding of HTML and CSS already. If you need
@@ -89,28 +114,6 @@ You'll learn better this way, and anyway, it should be a lot more fun.
 With that out of the way, let's start making the game!
 
 ---
-
-### The game
-
-![Microsoft Minesweeper](/images/minesweeper-1/ms-minesweeper.png)
-{:.floating-image}
-
-Minesweeper is played on a board of spaces, typically 9 long and 9 wide. Across
-the board there are mines hidden within 10 random spaces. When the game starts,
-all of the spaces appear the same, and the player can uncover a space by
-clicking on it. The algorithm to uncover a space has three possible pathways
-depending on the true identity of the space:
-
-* If any of the space's neighbors are a mine, the number of mines is counted and
-  displayed inside the space.
-* If none of the space's neighbors are mines, no number is displayed inside the
-  space. However, any neighbors that have no mine neighbors themselves are
-  uncovered, then *their* neighbors that have no mine neighbors are uncovered,
-  and so forth and so on.
-* If the space is a mine, all of the mines are uncovered and the game ends.
-
-The player wins, then, by managing to uncover all of the spaces around mines
-without actually triggering any of them.
 
 ### Starting small
 
