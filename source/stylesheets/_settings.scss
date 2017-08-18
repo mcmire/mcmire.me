@@ -39,11 +39,14 @@ $blue: #376dc3;
 $lighter-blue: tint($blue, 20%);
 $light-blue: #eef3fb;
 $light-gray: #f9f9f9;
+$medium-light-gray: #ddd;
 $medium-gray: #999;
 $dark-gray: #333;
 $light-yellow: #fdfaf2;
 $light-red: #feecef;
 $reddish-gray: #a29696;
+$red: #e24949;
+$light-reddish-gray: desaturate(lighten($red, 20%), 20%);
 
 // Applied Colors
 $base-font-color: $dark-gray;

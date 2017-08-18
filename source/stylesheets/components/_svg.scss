@@ -1,9 +1,9 @@
 svg {
   .cell text,
   .cell-text,
-  .small-text {
+  .small-text,
+  .centered-text {
     text-anchor: middle;
-    alignment-baseline: central;
     dominant-baseline: central;
   }
 
@@ -15,12 +15,27 @@ svg {
     font-size: 15px;
   }
 
+  .paragraph-text {
+    dominant-baseline: alphabetic;
+    text-anchor: start;
+    fill: $dark-gray;
+  }
+
+  .monospace-text {
+    font-family: $code-font-family;
+    font-size: 0.9em;
+  }
+
   .black-stroke {
     stroke: black;
   }
 
   .white-stroke {
     stroke: white;
+  }
+
+  .red-stroke {
+    stroke: $red;
   }
 
   .dashed {
@@ -36,11 +51,23 @@ svg {
   }
 
   .grey-fill {
-    fill: #ddd;
+    fill: $medium-light-gray;
   }
 
   .dark-grey-fill {
-    fill: #999;
+    fill: $medium-gray;
+  }
+
+  .red-fill {
+    fill: $red;
+  }
+
+  .blue-fill {
+    fill: $blue;
+  }
+
+  .pink-fill {
+    fill: $light-reddish-gray;
   }
 
   use {

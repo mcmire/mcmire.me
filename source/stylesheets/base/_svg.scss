@@ -1,9 +1,15 @@
 svg {
+  width: 100%;
+
   rect,
   path,
   ellipse {
     fill: inherit;
     stroke: inherit;
+  }
+
+  ellipse {
+    fill: none;
   }
 
   text {
