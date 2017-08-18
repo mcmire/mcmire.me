@@ -10,7 +10,7 @@ tags: programming
 [At this point][minesweeper-3], we are able to place mines onto the board and
 show those mines when the game loads. Now we can start to get into more of the
 core functionality. Remember that if the player clicks on a space on the board,
-there are three possibilities or cases:
+there are three things that can happen:
 
 [minesweeper-3]: /blog/minesweeper-3
 
@@ -18,8 +18,8 @@ there are three possibilities or cases:
   and uncover the space, displaying that number inside the space.
 * If none of the space's neighbors are mines, we uncover the space, displaying
   no number inside. We also uncover any neighbors that have no mine neighbors
-  themselves, then uncover *their* neighbors that have no mine neighbors, and we
-  keep doing this until we can't do it anymore.
+  themselves, then uncover *their* neighbors that have no mine neighbors, and so
+  forth and so on.
 * If the space is a mine, then we uncover all of the mines.
 
 Take a moment to read over these. We want to keep things as simple as possible
@@ -282,8 +282,8 @@ Try clicking around until you hit a mine!
 
 ### What's next
 
-Our code is looking a little messy at this point. It'll help us in the future if
-we [refactor it][minesweeper-5].
+Next we'll finish the core logic behind the game by implementing [what to do when
+a space that *isn't* a mine is uncovered][minesweeper-5].
 
 [minesweeper-5]: /blog/minesweeper-5/
 
