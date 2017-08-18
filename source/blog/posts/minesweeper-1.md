@@ -39,23 +39,23 @@ precompilers up front.
 [javascript-fatigue]: https://medium.com/@ericclemmons/javascript-fatigue-48d4011b6fc4
 
 **What we'll be making is a game called [Minesweeper]**. (In fact, the animation
-at the top of this post is the end result.) You may have heard of it; for a long
-time, it was included on every Windows computer. Even if you are unfamiliar with
-the game, don't worry. The rules are simple, and there are no animations or
-complicated logic for us to implement.
+at the top of this post is what we'll end up with.) You may have heard of it;
+for a long time, it was included on every Windows computer. Even if you are
+unfamiliar with the game, don't worry. The rules are simple, and there are no
+animations or complicated logic for us to implement.
 
-[Minesweeper]: https://en.wikipedia.org/wiki/Microsoft_Minesweeper
+[Minesweeper]: http://www.minesweeper.info/wiki/Windows_Minesweeper
 
 ### The game
 
 ![Microsoft Minesweeper](/images/minesweeper-1/ms-minesweeper.png)
 {:.floating-image}
 
-Minesweeper is played on a board of spaces, typically 9 long and 9 wide. Across
-the board there are mines hidden within 10 random spaces. When the game starts,
-all of the spaces appear the same, and the player can uncover a space by
-clicking on it. The algorithm to uncover a space has three possible pathways
-depending on the true identity of the space:
+Minesweeper is played on a square board of spaces, and the game starts with a
+set number of mines scattered in secret across it. (In the Beginner version, the
+size of the board is 9x9 and there are 10 mines.) The player uncovers spaces by
+clicking on them. Uncovering a space has three possible outcomes depending on
+the true identity of the space:
 
 * If any of the space's neighbors are a mine, the number of mines is counted and
   displayed inside the space.
@@ -80,12 +80,14 @@ for you! Here are the topics that we'll cover:
 * Refactoring code into functions and classes
 * Using ES2017 (and understanding how it differs from ES5)
 * Replacing jQuery with the [JavaScript DOM API][]{:target="_blank"}
+* Writing tests for the game using [Jest][]{:target="_blank"}
 * Splitting the game logic and data from the display code
 * Substituting the view layer with React
 * Bonus: Implementing the game using Ember and Angular
 
 [jQuery]: http://jquery.com
 [JavaScript DOM API]: https://www.w3.org/TR/html51/dom.html
+[Jest]: https://facebook.github.io/jest/
 
 ### What you'll need to know
 
