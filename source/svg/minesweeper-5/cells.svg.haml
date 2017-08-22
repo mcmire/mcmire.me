@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 %svg(viewBox="0 0 545 375" xmlns="http://www.w3.org/2000/svg")
   %g(transform="translate(11, 11)")
-    %text.monospace-text.centered-text.grey-fill(x="0" y="0") [
+    %text.monospace-text.centered-text.dark-grey-fill(x="0" y="0") [
     - 9.times do |r|
       %g(transform="translate(0, #{(35 * r) + 35})")
         - if r == 3
           %text.centered-text.red-fill(x="0" y="0")= r
         - else
           %text.centered-text(x="0" y="0")= r
-        %text.monospace-text.centered-text.grey-fill(x="20" y="0") [
+        %text.monospace-text.centered-text.dark-grey-fill(x="20" y="0") [
         - 9.times do |c|
           %g(transform="translate(#{(55 * c) + 50}, 0)")
             - if r == 0
@@ -27,8 +27,8 @@
             %text.monospace-text.centered-text.white-fill(x="0" y="0")
               &lt;td&gt;
             - if c < 8
-              %text.monospace-text.centered-text.grey-fill(x="27" y="0") ,
-        %text.monospace-text.centered-text.grey-fill(x="520" y="0") ]
+              %text.monospace-text.centered-text.dark-grey-fill(x="27" y="0") ,
+        %text.monospace-text.centered-text.dark-grey-fill(x="520" y="0") ]
         - if r < 8
-          %text.monospace-text.centered-text.grey-fill(x="530" y="0") ,
-    %text.monospace-text.centered-text.grey-fill(x="0" y="350") ]
+          %text.monospace-text.centered-text.dark-grey-fill(x="530" y="0") ,
+    %text.monospace-text.centered-text.dark-grey-fill(x="0" y="350") ]
