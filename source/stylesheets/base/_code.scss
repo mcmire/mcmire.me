@@ -66,9 +66,7 @@ pre {
     }
 
     .overlay {
-      background:
-        image-url("wave_border.svg") 3px bottom repeat-x,
-        radial-gradient(transparent 50%, black);
+      background: radial-gradient(transparent 50%, black);
       height: 100%;
       left: 0;
       opacity: 0;
