@@ -8,19 +8,19 @@ vi: ft=ghmarkdown
 
 [We've now got it][minesweeper-4] so that when the player clicks a mine, we
 reveal all mines across the board, signaling the end of the game. But what
-happens if the player clicks a space that *isn't* a mine? As we mentioned
-before, there are two possible outcomes depending on the spaces that neighbor
-the space itself:
+happens if the player clicks a space that *isn't* a mine? In the the previous
+post, we laid out the two possible outcomes depending on the spaces that
+surround the space itself. The first of those outcomes is easier than the
+second, so we'll focus on that next. We can represent it as pseudocode like
+this:
 
-* If any of the space's neighbors is a mine, we count how many there are
-  and uncover the space, displaying that number inside the space.
-* If none of the neighbors are mines, we uncover the space but do not display a
-  number inside. Of the neighbors, we then uncover any that have no mine
-  neighbors themselves, then uncover *their* neighbors that have no mine
-  neighbors, and so forth and so on until we run out of spaces to uncover.
+* If any of the spaces surrounding the space is a mine:
+  * Show the space as uncovered
+  * Count the surrounding mines and show them inside the space
+{:.pseudocode}
 
-We won't worry about deciphering this at the moment -- for now, let's store this
-information in `minesweeper.js` so we have a placeholder:
+Read over this, but don't worry about fully deciphering this at the moment. For
+now, let's store this information in `minesweeper.js` so we have a placeholder:
 
 ``` diff
  ...
@@ -45,13 +45,9 @@ information in `minesweeper.js` so we have a placeholder:
          });
 -      }
 +      } else {
-+        // If any of this space's neighbors is a mine:
-+        //   Uncover the space
-+        //   Count the mine neighbors and show them inside the space
-+        // else:
-+        //   Uncover the space
-+        //   Uncover neighbors with no mine neighbors,
-+        //     and neighbors of neighbors with no mine neighbors, etc.
++        // If any of the spaces surrounding the space is a mine:
++        //   Show the space as uncovered
++        //   Count the surrounding mines and show them inside the space
 +      }
      });
    }
@@ -59,43 +55,222 @@ information in `minesweeper.js` so we have a placeholder:
 ```
 {:data-no-overflow="true"}
 
-Regardless of which branch we implement, we'll first need to determine how many
-of a space's neighbors are mines. And to do *that*, we'll need to find the
-neighbors themselves.
-
 [minesweeper-4]: /blog/minesweeper-4
 
-### Storing the board as data
+### Uncovering spaces
 
-First things first: what do we mean by the "neighbors" of a space? We mean the
-spaces that sit adjacent to it in all directions, as well as the spaces that are
-directly diagonal to it in all directions. For instance, the grey spaces here
-are neighbors of the red space in the middle:
+Before we dive into implementing these new changes, let's talk about how they'll
+affect the HTML and CSS.
+
+So far, our board is made up of a series of `td` elements. Whenever the player
+clicks on a mine, a `mine` class is added to any spaces that are mines, and the
+space receives a black background.
+
+Now we're introducing this concept of "uncovering" a space that isn't a mine. In
+a typical game of Minesweeper, these spaces are pushed in visually. We could
+recreate this with CSS, but we don't want to go overboard. For right now, let's
+say that these spaces receive a gray background instead of a black one. In order
+to apply this style, let's give uncovered spaces an `uncovered` class. We'll
+modify `minesweeper.css` like this:
+
+``` diff
+ #board {
+   height: 200px;
+   left: 50%;
+   margin-left: -100px;
+   margin-top: -100px;
+   position: absolute;
+   top: 50%;
+   width: 200px;
+ }
+
+ td {
+   border: 1px solid black;
+   cursor: pointer;
+ }
+
+-td:not(.mine):hover {
++td:not(.uncovered):hover {
+   background-color: #ddd;
+ }
+
++.uncovered {
++  background-color: gray;
++  color: white;
++}
++
+ .mine {
+   background-color: black;
+ }
+```
+{:data-no-overflow="true"}
+
+Now, whenever we write code, one thing that we should do constantly is to put
+ourselves in the shoes of someone who is looking over our code for the first
+time and imagine how they might interpret it. While we wouldn't expect them to
+see what's in our head just by reading it, we should help them gain as much of
+an understanding as possible. Giving consistent and accurate names to various
+items in our code will go a long way in achieving this.
+
+In this case, our CSS mentions two categories of things: "uncovered" things and
+"mines". We never explicitly mention that these "mines" are also supposed to be
+uncovered, so our code paints an incomplete picture of reality and could be
+confusing. Let's address that briefly:
+
+``` diff
+ #board {
+   height: 200px;
+   left: 50%;
+   margin-left: -100px;
+   margin-top: -100px;
+   position: absolute;
+   top: 50%;
+   width: 200px;
+ }
+
+ td {
+   border: 1px solid black;
+   cursor: pointer;
+ }
+
+ td:not(.uncovered):hover {
+   background-color: #ddd;
+ }
+
+-.uncovered {
++.uncovered:not(.mine) {
+   background-color: gray;
+   color: white;
+ }
+
+-.mine {
++.uncovered.mine {
+   background-color: black;
+ }
+```
+{:data-no-overflow="true"}
+
+There -- that's a little better.
+
+Finally, in uncovering a space where one or more mines surround it, we'll need
+to add a count inside of the space. We don't want to get *too* far ahead of
+ourselves, but it pays to think about what the HTML will look like. The simplest
+way to do this is to set the content of the `td` element to the number itself.
+When we implement the code for this later, we'll discover that none of the `td`s
+(which are empty right now) have consistent dimensions and will stretch once
+more content is added to them. We need to freeze those dimensions so that they
+are exactly 1/9 of the board. In addition, the number that we add will need to
+be centered within the space. Let's take care of both of those issues now:
+
+``` diff
+ #board {
+   height: 200px;
+   left: 50%;
+   margin-left: -100px;
+   margin-top: -100px;
+   position: absolute;
+   top: 50%;
+   width: 200px;
+ }
+
+ td {
+   border: 1px solid black;
+   cursor: pointer;
++  width: 11.1111111%;
++  height: 11.1111111%;
++  text-align: center;
++  vertical-align: center;
+ }
+
+ td:not(.uncovered):hover {
+   background-color: #ddd;
+ }
+
+ .uncovered:not(.mine) {
+   background-color: gray;
+   color: white;
+ }
+
+ .uncovered.mine {
+   background-color: black;
+ }
+```
+{:data-no-overflow="true"}
+
+Because we've changed the definition of the `mine` class and added a new class,
+our board is now broken. To fix this, we need to adjust our JavaScript code to
+match:
+
+``` diff
+ ...
+ for (let rowIndex = 0; rowIndex < 9; rowIndex++) {
+   const row = $("<tr>");
+   board.append(row);
+   for (let columnIndex = 0; columnIndex < 9; columnIndex++) {
+     const space = $("<td>");
+     const possibleMineLocation = (rowIndex * 9) + columnIndex;
+     const isMine = (mineLocations.indexOf(possibleMineLocation) !== -1);
+
+     if (isMine) {
+       mines.push(space);
++      space.addClass("mine");
+     }
+
+     row.append(space);
+
+     space.on("click", () => {
+       if (isMine) {
+         mines.forEach(mine => {
+-          mine.addClass("mine");
++          mine.addClass("uncovered");
+         });
+       }
+     });
+   }
+ }
+```
+{:data-no-overflow="true"}
+
+We should see the [same result][minesweeper-5-step-1]{:target="_blank"} as
+before, but this should set us up nicely for the changes we're about to make:
+
+[minesweeper-5-step-1]: /blog/minesweeper-5-step-1/minesweeper.html
+
+<iframe height="300" width="100%" src="/blog/minesweeper-5-step-1/minesweeper.html" border="0"></iframe>
+
+### Neighbors
+
+Let's take another look at the pseudocode:
+
+* If any of the spaces surrounding the space is a mine:
+  * Show the space as uncovered
+  * Count the surrounding mines and show them inside the space
+{:.pseudocode}
+
+There are a few different pieces that we need to implement, but the first thing
+that pops out is the idea of spaces that surround other spaces -- or something
+we'll call *neighbors* for short. For instance, all of the grey spaces here are
+*neighbors* of the red space:
 
 <div class="image with-smaller-max-height"
   ><%= embed_svg("minesweeper-5/neighbors.svg") %></div>
 
-Most spaces will have 9 neighbors, except for those spaces on the edge of the
+Most spaces will have 9 neighbors, except for those that live on the edge of the
 board. For instance, a corner space has only 3 neighbors:
 
-<div class="image with-smaller-max-height"
+<div class="image with-very-smaller-max-height"
   ><%= embed_svg("minesweeper-5/neighbors-at-corner.svg") %></div>
 
-With that in mind, how do we find them? Well, remember in [part
-3][minesweeper-3] how we learned that we have a way to denote the location of a
-space using X- and Y-coordinates?
+Okay, so how do we find the neighbors for any space on the board? Well, remember
+in [part 3][minesweeper-3] how we learned that we have a way to denote the
+location of a space using X- and Y-coordinates?
 
 [minesweeper-3]: /blog/minesweeper-3
 
 <div class="image with-max-height"
   ><%= embed_svg("minesweeper-3/row-and-column-indices.svg") %></div>
 
-If we had a way to look up certain spaces by their coordinates, we could take a
-space's coordinates and add or subtract a row or column from them in as many
-directions as were allowable. Then we'd have coordinates for that space's
-neighbors and we could look up the spaces that belong to those coordinates.
-
-Let's review the loop that we're using to draw the spaces:
+This is made possible by the loop we use to draw the spaces:
 
 ``` javascript
 for (let rowIndex = 0; rowIndex < 9; rowIndex++) {
@@ -108,14 +283,18 @@ for (let rowIndex = 0; rowIndex < 9; rowIndex++) {
 }
 ```
 
-So here we have spaces -- which are really `td` elements -- and we have the
-`rowIndex`es and `columnIndex`es that represents those spaces on the board. But
-we don't have a way to look up arbitrary spaces. What's the simplest way to do
-this?
+If we had a way to look up certain spaces by their coordinates, we could take a
+space's coordinates and add or subtract a row or column from them in as many
+directions as were allowable. Then we'd have coordinates for that space's
+neighbors and we could look up the spaces that belong to those coordinates.
 
-We'll have to put on our imagination hat for a bit. What if we had an array of
-arrays of `td` elements, where the outer array represented the rows in the board
-and each inner array represented the column in a row?
+How do we do this? We'll have to put on our imagination hat.
+
+### Storing the board as data
+
+What if we had an array of arrays of `td` elements, where the outer array
+represented the rows in the board and each inner array represented the column in
+a row?
 
 <div class="image"><%= embed_svg("minesweeper-5/cells.svg") %></div>
 
@@ -149,6 +328,7 @@ We then add `td`s to this array as we build them.
 
      if (isMine) {
        mines.push(space);
+       space.addClass("mine");
      }
 +
 +    spaces[rowIndex][columnIndex] = space;
@@ -158,16 +338,12 @@ We then add `td`s to this array as we build them.
      space.on("click", () => {
        if (isMine) {
          mines.forEach(mine => {
-           mine.addClass("mine");
+           mine.addClass("uncovered");
          });
        } else {
-         // If any of this space's neighbors are mines:
-         //   Uncover the space
-         //   Count the mine neighbors and show them inside the space
-         // else:
-         //   Uncover the space
-         //   Uncover neighbors with no mine neighbors,
-         //     and neighbors of neighbors with no mine neighbors, etc.
+         // If any of the spaces surrounding the space is a mine:
+         //   Show the space as uncovered
+         //   Count the surrounding mines and show them inside the space
        }
      });
    }
@@ -180,12 +356,9 @@ We then add `td`s to this array as we build them.
 Now that we have a data structure that mimics the board itself, we can use it to
 look up the neighbors for a space.
 
-Look back at the picture we gave earlier. We need some portion of code that uses
-the `rowIndex` and `columnIndex` for a particular space and consults the
-`spaces` array we just created to assemble all of the neighboring spaces into an
-array. We're not absolutely certain what this code ought to look like, so we'll
-have to flex our creative muscles again and sketch something out. (Don't put
-this in `minesweeper.js` just yet.)
+There's code we need to write, but we're not certain what it's going to look
+like, so we'll have to sketch something out. (Don't put this in `minesweeper.js`
+just yet.) Let's start by saying:
 
 ``` javascript
 const north = spaces[rowIndex - 1][columnIndex];
@@ -207,9 +380,10 @@ const neighbors = [
   southeast
 ];
 ```
+{:data-no-overflow="true"}
 
-That's a good start, but as we mentioned earlier, a space may not always have 9
-neighbors -- it depends on whether it is in the middle or at an edge. Each time
+That's good, but as we mentioned earlier, a space may not always have 9
+neighbors, as it depends on whether it is in the middle or at an edge; each time
 we access a different row or column, we need to consider that it may or may not
 exist. So let's add in some checks:
 
@@ -262,6 +436,7 @@ if (nextRow != null) {
   }
 }
 ```
+{:data-no-overflow="true"}
 
 Here we're using <code><i>value</i> != null</code> whenever we want to check
 that a row or column is present. In JavaScript, it's generally best to use `===`
@@ -343,6 +518,7 @@ if (southeast != null) {
   neighbors.push(southeast);
 }
 ```
+{:data-no-overflow="true"}
 
 The second thing we can do is to replace all of the checks for `null` we're
 making with something more succinct. We'll start by completely removing those
@@ -371,24 +547,49 @@ const neighbors = [
   southeast
 ];
 ```
+{:data-no-overflow="true"}
 
 Now we need to address the `null` values that may appear in `neighbors`. We
 don't want a bunch of `if` statements like we had before, so what do we do?
-Well, Array objects have several useful methods you can call on them to process
-the values in that array in some fashion. In this case, we want to take our
-`neighbors` array and remove all of the `null` values. We can do this with the [`filter`][array-filter] method.
+We could loop through all of the neighbors and build a new array that consist
+only of ones that are not null:
 
-**`filter` acts like a sieve**: it will look at each value in the array
-and call a function that you specify to determine what to do with the value.
-If the function returns true, then it will keep the value, throwing it into a
-"keep" pile; otherwise, it will discard the value. When it's finished, the
-function will return the values it's kept.
+``` javascript
+const previousRow = spaces[rowIndex - 1] || [];
+const currentRow = spaces[rowIndex];
+const nextRow = spaces[rowIndex + 1] || [];
+const north = previousRow[columnIndex];
+const south = nextRow[columnIndex];
+const west = currentRow[columnIndex - 1];
+const east = currentRow[columnIndex + 1];
+const northwest = previousRow[columnIndex - 1];
+const northeast = previousRow[columnIndex + 1];
+const southwest = nextRow[columnIndex - 1];
+const southeast = nextRow[columnIndex + 1];
+const neighborsWithPossibleNulls = [
+  north,
+  south,
+  west,
+  east,
+  northwest,
+  northeast,
+  southwest,
+  southeast
+];
+const neighbors = [];
+neighborsWithPossibleNulls.forEach(neighbor => {
+  if (neighbor != null) {
+    neighbors.push(neighbor);
+  }
+});
+```
+{:data-no-overflow="true"}
 
-Armed with this information, we make a few changes to our code. First, for
-clarity's sake, we rename our `neighbors` to `neighborsWithPossibleNulls`. Then
-we use the `filter` array to whittle this array down, storing the results as
-`neighbors`. Finally, we also take the opportunity to combine some of the other
-lines. So after all this, we end up with:
+It turns out that the pattern that we've written -- to select a portion of some
+array that matches a certain condition, discarding the rest that does not match
+that condition -- is common to many programming languages. In JavaScript, we can
+do it with the [`filter`][array-filter] method, which is available on any array.
+Let's do that and take this opportunity to combine some of the other lines:
 
 [array-filter]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
 
@@ -413,8 +614,7 @@ const neighbors = neighborsWithPossibleNulls.filter(neighbor => {
 
 Isn't that nice?
 
-Now we need to place it somewhere into `minesweeper.js`. Let's put it above the
-pseudocode we added earlier:
+Now we can place it into `minesweeper.js` above the pseudocode we added earlier:
 
 ``` diff
  ...
@@ -428,6 +628,7 @@ pseudocode we added earlier:
 
      if (isMine) {
        mines.push(space);
+       space.addClass("mine");
      }
 
      row.append(space);
@@ -435,7 +636,7 @@ pseudocode we added earlier:
      space.on("click", () => {
        if (isMine) {
          mines.forEach(mine => {
-           mine.addClass("mine");
+           mine.addClass("uncovered");
          });
        } else {
 +        const previousRow = spaces[rowIndex - 1] || [];
@@ -454,13 +655,9 @@ pseudocode we added earlier:
 +        const neighbors = neighborsWithPossibleNulls.filter(neighbor => {
 +          return neighbor != null;
 +        });
-         // If any of this space's neighbors are mines:
-         //   Uncover the space
-         //   Count the mine neighbors and show them inside the space
-         // else:
-         //   Uncover the space
-         //   Uncover neighbors with no mine neighbors,
-         //     and neighbors of neighbors with no mine neighbors, etc.
+         // If any of the spaces surrounding the space is a mine:
+         //   Show the space as uncovered
+         //   Count the surrounding mines and show them inside the space
        }
      });
    }
@@ -468,44 +665,99 @@ pseudocode we added earlier:
 ```
 {:data-no-overflow="true"}
 
-### Determining whether a space is a mine
+### Determining neighboring mines
 
-Now that we have a way to get a list of neighbors for a space, we're at a higher
-vantage point, so we can start fresh with our pseudocode:
+Now that we have a way to get a list of neighbors for a space, let's take
+another look at our pseudocode:
 
-* If any of this space's neighbors is a mine:
-  * Uncover the space
-  * Count the mine neighbors and show them inside the space
+* If any of the spaces surrounding the space (aka the neighbors) is a mine:
+  * Show the space as uncovered
+  * Count the surrounding mines and show them inside the space
 {:.pseudocode}
 
-Let's turn now to the first step, the conditional. How do we determine whether
-any of the space's neighbors is a mine? We would need to run through every
-neighbor and ask whether it is a mine:
+Do you notice any similarities between the conditional in the first line and the
+last step? We are asking whether any neighbors is a mine, and yet later we are
+counting those exact neighbors. So if we establish a count first, we can use in
+the rest of the steps:
 
-* *For each space:*
-  * Is the space a mine?
-    * **Conclusion:** Yes, some neighbor is a mine
-* *If no conclusion*
-  * **Conclusion:** No, no neighbor is a mine
+* Count the neighboring mines, storing it as `numNeighboringMines`
+* If `numNeighboringMines` is greater than 0:
+  * Show the space as uncovered
+  * Show `numNeighboringMines` inside the space
 {:.pseudocode}
 
-Like `filter`, this sequence of steps is common in certain circles of
-programming, and JavaScript has a built-in way to accomplish it as well: the
-[`some`][array-some]{:target="_blank"} method. We call `some` on an array -- in
-our case that would be `neighbors` -- and we pass it a function, which allows us
-to ask a question on each value in the array. `some` will return true if the
-answer is true for any of the values, and false otherwise. So we could say:
+Let's update `minesweeper.js` to make sure this new perspective is close at
+hand:
+
+``` diff
+ ...
+ for (let rowIndex = 0; rowIndex < 9; rowIndex++) {
+   const row = $("<tr>");
+   board.append(row);
+   for (let columnIndex = 0; columnIndex < 9; columnIndex++) {
+     const space = $("<td>");
+     const possibleMineLocation = (rowIndex * 9) + columnIndex;
+     const isMine = (mineLocations.indexOf(possibleMineLocation) !== -1);
+
+     if (isMine) {
+       mines.push(space);
+       space.addClass("mine");
+     }
+
+     row.append(space);
+
+     space.on("click", () => {
+       if (isMine) {
+         mines.forEach(mine => {
+           mine.addClass("uncovered");
+         });
+       } else {
+         const previousRow = spaces[rowIndex - 1] || [];
+         const nextRow = spaces[rowIndex + 1] || [];
+         const currentRow = spaces[rowIndex];
+         const neighborsWithPossibleNulls = [
+           currentRow[columnIndex - 1],
+           currentRow[columnIndex + 1],
+           previousRow[columnIndex - 1],
+           previousRow[columnIndex],
+           previousRow[columnIndex + 1],
+           nextRow[columnIndex - 1],
+           nextRow[columnIndex],
+           nextRow[columnIndex + 1]
+         ];
+         const neighbors = neighborsWithPossibleNulls.filter(neighbor => {
+           return neighbor != null;
+         });
+-        // If any of the spaces surrounding the space is a mine:
+-        //   Show the space as uncovered
+-        //   Count the surrounding mines and show them inside the space
++        // Count the neighboring mines, storing it as `numNeighboringMines`
++        // If `numNeighboringMines` is greater than 0
++        //   Show the space as uncovered
++        //   Show `numNeighboringMines` inside the space
+       }
+     });
+   }
+ }
+```
+{:data-no-overflow="true"}
+
+All right -- with that out of the way, we can start from the top. We need to
+count the neighboring spaces that are also mines, but to do that we need to
+*find* the neighboring spaces that are also mines. In other words, we need to
+start with `neighbors` and select a smaller portion of it. Doesn't this seem
+like something we've done before? Yes -- we can use `filter` again:
 
 ``` javascript
-neighbors.some(neighbor => {
+const neighboringMines = neighbors.filter(neighbor => {
   // is the neighbor a mine?
 });
 ```
 
-[array-some]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
+Now the problem is what exactly to put inside the function. How do we know
+whether a space is a mine?
 
-Of course, now we have another question: How do we test whether a space is a
-mine? To answer this appropriately, we need some way to distinguish mines from
+To answer this appropriately, we need some way to distinguish mines from
 non-mines. In fact, it turns out we already do: we mark mines visually using a
 CSS class. So in theory, we *could* ask whether the space has a `mine` class
 (using the [`hasClass`][jquery-has-class]{:target="_blank"} method available in
@@ -514,24 +766,29 @@ jQuery):
 [jquery-has-class]: http://api.jquery.com/hasClass/
 
 ``` javascript
-neighbors.some(neighbor => neighbor.hasClass("mine"));
+const neighboringMines = neighbors.filter(neighbor => {
+  return neighbor.hasClass("mine");
+});
 ```
 
-While this works -- and you may come across this approach elsewhere -- it isn't
-the best idea to use CSS classes in this manner. Why? Because CSS was invented
-to change the appearance of elements on the page. The class we added to each
-mine is a tag we attach to the `td` element so that the browser knows to draw it
-using a black background. We just so happened to call this tag "mine", but we
-could have called it anything. Also, later on we may decide that we want to
-change how we style mines, and if we cross-link CSS and JavaScript in the way
-we've done so above, then that kind of change may be harder to make.
+While this works -- and it is not unusual to see this approach out in the wild
+-- it isn't the best idea to use CSS classes in this manner. Why? Because this
+isn't how CSS was intended to be used. CSS exists solely to change the
+appearance of elements on the page. The class we added to each mine is a tag we
+attach to the `td` element so that the browser knows to draw it using a black
+background. We just so happened to call this tag "mine", but we could have
+called it anything. In addition, if we make use of CSS like this, it may create
+problems for us. We may decide down the road that we want to change how we style
+mines, and if we tangle CSS and JavaScript together, then that kind of change
+may be harder to make.
 
-So we still need to tag our element, but we need to do so in a way that's
-unrelated to CSS. There are a couple different ways to do this, but the easiest
-way at the moment is to use jQuery. jQuery provides a
-[`data`][jquery-data]{:target="_blank"} method, which will allow us to associate
-some arbitrary data with some element on the page. We'll modify `minesweeper.js`
-like this:
+So we still need to tag our element somehow as being a mine, but only do so
+within JavaScript. There are a couple different methods we can use, but the one
+that fits best with our code at present is to use jQuery's
+[`data`][jquery-data]{:target="_blank"} method. This method allows us to
+take a key-value pair and associate it with an element on the page so that we
+can look up the value by the key later. With that in mind, we can modify
+`minesweeper.js` like this:
 
 [jquery-data]: http://api.jquery.com/data/
 
@@ -547,6 +804,7 @@ like this:
 
      if (isMine) {
        mines.push(space);
+       space.addClass("mine");
 +      space.data("isMine", true);
      }
 
@@ -556,25 +814,21 @@ like this:
 ```
 {:data-no-overflow="true"}
 
-Now we can revise our use of `some` to make use of `data`:
+Now we can revise how we are building the list of neighboring mines like this:
 
 ``` javascript
-neighbors.some(neighbor => neighbor.data("isMine"));
+const neighboringMines = neighbors.filter(neighbor => {
+  return neighbor.data("isMine");
+});
 ```
 
-### Showing a count of neighboring mines
+Lastly, we can fit it into `minesweeper.js`:
 
 ``` diff
  ...
- const mines = [];
- const spaces = [];
-
  for (let rowIndex = 0; rowIndex < 9; rowIndex++) {
    const row = $("<tr>");
-
    board.append(row);
-   spaces[rowIndex] = [];
-
    for (let columnIndex = 0; columnIndex < 9; columnIndex++) {
      const space = $("<td>");
      const possibleMineLocation = (rowIndex * 9) + columnIndex;
@@ -582,29 +836,133 @@ neighbors.some(neighbor => neighbor.data("isMine"));
 
      if (isMine) {
        mines.push(space);
+       space.addClass("mine");
+       space.data("isMine", true);
      }
-
-     spaces[rowIndex][columnIndex] = space;
 
      row.append(space);
 
      space.on("click", () => {
        if (isMine) {
          mines.forEach(mine => {
-           mine.addClass("mine");
+           mine.addClass("uncovered");
          });
        } else {
-+        const neighbors = findNeighborsFor(space);
-
-         // If any of this space's neighbors are mines:
-         //   Uncover the space
-         //   Count the mine neighbors and show them inside the space
-         // else:
-         //   Uncover the space
-         //   Uncover neighbors with no mine neighbors,
-         //     and neighbors of neighbors with no mine neighbors, etc.
+         const previousRow = spaces[rowIndex - 1] || [];
+         const nextRow = spaces[rowIndex + 1] || [];
+         const currentRow = spaces[rowIndex];
+         const neighborsWithPossibleNulls = [
+           currentRow[columnIndex - 1],
+           currentRow[columnIndex + 1],
+           previousRow[columnIndex - 1],
+           previousRow[columnIndex],
+           previousRow[columnIndex + 1],
+           nextRow[columnIndex - 1],
+           nextRow[columnIndex],
+           nextRow[columnIndex + 1]
+         ];
+         const neighbors = neighborsWithPossibleNulls.filter(neighbor => {
+           return neighbor != null;
+         });
++        const neighboringMines = neighbors.filter(neighbor => {
++          return neighbor.data("isMine");
++        });
+         // Count the neighboring mines, storing it as `numNeighboringMines`
+         // If `numNeighboringMines` is greater than 0
+         //   Show the space as uncovered
+         //   Show `numNeighboringMines` inside the space
        }
      });
    }
  }
 ```
+{:data-no-overflow="true"}
+
+### Finishing up
+
+We've made a lot of progress in this post, and we can combine everything we've
+done here to finish up this piece of the game:
+
+``` diff
+ ...
+ for (let rowIndex = 0; rowIndex < 9; rowIndex++) {
+   const row = $("<tr>");
+   board.append(row);
+   for (let columnIndex = 0; columnIndex < 9; columnIndex++) {
+     const space = $("<td>");
+     const possibleMineLocation = (rowIndex * 9) + columnIndex;
+     const isMine = (mineLocations.indexOf(possibleMineLocation) !== -1);
+
+     if (isMine) {
+       mines.push(space);
+       space.addClass("mine");
+       space.data("isMine", true);
+     }
+
+     row.append(space);
+
+     space.on("click", () => {
+       if (isMine) {
+         mines.forEach(mine => {
+           mine.addClass("uncovered");
+         });
+       } else {
+         const previousRow = spaces[rowIndex - 1] || [];
+         const nextRow = spaces[rowIndex + 1] || [];
+         const currentRow = spaces[rowIndex];
+         const neighborsWithPossibleNulls = [
+           currentRow[columnIndex - 1],
+           currentRow[columnIndex + 1],
+           previousRow[columnIndex - 1],
+           previousRow[columnIndex],
+           previousRow[columnIndex + 1],
+           nextRow[columnIndex - 1],
+           nextRow[columnIndex],
+           nextRow[columnIndex + 1]
+         ];
+         const neighbors = neighborsWithPossibleNulls.filter(neighbor => {
+           return neighbor != null;
+         });
+         const neighboringMines = neighbors.filter(neighbor => {
+           return neighbor.data("isMine");
+         });
+-        // Count the neighboring mines, storing it as `numNeighboringMines`
++        const numNeighboringMines = neighboringMines.length;
+-        // If `numNeighboringMines` is greater than 0
++
++        if (numNeighboringMines > 0) {
+-        //   Show the space as uncovered
++          space.addClass("uncovered");
+-        //   Show `numNeighboringMines` inside the space
++          space.text(numNeighboringMines);
++        }
+       }
+     });
+   }
+ }
+```
+{:data-no-overflow="true"}
+
+Time to finally [take a look][minesweeper-5-step-2] at what this produces! Try
+clicking on a space that's close to a mine:
+
+[minesweeper-5-step-2]: /blog/minesweeper-5-step-2/minesweeper.html
+
+<iframe height="300" width="100%" src="/blog/minesweeper-5-step-2/minesweeper.html" border="0"></iframe>
+
+### What's next
+
+Our next task is to [finish up][minesweeper-6] the core logic of the game by
+implementing what happens when a space that does not neighbor any mines is
+clicked.
+
+[minesweeper-6]: /blog/minesweeper-6/
+
+<div class="nav-wrapper">
+  <div class="nav nav--left">
+    <a href="/blog/minesweeper-4/">← Go back</a>
+  </div>
+  <div class="nav nav--right">
+    <a href="/blog/minesweeper-6/">Continue →</a>
+  </div>
+</div>

@@ -57,12 +57,12 @@ size of the board is 9x9 and there are 10 mines.) The player uncovers spaces by
 clicking on them. Uncovering a space has three possible outcomes depending on
 the true identity of the space:
 
-* If any of the space's neighbors are a mine, the number of mines is counted and
-  displayed inside the space.
-* If none of the space's neighbors are mines, no number is displayed inside the
-  space. However, any neighbors that have no mine neighbors themselves are
-  uncovered, then *their* neighbors that have no mine neighbors are uncovered,
-  and so forth and so on.
+* If any of the spaces that surround the space is a mine, the number of mines
+  is counted and displayed inside the space.
+* If none of the surrounding spaces are mines, no number is displayed inside the
+  space. However, any surrounding spaces that have no surrounding mines
+  themselves are uncovered, then *their* surrounding spaces that have no
+  surrounding mines are uncovered, and so forth and so on.
 * If the space is a mine, all of the mines are uncovered and the game ends.
 
 The player wins, then, by managing to uncover all of the spaces around mines

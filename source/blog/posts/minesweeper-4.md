@@ -14,12 +14,12 @@ there are three things that can happen:
 
 [minesweeper-3]: /blog/minesweeper-3
 
-* If any of the space's neighbors are a mine, we count how many there are
-  and uncover the space, displaying that number inside the space.
-* If none of the space's neighbors are mines, we uncover the space, displaying
-  no number inside. We also uncover any neighbors that have no mine neighbors
-  themselves, then uncover *their* neighbors that have no mine neighbors, and so
-  forth and so on.
+* If any of the spaces surrounding the space is a mine, we count how many there
+  are and uncover the space, displaying that number inside the space.
+* If none of the surrounding spaces are mines, we uncover the space, displaying
+  no number inside. We also uncover any surrounding spaces that have no
+  surrounding mines themselves, then uncover *their* surrounding spaces that
+  have no surrounding mines, and so forth and so on.
 * If the space is a mine, then we uncover all of the mines.
 
 Take a moment to read over these. We want to keep things as simple as possible
@@ -28,8 +28,8 @@ as long as we can, so what can we work on next?
 * The first case is not bad, but it involves accessing other parts of the board
   to find all the spaces around a certain space, which we don't have a
   convenient way to do right now.
-* The second case requires finding neighbors as well, then adds some kind of
-  loop that is likely complicated.
+* The second case requires finding surrounding spaces as well, then adds some
+  kind of loop that seems complicated.
 * The **third case**, however, is just right. We already know about all the
   mines and we know how to uncover them. So now we need to figure out how to
   make the board interactive.
@@ -240,6 +240,7 @@ the space to the array if we determine it's a mine. Let's try that:
    }
  }
 ```
+{:data-no-overflow="true"}
 
 Now we can uncover all the mines:
 
@@ -272,9 +273,11 @@ Now we can uncover all the mines:
    }
  }
 ```
+{:data-no-overflow="true"}
 
 Great! Let's [see][minesweeper-4-step-1]{:target="_blank"} what that looks like.
-Try clicking around until you hit a mine!
+Try clicking around until you hit a mine! (For demonstration purposes, we've
+highlighted them in red on hover.)
 
 <iframe height="300" width="100%" src="/blog/minesweeper-4-step-1/minesweeper.html" border="0"></iframe>
 
@@ -282,8 +285,8 @@ Try clicking around until you hit a mine!
 
 ### What's next
 
-Next we'll finish the core logic behind the game by implementing [what to do when
-a space that *isn't* a mine is uncovered][minesweeper-5].
+Next we'll tackle the next simplest outcome: [what happens][minesweeper-5] when
+a space that *isn't* a mine, yet is near one, is uncovered.
 
 [minesweeper-5]: /blog/minesweeper-5/
 

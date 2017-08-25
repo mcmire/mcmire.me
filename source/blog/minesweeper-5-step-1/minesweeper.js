@@ -27,7 +27,7 @@ for (let rowIndex = 0; rowIndex < 9; rowIndex++) {
 
     if (isMine) {
       mines.push(space);
-      space.addClass("future-mine");
+      space.addClass("mine");
     }
 
     row.append(space);
@@ -35,7 +35,7 @@ for (let rowIndex = 0; rowIndex < 9; rowIndex++) {
     space.on("click", () => {
       if (isMine) {
         mines.forEach(mine => {
-          mine.addClass("mine");
+          mine.addClass("uncovered");
         });
       }
     });

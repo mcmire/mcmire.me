@@ -22,6 +22,10 @@ svg {
     max-height: 150px;
   }
 
+  .with-very-smaller-max-height & {
+    max-height: 100px;
+  }
+
   .with-max-height & {
     max-height: 300px;
   }

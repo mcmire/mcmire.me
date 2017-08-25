@@ -31,16 +31,26 @@ body {
 td {
   border: 1px solid black;
   cursor: pointer;
+  width: 11.1111111%;
+  height: 11.1111111%;
+   text-align: center;
+   vertical-align: center;
 }
 
-td:not(.mine):hover {
+td:not(.uncovered):hover {
   background-color: #ddd;
 }
 
-td.future-mine:hover {
+td.future-mine:not(.uncovered):hover,
+td.mine:not(.uncovered):hover {
   background-color: red;
 }
 
-.mine {
+.uncovered:not(.mine) {
+  background-color: gray;
+  color: white;
+}
+
+.uncovered.mine {
   background-color: black;
 }

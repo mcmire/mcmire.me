@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-%svg(viewBox="0 0 161 161" xmlns="http://www.w3.org/2000/svg")
+%svg(viewBox="0 0 101 101" xmlns="http://www.w3.org/2000/svg")
   %defs
     %rect(id="grey-box"
       class="grey-fill"
@@ -9,22 +9,21 @@
       class="red-fill"
       width="40"
       height="40")
-  %g(transform="translate(60 60)")
-    %g
-      %use(href="#red-box" x="0.5" y="0.5")
-      %use(href="#grey-box" x="40.5" y="0.5")
-      %use(href="#grey-box" x="0.5" y="40.5")
-      %use(href="#grey-box" x="40.5" y="40.5")
-    %g
-      - 3.times do |n|
-        %line(class="black-stroke"
-          x1="#{(40 * n) + 0.5}"
-          y1="0.5"
-          x2="#{(40 * n) + 0.5}"
-          y2="100.5")
-      - 3.times do |n|
-        %line(class="black-stroke"
-          x1="0.5"
-          y1="#{(40 * n) + 0.5}"
-          x2="100.5"
-          y2="#{(40 * n) + 0.5}")
+  %g
+    %use(href="#red-box" x="0.5" y="0.5")
+    %use(href="#grey-box" x="40.5" y="0.5")
+    %use(href="#grey-box" x="0.5" y="40.5")
+    %use(href="#grey-box" x="40.5" y="40.5")
+  %g
+    - 3.times do |n|
+      %line(class="black-stroke"
+        x1="#{(40 * n) + 0.5}"
+        y1="0.5"
+        x2="#{(40 * n) + 0.5}"
+        y2="100.5")
+    - 3.times do |n|
+      %line(class="black-stroke"
+        x1="0.5"
+        y1="#{(40 * n) + 0.5}"
+        x2="100.5"
+        y2="#{(40 * n) + 0.5}")
