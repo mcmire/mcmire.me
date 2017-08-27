@@ -59,6 +59,7 @@ body.code-modal-open {
   }
 
   .modal-content {
+    align-self: left;
     display: inline-block;
     margin-top: $base-spacing * 2;
     z-index: $pre-expanded-z-index;
@@ -69,6 +70,10 @@ body.code-modal-open {
       max-height: none;
       overflow: visible;
       padding: 0;
+    }
+
+    @media (min-width: $mobile-large) {
+      align-self: unset;
     }
   }
 
