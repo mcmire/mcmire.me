@@ -11,9 +11,9 @@ copyCodeBlock = (codeBlock) ->
 transitionEndEventName = mcmire.me.transitionEndEventName
 
 class mcmire.me.CodeModal
-  constructor: ({ @bodyElement, @element }) ->
-    @closeButton = @element.querySelector("[data-role='modal-close']")
-    @contentElement = @element.querySelector("[data-role='modal-content']")
+  constructor: ({ @bodyElement, @modalOverlay, @modalWindow }) ->
+    @closeButton = @modalWindow.querySelector("[data-role='modal-close']")
+    @contentElement = @modalWindow.querySelector("[data-role='modal-content']")
 
   activate: =>
     @closeButton.addEventListener("click", @close)
@@ -22,31 +22,30 @@ class mcmire.me.CodeModal
     copyOfCodeBlock = copyCodeBlock(codeBlock)
     copyOfCodeBlock.classList.add("expanded")
 
+    @bodyElement.classList.add("code-modal-open")
+
+    @modalOverlay.classList.remove("closed")
+    @modalOverlay.classList.add("open")
+
+    @modalWindow.classList.remove("closed")
+    @modalWindow.classList.add("open")
+
     @contentElement.innerHTML = ""
     @contentElement.appendChild(copyOfCodeBlock)
-
-    @bodyElement.classList.add("code-modal-open")
-    @element.classList.remove("closed")
-    @element.classList.add("open")
-
     @contentElement.addEventListener("click", @_stopPropagation)
-    @element.addEventListener("click", @close)
 
   close: (event) =>
     event.preventDefault()
 
-    @element.addEventListener(transitionEndEventName, @_clear)
-
     @bodyElement.classList.remove("code-modal-open")
-    @element.classList.remove("open")
-    @element.classList.add("closed")
 
-    @contentElement.removeEventListener("click", @_stopPropagation)
-    @element.removeEventListener("click", @close)
+    @modalOverlay.classList.remove("open")
+    @modalOverlay.classList.add("closed")
+
+    @modalWindow.classList.remove("open")
+    @modalWindow.classList.add("closed")
+    @modalWindow.addEventListener(transitionEndEventName, @_clear)
 
   _clear: =>
+    @modalWindow.removeEventListener(transitionEndEventName, @_clear)
     @contentElement.innerHTML = ""
-    @element.removeEventListener(transitionEndEventName, @_clear)
-
-  _stopPropagation: (event) ->
-    event.stopPropagation()

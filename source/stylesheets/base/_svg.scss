@@ -19,4 +19,8 @@ svg {
     alignment-baseline: inherit;
     dominant-baseline: inherit;
   }
+
+  line {
+    vector-effect: non-scaling-stroke;
+  }
 }

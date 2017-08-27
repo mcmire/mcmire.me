@@ -11,18 +11,23 @@ body.code-modal-open {
   }
 }
 
-.modal-overlay {
-  background: white;
+.modal-overlay,
+.modal-window {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   height: 100%;
   left: 0;
   opacity: 0;
-  overflow: scroll;
-  padding: $small-spacing;
   position: fixed;
   top: 0;
   width: 100%;
   visibility: hidden;
   z-index: $modal-overlay-z-index;
+}
+
+.modal-overlay {
+  background: white;
 
   &.open {
     visibility: visible;
@@ -35,9 +40,27 @@ body.code-modal-open {
     opacity: 0;
     transition: visibility 0s $slower-duration, opacity $slower-duration;
   }
+}
+
+.modal-window {
+  overflow: scroll;
+  padding: $small-spacing;
+
+  &.open {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity $slower-duration;
+  }
+
+  &.closed {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s $slower-duration, opacity $slower-duration;
+  }
 
   .modal-content {
     display: inline-block;
+    margin-top: $base-spacing * 2;
     z-index: $pre-expanded-z-index;
 
     pre {
@@ -52,17 +75,15 @@ body.code-modal-open {
   .modal-close {
     @include overlay-button;
 
-    font-size: 1.7rem;
-    line-height: 0.9;
-    padding: $small-spacing;
+    background: white;
+    border: $base-border;
+    box-shadow: $base-box-shadow;
+    padding: 0.5em 0.8em;
     position: fixed;
-    right: 1rem;
-    top: 0;
     z-index: $modal-close-z-index;
 
     &:hover {
       color: black;
-      border: none;
     }
   }
 }

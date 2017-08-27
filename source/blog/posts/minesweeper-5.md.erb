@@ -237,7 +237,7 @@ before, but this should set us up nicely for the changes we're about to make:
 
 [minesweeper-5-step-1]: /blog/minesweeper-5-step-1/minesweeper.html
 
-<iframe height="300" width="100%" src="/blog/minesweeper-5-step-1/minesweeper.html" border="0"></iframe>
+<iframe src="/blog/minesweeper-5-step-1/minesweeper.html"></iframe>
 
 ### Neighbors
 
@@ -253,14 +253,12 @@ that pops out is the idea of spaces that surround other spaces -- or something
 we'll call *neighbors* for short. For instance, all of the grey spaces here are
 *neighbors* of the red space:
 
-<div class="image with-smaller-max-height"
-  ><%= embed_svg("minesweeper-5/neighbors.svg") %></div>
+<%= embed_svg("minesweeper-5/neighbors.svg", height: 161) %>
 
 Most spaces will have 9 neighbors, except for those that live on the edge of the
 board. For instance, a corner space has only 3 neighbors:
 
-<div class="image with-very-smaller-max-height"
-  ><%= embed_svg("minesweeper-5/neighbors-at-corner.svg") %></div>
+<%= embed_svg("minesweeper-5/neighbors-at-corner.svg", height: 161) %>
 
 Okay, so how do we find the neighbors for any space on the board? Well, remember
 in [part 3][minesweeper-3] how we learned that we have a way to denote the
@@ -268,8 +266,7 @@ location of a space using X- and Y-coordinates?
 
 [minesweeper-3]: /blog/minesweeper-3
 
-<div class="image with-max-height"
-  ><%= embed_svg("minesweeper-3/row-and-column-indices.svg") %></div>
+<%= embed_svg("minesweeper-3/row-and-column-indices.svg", height: 301) %>
 
 This is made possible by the loop we use to draw the spaces:
 
@@ -297,7 +294,7 @@ What if we had an array of arrays of `td` elements, where the outer array
 represented the rows in the board and each inner array represented the column in
 a row?
 
-<div class="image"><%= embed_svg("minesweeper-5/cells.svg") %></div>
+<%= embed_svg("minesweeper-5/cells.svg", height: 375) %>
 
 With this array, we could drill down to a space by reusing the `rowIndex` and
 `columnIndex` of that space. For instance, if this imaginary array were stored
@@ -949,7 +946,7 @@ clicking on a space that's close to a mine:
 
 [minesweeper-5-step-2]: /blog/minesweeper-5-step-2/minesweeper.html
 
-<iframe height="300" width="100%" src="/blog/minesweeper-5-step-2/minesweeper.html" border="0"></iframe>
+<iframe src="/blog/minesweeper-5-step-2/minesweeper.html"></iframe>
 
 ### What's next
 

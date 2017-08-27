@@ -5,12 +5,12 @@ pre, code {
   font-family: $code-font-family;
 }
 
-pre, tt, :not(pre) > code {
+code {
   font-size: 0.9em;
   letter-spacing: -0.5px;
 }
 
-tt, :not(pre) > code {
+:not(pre) > code {
   border-radius: $base-border-radius;
 }
 
@@ -103,9 +103,13 @@ pre {
     }
   }
 
+  &.overflows.expanded {
+    .view-in-full {
+      display: none;
+    }
+  }
+
   > code {
-    font-size: inherit;
     display: block;
-    width: 120%;
   }
 }

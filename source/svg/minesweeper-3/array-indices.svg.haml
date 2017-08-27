@@ -29,4 +29,5 @@
           %text(class="small-text" x="0.5" y="57.5")<
             = n
           %use(href="#line" x="0" y="0")
-      %text(class="cell-text" x="260" y="20") ⋯
+      - if item[:xStart] == 0
+        %text(class="cell-text" x="260" y="20") ⋯

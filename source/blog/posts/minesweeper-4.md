@@ -279,7 +279,7 @@ Great! Let's [see][minesweeper-4-step-1]{:target="_blank"} what that looks like.
 Try clicking around until you hit a mine! (For demonstration purposes, we've
 highlighted them in red on hover.)
 
-<iframe height="300" width="100%" src="/blog/minesweeper-4-step-1/minesweeper.html" border="0"></iframe>
+<iframe src="/blog/minesweeper-4-step-1/minesweeper.html"></iframe>
 
 [minesweeper-4-step-1]: /blog/minesweeper-4-step-1/minesweeper.html
 

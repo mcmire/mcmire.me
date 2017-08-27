@@ -277,7 +277,7 @@ far:
 
 [minesweeper-1]: /blog/minesweeper-1/minesweeper.html
 
-<iframe height="300" width="100%" src="/blog/minesweeper-1/minesweeper.html" border="0"></iframe>
+<iframe src="/blog/minesweeper-1/minesweeper.html"></iframe>
 
 ### What's next
 

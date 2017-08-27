@@ -1,6 +1,9 @@
 @mixin overlay-button {
   color: $overlay-button-color;
+  font-family: $heading-font-family;
+  font-weight: bold;
   position: absolute;
   text-decoration: none;
+  text-transform: uppercase;
   transition: opacity $base-duration;
 }

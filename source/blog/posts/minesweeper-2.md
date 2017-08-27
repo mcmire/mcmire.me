@@ -13,7 +13,7 @@ for the game using HTML and by giving the board its appearance using CSS.
 
 [minesweeper-1]: /blog/minesweeper-1/minesweeper.html
 
-<iframe height="300" width="100%" src="/blog/minesweeper-1/minesweeper.html" border="0"></iframe>
+<iframe src="/blog/minesweeper-1/minesweeper.html" border="0"></iframe>
 
 [previous post]: /blog/minesweeper-1/
 
@@ -33,7 +33,6 @@ Let's take another look at `minesweeper.html`:
 
 ``` html
 <!DOCTYPE html>
-
 <html>
   <head>
     <title>Minesweeper</title>
@@ -279,7 +278,6 @@ rid of it:
 
 ``` html
 <!DOCTYPE html>
-
 <html>
   <head>
     <title>Minesweeper</title>
@@ -537,7 +535,6 @@ Let's take another look at our HTML file:
 
 ``` html
 <!DOCTYPE html>
- 
 <html>
   <head>
     <title>Minesweeper</title>
@@ -545,7 +542,7 @@ Let's take another look at our HTML file:
     <script src="jquery.js"></script>
     <script src="minesweeper.js"></script>
   </head>
- 
+
   <body>
     <!-- We will fill this in! -->
   </body>
@@ -591,7 +588,6 @@ So let's try changing our HTML file to the following:
 
 ``` html
 <!DOCTYPE html>
-
 <html>
   <head>
     <title>Minesweeper</title>
@@ -686,7 +682,7 @@ below. Great job!
 
 [minesweeper-2-step-6]: /blog/minesweeper-2-step-6/minesweeper.html
 
-<iframe height="300" width="100%" src="/blog/minesweeper-2-step-6/minesweeper.html" border="0"></iframe>
+<iframe src="/blog/minesweeper-2-step-6/minesweeper.html"></iframe>
 
 ### What's next
 

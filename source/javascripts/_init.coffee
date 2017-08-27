@@ -21,12 +21,14 @@ renderGrid = ->
   grid.render()
 
 buildActivatedCodeModal = ->
-  element = document.querySelector("[data-role='code-modal']")
+  modalOverlay = document.querySelector("[data-role='modal-overlay']")
+  modalWindow = document.querySelector("[data-role='modal-window']")
 
-  if element
+  if modalOverlay && modalWindow
     codeModal = new mcmire.me.CodeModal(
       bodyElement: document.body
-      element: element
+      modalOverlay: modalOverlay
+      modalWindow: modalWindow
     )
     codeModal.activate()
     codeModal
