@@ -1,0 +1,489 @@
+---
+title: "Building Minesweeper in JavaScript: Part 3"
+teaser: >
+  In this post, we draw mines and distribute them randomly across the board.
+date: 2020-01-03
+tags: programming
+vi: ft=ghmarkdown
+---
+
+In the [last post] we wrote code so that the visuals for Minesweeper are
+generated via JavaScript when the page loads. This will be helpful later as it
+will allow us to update the board visually as the player interacts with the
+game.
+
+[last post]: /blog/minesweeper-2/
+
+Let's review what we have in our project so far:
+
+<ul class="file-tree">
+  <li class="directory"><span>minesweeper/</span><ul>
+      <li class="file">minesweeper.html</li>
+      <li class="file">minesweeper.css</li>
+      <li class="file">jquery.js</li>
+      <li class="file">minesweeper.js</li>
+    </ul>
+  </li>
+</ul>
+
+Our `minesweeper.js` looks like this:
+
+``` javascript
+const board = $("<table>").attr("id", "board");
+const body = $(document.body);
+body.append(board);
+
+for (let rowIndex = 0; rowIndex < 9; rowIndex++) {
+  const row = $("<tr>");
+  board.append(row);
+  for (let columnIndex = 0; columnIndex < 9; columnIndex++) {
+    const cell = $("<td>");
+    row.append(cell);
+  }
+}
+```
+
+And so far the game looks like this:
+
+<iframe src="/blog/minesweeper-2-step-6/minesweeper.html"></iframe>
+
+Now for something a little more interesting.
+
+### Drawing mines
+
+Since the game is all about revealing hidden mines, it seems that we ought to be
+able to draw those mines when the appropriate time comes. There are a couple of
+different ways to do this, but ultimately we need to use HTML, CSS, or both. To
+make things simple for right now, we'll choose the CSS method. When we draw a
+space on the board, if a mine is inside of a space, then we'll add a `mine`
+class to the table cell associated with the space.
+
+How do we add a class to a cell (or any HTML element, for that matter)?
+Fortunately, jQuery has a built-in solution with the `addClass` method. We can
+use it like so:
+
+``` javascript
+element.addClass("someClass");
+```
+
+So we'll begin by modifying our JavaScript code like this:
+
+``` diff
+ const board = $("<table>").attr("id", "board");
+ const body = $(document.body);
+ body.append(board);
+
+ for (let rowIndex = 0; rowIndex < 9; rowIndex++) {
+   const row = $("<tr>");
+   board.append(row);
+   for (let columnIndex = 0; columnIndex < 9; columnIndex++) {
+     const cell = $("<td>");
++    cell.addClass("mine");
+     row.append(cell);
+   }
+ }
+```
+
+This is a *diff*, a common way to represent changes to a piece of text. We're
+adding a line to `minesweeper.js`, so we've indicated that by placing a plus
+sign (`+`) at the beginning of the line. You should add this line to your
+version of this file too.
+{:.aside.aside--tip}
+
+Now we'll update `minesweeper.css` so that mines appear as black cells, and so
+that the hover effect that we'd previously placed on all cells only applies to
+non-mine cells.
+
+``` diff
+ #board {
+   height: 200px;
+   left: 50%;
+   margin-left: -100px;
+   margin-top: -100px;
+   position: absolute;
+   top: 50%;
+   width: 200px;
+ }
+
+ td {
+   border: 1px solid black;
+   cursor: pointer;
+ }
+
+-td:hover {
++td:not(.mine):hover {
+   background-color: #ddd;
+ }
++
++.mine {
++  background-color: black;
++}
+```
+{:data-no-overflow="true"}
+
+Here we have lines beginning with `+`, but we also have a line beginning with
+`-`. You should *remove* these kinds of lines from your version of the file.
+{:.aside.aside--tip}
+
+[Here's][m3s2]{:target="_blank"} what we get:
+
+[m3s2]: /blog/minesweeper-3-step-1/minesweeper.html
+
+<iframe src="/blog/minesweeper-3-step-1/minesweeper.html"></iframe>
+
+### Mapping out the next steps
+
+Now every cell is a mine, but of course what we really need is to scatter them
+across the board, putting them in random spots so that each gameplay is
+different. How will that work exactly?
+
+Say that we had a way of marking the spaces on the board in some way so that we
+could identify one space from another. The simplest thing to do would be to
+assign a number to each space:
+
+<%= embed_svg("minesweeper-3/board-numbering-1.svg", height: 271) %>
+
+Here we've numbered the spaces starting at 1, but for reasons we'll see in a
+bit, it will actually make more sense to start with 0:
+
+<%= embed_svg("minesweeper-3/board-numbering-2.svg", height: 271) %>
+
+What does that give us? Well, once we have a set of numbers, we can place those
+numbers in a virtual "hat" and draw ten of them. Each number we draw from the
+"hat" will correspond to a space and designate a mine that is present at that
+location:
+
+<%= embed_svg("minesweeper-3/choosing-mine-locations.svg", height: 725) %>
+
+We'll talk about drawing the mines in a bit, but for now, let's see if we can
+capture our picture above in pseudocode. We need to:
+
+* Make an empty list of numbers called `mineLocations`
+* Make a "hat" of numbers between 0 and 80
+* *Then, repeating for 10 times:*
+  * Draw a number from the "hat" (removing it in the process)
+  * Add the number to `mineLocations`
+{:.pseudocode}
+
+That brings us to two related questions:
+
+1. How we make the "hat"?
+2. How we do we draw numbers from the "hat"?
+
+### Generating a random number
+
+Let's start with the second question. When you draw a number from a hat, what
+are you doing? You're choosing a number at random. So we need some way to
+achieve randomness.
+
+JavaScript gives us a function to do just this:
+[`Math.random`][math-random]{:target="_blank"}. This function returns a number
+between 0 and 1 (excluding 1 itself). Here's a sampling of how it works:
+
+[math-random]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+
+``` prompt
+> Math.random()
+< 0.5057105947315927
+> Math.random()
+< 0.43924692114566244
+> Math.random()
+< 0.5794767991781664
+```
+
+Remember in the last post how we [learned about the Developer
+Tools][developer-tools]? Any time you run across a method that you haven't seen
+before, you can always test it out there. Go ahead and bring it up now with
+<kbd>Cmd</kbd>-<kbd>Option</kbd>-<kbd>I</kbd> (make sure you're on the Console
+tab). Type `Math.random()` and press Enter. What do you get?
+{:.aside.aside--tip}
+
+[developer-tools]: /blog/minesweeper-3#developer-tools
+
+Generating a number between 0 and 1 may not seem helpful now, but it will prove
+to be a useful tool in a moment.
+
+### Creating the "hat"
+
+Now we can properly address the first question. Before we draw a number, we have
+to create a set of numbers to draw from. It makes the most sense to use an array
+to store this list. But how do we build it? There's not an elegant way to do
+this in JavaScript, so we'll have to use a loop and build the array by hand. As
+our pseudocode instructs, we'll start from 0 and end at 80:
+
+``` javascript
+const hatOfMineLocations = [];
+for (let n = 0; n <= 80; n++) {
+  hatOfMineLocations.push(n);
+}
+```
+
+Since we also need an empty list to store the mine locations, we can define that
+as an array as well:
+
+``` javascript
+const mineLocations = [];
+```
+
+Now we can see that we need some way to take random numbers out of
+`hatOfMineLocations` and add them to `mineLocations`.
+
+### Pulling from the "hat"
+
+Since `hatOfMineLocations` is an array, each number has an *index*, the position
+of that number inside the array:
+
+<%= embed_svg("minesweeper-3/array-indices.svg", height: 115) %>
+
+So in order to pick a random number from `hatOfMineLocations`, we really need to
+choose a random *index*. Note how our indices start from 0 and end at 80, just
+like the numbers do. So we need to generate a random number between 0 and 80
+(including 80 itself).
+
+This is where our newfound friend `Math.random` comes into play. Remember that
+it returns a number between 0 and 1 (excluding 1 itself) -- but we can fix this
+with a little math. Since 0 × any number is 0, and 1 × any number is that
+number, we can multiply the random number we get by 81 to get a number between 0
+and 81 (excluding 81 itself):
+
+``` prompt
+> Math.random() * 81
+< 34.609916103091635
+> Math.random() * 81
+< 71.31560224890487
+> Math.random() * 81
+< 22.572173263630866
+```
+
+Of course, that gives us decimal numbers when we really want whole numbers. So
+we can round down the result by using another builtin, the
+[`Math.floor`][math-floor]{:target="_blank"} function:
+
+[math-floor]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor
+
+``` prompt
+> Math.floor(Math.random() * 81)
+< 34
+> Math.floor(Math.random() * 81)
+< 71
+> Math.floor(Math.random() * 81)
+< 22
+```
+
+Cool! Now we have a random index in `hatOfMineLocations`. We can use it to
+access the number at that index and add the number to `mineLocations`:
+
+``` javascript
+const mineLocationIndex = Math.floor(Math.random() * 81);
+const mineLocation = hatOfMineLocations[mineLocationIndex];
+mineLocations.push(mineLocations);
+```
+
+Once we've updated `mineLocations`, we need to remove the number from
+`hatOfMineLocations` so we don't pick it again. We'll do this using
+[`splice`][array-splice], a method available on all arrays:
+
+``` javascript
+const mineLocationIndex = Math.floor(Math.random() * 81);
+const mineLocation = hatOfMineLocations[mineLocationIndex];
+mineLocations.push(mineLocations);
+hatOfMineLocations.splice(mineLocationIndex, 1);
+```
+
+[array-splice]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
+
+Now we need to repeat the whole thing 10 times:
+
+``` javascript
+for (let i < 0; i < 10; i++) {
+  const mineLocationIndex = Math.floor(Math.random() * 81);
+  const mineLocation = hatOfMineLocations[mineLocationIndex];
+  mineLocations.push(mineLocations);
+  hatOfMineLocations.splice(mineLocationIndex, 1);
+}
+```
+
+Watch out, though! This won't quite work: once we remove a number from
+`hatOfMineLocations`, the indices assigned to each number will change. Why?
+Because now there's one fewer number in our array:
+
+<%= embed_svg("minesweeper-3/array-indices-with-missing.svg", height: 135) %>
+
+So in the next iteration of our loop, instead of choosing a random index between
+0 and 81, we'll need to choose an index between 0 and 80. And in the next
+iteration after that, we'll have to shrink the range again. And so forth and so
+on. What's a good way to code this? If we think about it, what we really want is
+for our range to change based on the number of items in `hatOfMineLocations`. So
+we'll say this:
+
+``` javascript
+for (let i < 0; i < 10; i++) {
+  const mineLocationIndex = Math.floor(Math.random() * hatOfMineLocations.length);
+  const mineLocation = hatOfMineLocations[mineLocationIndex];
+  mineLocations.push(mineLocation);
+  hatOfMineLocations.splice(mineLocationIndex, 1);
+}
+```
+
+And there we go -- now we have our mine locations! Let's collect what we have so
+far and add it to `minesweeper.js`:
+
+``` diff
+ const board = $("<table>").attr("id", "board");
+ const body = $(document.body);
+ body.append(board);
+
++const hatOfMineLocations = [];
++for (let n = 0; n <= 80; n++) {
++  hatOfMineLocations.push(n);
++}
++
++const mineLocations = [];
++for (let i = 0; i < 10; i++) {
++ const mineLocationIndex = Math.floor(Math.random() * hatOfMineLocations.length);
++ const mineLocation = hatOfMineLocations[mineLocationIndex];
++ mineLocations.push(mineLocation);
++ hatOfMineLocations.splice(mineLocationIndex, 1);
++}
++
+ for (let rowIndex = 0; rowIndex < 9; rowIndex++) {
+   const row = $("<tr>");
+   board.append(row);
+   for (let columnIndex = 0; columnIndex < 9; columnIndex++) {
+     const cell = $("<td>");
+     cell.addClass("mine");
+     row.append(cell);
+   }
+ }
+```
+{:data-no-overflow="true"}
+
+### Populating the board with mines
+
+Next we need to modify the loop that draws cells. We need to take the ten mine
+locations we've generated and ask each cell if it corresponds to one of those
+locations. If the answer is yes, we'll add the `mine` class to the cell,
+otherwise we'll leave the cell empty. In pseudocode, that looks like:
+
+* *For each cell:*
+  * If the cell's location is present within `mineLocations`
+    * `cell.addClass("mine")`
+{:.pseudocode}
+
+However, in order to determine whether a cell's location is one of the
+`mineLocations`, we have to determine the cell's location first. It turns out we
+already know how to do this. Remember that in order to build the rows and
+columns of the board, we use a loop within a loop. Since we're using `for` to do
+that, we have two counters that we are incrementing along the way: `rowIndex`
+and `columnIndex`.
+
+``` javascript
+for (let rowIndex = 0; rowIndex < 9; rowIndex++) {
+  // ...
+  for (let columnIndex = 0; columnIndex < 9; columnIndex++) {
+    // ...
+  }
+}
+```
+
+You can think of `rowIndex` as the Y-coordinate and `columnIndex` as the
+X-coordinate of a given cell:
+
+<%= embed_svg("minesweeper-3/row-and-column-indices.svg", height: 401) %>
+
+Note, however, that this way to locate cells is different from the way we
+previously located mines. Here we use two numbers, whereas before we used one
+number:
+
+<%= embed_svg("minesweeper-3/board-numbering-2.svg", height: 361) %>
+
+Is there a relationship between the two systems? There is! Look at cell number
+12. Notice how it is in row 1, column 3. In other words, to get to cell 12, we
+go 1 full row -- or 9 cells -- and then go 3 more. We can represent this
+mathematically by multiplying the Y-coordinate by 9, then adding the
+X-coordinate to the product. Let's store the result of this calculation in a
+variable:
+
+``` javascript
+const possibleMineLocation = (rowIndex * 9) + columnIndex;
+```
+
+Now we can determine whether `mineLocations` is present within
+`possibleMineLocation`. JavaScript doesn't give us a way to ask this question
+exactly, but we can get the answer indirectly. Remember how we talked about
+arrays and how each value in an array has an index position associated with it?
+`mineLocations` is an array, too. So what we can do is to use the
+[`indexOf`][index-of] method to look for `possibleMineLocation` in
+`mineLocations` and get *its* index position there.
+
+Of course, we need to know whether `possibleMineLocation` is present, not its
+index. So how does this help us? Well, if the value we're looking for is not
+present, then the index we get back from the method will be -1. So what we want
+to do is make sure that the index is *not* -1:
+
+[index-of]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf
+
+``` javascript
+if (mineLocations.indexOf(possibleMineLocation) !== -1) {
+  cell.addClass("mine");
+}
+```
+
+Now we'll update `minesweeper.js` accordingly:
+
+``` diff
+ const board = $("<table>").attr("id", "board");
+ const body = $(document.body);
+ body.append(board);
+
+ const hatOfMineLocations = [];
+ for (let n = 0; n <= 80; n++) {
+   hatOfMineLocations.push(n);
+ }
+ 
+ const mineLocations = [];
+ for (let i = 0; i < 10; i++) {
+  const mineLocationIndex = Math.floor(Math.random() * hatOfMineLocations.length);
+  const mineLocation = hatOfMineLocations[mineLocationIndex];
+  mineLocations.push(mineLocation);
+  hatOfMineLocations.splice(mineLocationIndex, 1);
+ }
+ 
+ for (let rowIndex = 0; rowIndex < 9; rowIndex++) {
+   const row = $("<tr>");
+   board.append(row);
+   for (let columnIndex = 0; columnIndex < 9; columnIndex++) {
+     const cell = $("<td>");
++    const possibleMineLocation = (rowIndex * 9) + columnIndex;
++    if (mineLocations.indexOf(possibleMineLocation) !== -1) {
++      cell.addClass("mine");
++    }
+     row.append(cell);
+   }
+ }
+```
+{:data-no-overflow="true"}
+
+Now if we [take a look][m3s2]{:target="blank"} we should see the board dotted
+with mines. Feel free to refresh the page!
+
+[m3s2]: /blog/minesweeper-3-step-2/minesweeper.html
+
+<iframe src="/blog/minesweeper-3-step-2/minesweeper.html"></iframe>
+
+### What's next
+
+Now that we have a way to distribute mines across the board and display them,
+the next step is to [add interactivity][minesweeper-4] so that clicking on the
+board reveals those mines.
+
+[minesweeper-4]: /blog/minesweeper-4/
+
+<div class="nav-wrapper">
+  <div class="nav nav--left">
+    <a href="/blog/minesweeper-2/">← Go back</a>
+  </div>
+  <div class="nav nav--right">
+    <a href="/blog/minesweeper-4/">Continue →</a>
+  </div>
+</div>

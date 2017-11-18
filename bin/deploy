@@ -31,5 +31,5 @@ case "$environment" in
     ;;
 esac
 
-bundle exec middleman build
+bundle exec middleman build --verbose
 bundle exec middleman s3_sync

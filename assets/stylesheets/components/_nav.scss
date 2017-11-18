@@ -1,0 +1,19 @@
+.nav-wrapper {
+  display: flex;
+  font-family: $heading-font-family;
+  font-weight: 600;
+  margin-top: $base-spacing;
+  font-size: 1.1em;
+}
+
+.nav {
+  flex: 1 1 auto;
+}
+
+.nav--left {
+  text-align: left;
+}
+
+.nav--right {
+  text-align: right;
+}
