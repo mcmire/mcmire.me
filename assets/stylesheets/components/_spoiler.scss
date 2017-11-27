@@ -2,9 +2,13 @@
   color: transparent;
   transition: all linear 0.3s;
   background: image-url("spoiler.svg") repeat-x center 65%;
+  border-bottom: 1px solid $base-font-color;
+  cursor: pointer;
 
   &.revealed {
     color: $dark-gray;
     background: none;
+    border-bottom: none;
+    cursor: normal;
   }
 }
