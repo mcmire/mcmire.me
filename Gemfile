@@ -4,9 +4,9 @@ ruby "2.4.1"
 
 gem "middleman"
 gem "middleman-blog"
-gem "middleman-dotenv"
 gem "middleman-livereload"
 gem "middleman-s3_sync"
+gem "mime-types"
 
 # For feed.xml.builder
 gem "builder"

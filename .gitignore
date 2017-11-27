@@ -1,12 +1,11 @@
 !/.agignore
-!/.env
 !/.ruby-version
 .DS_Store
 /.bundle
 /.cache
-/.env.local
+/.env.production
+/.env.staging
 /.sass-cache
-/bower_components
-/build
 /.tmp
+/build
 /node_modules

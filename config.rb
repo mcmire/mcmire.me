@@ -1,15 +1,14 @@
+require_relative "config/dotenv"
+
 require_relative "config/blog_area"
 require_relative "config/build"
 require_relative "config/common"
 require_relative "config/development"
-require_relative "config/dotenv"
 require_relative "config/external_pipeline"
 require_relative "config/helpers"
 require_relative "config/kramdown"
 require_relative "config/s3_sync"
 require_relative "config/travelogue_area"
-
-instance_eval(&DotenvConfig)
 
 instance_eval(&BlogAreaConfig)
 instance_eval(&BuildConfig)
