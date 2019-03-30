@@ -1,19 +1,12 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
-set -e
-
-if ! which bower &>/dev/null; then
-  echo "=== Installing Bower ==="
-  npm install -g bower
-fi
+set -euo pipefail
 
 echo "=== Installing frontend dependencies ==="
-bower install
+yarn
 
 echo "=== Installing backend dependencies ==="
 bundle install
 
-if ! which svgo &>/dev/null; then
-  echo "=== Installing svgo ==="
-  npm install -g svgo
-fi
+echo
+echo "Done!"
