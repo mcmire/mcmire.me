@@ -19,6 +19,8 @@ by saying:
 bin/server
 ```
 
+Now visit <http://localhost:4567>.
+
 ## Deploying
 
 The site lives directly on S3, using its static website hosting feature.
