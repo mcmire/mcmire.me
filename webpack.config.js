@@ -134,7 +134,7 @@ const config = {
         loader: "file-loader",
         options: {
           name: "[name].[ext]",
-          publicPath: "../../",
+          publicPath: "../fonts/",
           outputPath: path.join(PUBLIC_PATH, FONTS_PATH, "/")
         }
       },
