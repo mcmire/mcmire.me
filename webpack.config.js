@@ -2,7 +2,6 @@
 // <https://github.com/grassdog/middleman-webpack>
 
 const path = require("path");
-//const util = require("util");
 const webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
@@ -146,7 +145,5 @@ const config = {
   },
   plugins: determinePlugins()
 };
-
-//console.log(util.inspect(config, { depth: null }));
 
 module.exports = config;
