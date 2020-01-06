@@ -5,7 +5,7 @@ layout: blog
 
 .posts
   - if blog.articles.any?
-    - blog.articles.each_with_index do |article, i|
+    - blog.articles.sort_by(&:title).each_with_index do |article, i|
       .post
         .post-title-and-summary
           %h2.post-title
