@@ -5,9 +5,4 @@
         = current_article.title
       - else
         = current_page.data.title
-    %p.post-date
-      - if current_article
-        = current_article.date.strftime("%B %e, %Y")
-      - else
-        = current_page.data.date.strftime("%B %e, %Y")
   ~ yield
