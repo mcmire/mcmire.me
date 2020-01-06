@@ -6,6 +6,7 @@ teaser: >
   like.
 date: 2016-04-29
 tags: visual-novel
+published: false
 ---
 
 **Spoiler alert:** I've tried to keep this review spoiler-free, although there
