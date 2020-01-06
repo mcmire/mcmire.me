@@ -4,6 +4,7 @@ teaser: >
   In this post, we draw mines and distribute them randomly across the board.
 date: 2020-01-03
 tags: programming
+published: false
 vi: ft=ghmarkdown
 ---
 
@@ -398,11 +399,10 @@ number:
 <%= embed_svg("minesweeper-3/board-numbering-2.svg", height: 361) %>
 
 Is there a relationship between the two systems? There is! Look at cell number
-12. Notice how it is in row 1, column 3. In other words, to get to cell 12, we
-go 1 full row -- or 9 cells -- and then go 3 more. We can represent this
-mathematically by multiplying the Y-coordinate by 9, then adding the
-X-coordinate to the product. Let's store the result of this calculation in a
-variable:
+41 in the second image. Notice how it is labeled `(5,4)` in the first image. How
+many cells are in a row? 9. So to get to cell 41, we have to iterate through 4
+rows' worth of cells, which puts us at 36, and then add 5 columns, which puts us
+at 41. Let's store the result of this calculation in a variable:
 
 ``` javascript
 const possibleMineLocation = (rowIndex * 9) + columnIndex;

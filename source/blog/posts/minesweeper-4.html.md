@@ -4,6 +4,7 @@ teaser: >
   In this post, we start to add the core game logic by revealing all spaces when
   a mine is clicked.
 date: 2020-01-04
+published: false
 tags: programming
 ---
 
@@ -142,10 +143,10 @@ shop to work on. When they are finished, what happens? They call you back and
 tell you that it's ready to be picked up.
 
 It turns out that this is a common pattern in programming. You have something
-you're waiting for, the *event*. You associate the *event* with a *callback*,
-some piece of code which will be run when the event occurs. To use different
-(but also valid) terminology, you *listen* for the event to take place, and you
-respond to that event using an *event listener*.
+you're waiting for, the *event*. You associate the event with a *callback*,
+some piece of code which will be run when the event occurs. To put it in
+JavaScript terms, you *listen* for the event to take place, and you respond to
+that event using an *event listener*.
 
 So when a user clicks on a space, the browser will generate a `click` event on
 the `td` element that represents the space. That means we need to listen to it
