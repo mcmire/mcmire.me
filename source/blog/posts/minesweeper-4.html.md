@@ -4,7 +4,6 @@ teaser: >
   In this post, we start to add the core game logic by revealing all spaces when
   a mine is clicked.
 date: 2020-01-04
-published: false
 tags: programming
 ---
 
