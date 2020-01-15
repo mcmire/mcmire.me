@@ -4,20 +4,19 @@ The source for my personal website.
 
 ## Getting started
 
-This project comes with a self-setup script. Simply run:
+First, you'll want to run the setup script:
 
-```
-bin/setup
-```
+    bin/setup
+
+Then you'll want to make sure you clone the [blog content
+repo](git@github.com:mcmire/personal-content--blog.git).
 
 ## Writing
 
 You'll want the server running in order to preview changes. You can start that
 by saying:
 
-```
-bin/server
-```
+    bin/server
 
 Now visit <http://localhost:4567>.
 
@@ -25,8 +24,14 @@ Now visit <http://localhost:4567>.
 
 The site lives directly on S3, using its static website hosting feature.
 
-These commands will build the site and then upload any modified files to S3:
+There's a staging bucket, which deploys to `http://staging.mcmire.me`, and a
+production bucket, which deploys to `http://mcmire.me`.
 
-```
-bin/deploy
-```
+This command will build the site and then upload any modified files to the
+staging bucket:
+
+    bin/deploy staging
+
+And this command will upload files to the production bucket:
+
+    bin/deploy production

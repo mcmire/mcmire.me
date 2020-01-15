@@ -37,24 +37,11 @@ module SvgHelpers
   end
 
   def read_svg(path)
-    svg_directory = Pathname.new(root).join("assets", "svg")
-    available_paths =
-      if path.start_with?("/")
-        [path, "#{path}.haml"]
-      else
-        [svg_directory.join(path), svg_directory.join("#{path}.haml")]
-      end
+    resource = Middleman::Util::FindResource.call(app, current_resource, path)
 
-    found_path = available_paths.find { |path| File.exist?(path) }
-
-    if found_path
-      content = File.read(found_path)
-
-      if found_path.to_s.end_with?(".haml")
-        render_haml(content)
-      else
-        content
-      end
+    if resource
+      logger.debug "== (svg) Resolving path: #{path} => #{resource.source_file}"
+      render_haml(File.read(resource.source_file))
     end
   end
 

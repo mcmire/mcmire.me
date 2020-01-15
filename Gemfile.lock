@@ -1,3 +1,40 @@
+GIT
+  remote: https://github.com/mcmire/middleman.git
+  revision: 40d1b85d2933a0e3d69141d5e0c4a9755cd7d18d
+  branch: patches
+  specs:
+    middleman (4.3.5)
+      coffee-script (~> 2.2)
+      haml (>= 4.0.5)
+      kramdown (~> 1.2)
+      middleman-cli (= 4.3.5)
+      middleman-core (= 4.3.5)
+    middleman-cli (4.3.5)
+      thor (>= 0.17.0, < 2.0)
+    middleman-core (4.3.5)
+      activesupport (>= 4.2, < 5.1)
+      addressable (~> 2.3)
+      backports (~> 3.6)
+      bundler
+      contracts (~> 0.13.0)
+      dotenv
+      erubis
+      execjs (~> 2.0)
+      fast_blank
+      fastimage (~> 2.0)
+      hamster (~> 3.0)
+      hashie (~> 3.4)
+      i18n (~> 0.9.0)
+      listen (~> 3.0.0)
+      memoist (~> 0.14)
+      padrino-helpers (~> 0.13.0)
+      parallel
+      rack (>= 1.4.5, < 3)
+      sassc (~> 2.0)
+      servolux
+      tilt (~> 2.0.9)
+      uglifier (~> 3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -68,41 +105,10 @@ GEM
     map (6.6.0)
     memoist (0.16.2)
     method_source (0.9.2)
-    middleman (4.3.5)
-      coffee-script (~> 2.2)
-      haml (>= 4.0.5)
-      kramdown (~> 1.2)
-      middleman-cli (= 4.3.5)
-      middleman-core (= 4.3.5)
     middleman-blog (4.0.3)
       addressable (~> 2.3)
       middleman-core (>= 4.0.0)
       tzinfo (>= 0.3.0)
-    middleman-cli (4.3.5)
-      thor (>= 0.17.0, < 2.0)
-    middleman-core (4.3.5)
-      activesupport (>= 4.2, < 5.1)
-      addressable (~> 2.3)
-      backports (~> 3.6)
-      bundler
-      contracts (~> 0.13.0)
-      dotenv
-      erubis
-      execjs (~> 2.0)
-      fast_blank
-      fastimage (~> 2.0)
-      hamster (~> 3.0)
-      hashie (~> 3.4)
-      i18n (~> 0.9.0)
-      listen (~> 3.0.0)
-      memoist (~> 0.14)
-      padrino-helpers (~> 0.13.0)
-      parallel
-      rack (>= 1.4.5, < 3)
-      sassc (~> 2.0)
-      servolux
-      tilt (~> 2.0.9)
-      uglifier (~> 3.0)
     middleman-livereload (3.4.6)
       em-websocket (~> 0.5.1)
       middleman-core (>= 3.3)
@@ -120,7 +126,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2019.1009)
     mini_portile2 (2.4.0)
-    minitest (5.13.0)
+    minitest (5.14.0)
     multi_json (1.14.1)
     nio4r (2.5.2)
     nokogiri (1.10.7)
@@ -182,7 +188,7 @@ DEPENDENCIES
   builder
   haml
   kramdown
-  middleman
+  middleman!
   middleman-blog
   middleman-livereload
   middleman-s3_sync

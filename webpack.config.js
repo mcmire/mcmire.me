@@ -16,8 +16,6 @@ const FONTS_PATH = "fonts";
 
 const TMP_DIR = path.resolve(__dirname, TMP_PATH);
 const CONTEXT_DIR = path.resolve(__dirname, "assets");
-const JAVASCRIPTS_DIR = path.resolve(CONTEXT_DIR, JAVASCRIPTS_PATH);
-const STYLESHEETS_DIR = path.resolve(CONTEXT_DIR, STYLESHEETS_PATH);
 
 function shouldOutputSourceMap() {
   return process.env.NODE_ENV === "development";
@@ -76,7 +74,14 @@ const config = {
   context: CONTEXT_DIR,
   entry: { all: "./" + path.join(JAVASCRIPTS_PATH, "all.js") },
   resolve: {
-    modules: [JAVASCRIPTS_DIR, STYLESHEETS_DIR, "node_modules"],
+    alias: {
+      blog: path.resolve(__dirname, "../personal-content--blog/")
+    },
+    modules: [
+      path.resolve(CONTEXT_DIR, JAVASCRIPTS_PATH),
+      path.resolve(CONTEXT_DIR, STYLESHEETS_PATH),
+      "node_modules"
+    ],
     extensions: [
       ".js",
       ".css",
