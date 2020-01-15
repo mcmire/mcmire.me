@@ -1,3 +1,10 @@
 = wrap_layout :blog do
-  = wrap_layout :individual_post do
+  - content_for :description, current_article.data.teaser, flush: true
+  .post
+    %header
+      %h2.post-title
+        - if current_article
+          = current_article.title
+        - else
+          = current_page.data.title
     ~ yield

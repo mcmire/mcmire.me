@@ -1,8 +1,11 @@
 = wrap_layout :layout do
-  - content_for :default_title do
-    Blog
+  - content_for :default_title, 'Blog'
   - content_for :head do
-    = feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Elliot Winkler (Feed)"
+    = feed_tag :atom,
+      "#{blog.options.prefix.to_s}/feed.xml",
+      title: "Elliot Winkler (Feed)"
+  - if !content_for?(:description)
+    - content_for :description, 'A tech blog.'
   - content_for :bottom_of_container do
     %footer.site-footer
       © #{Date.today.year} Elliot Winkler.
