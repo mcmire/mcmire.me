@@ -22,7 +22,8 @@ svg {
   }
 
   .monospace-text {
-    font-family: $code-font-family;
+    @include code-font;
+
     font-size: 0.9em;
   }
 

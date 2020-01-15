@@ -2,7 +2,7 @@
 @import "prism-overrides";
 
 pre, code {
-  font-family: $code-font-family;
+  @include code-font;
 }
 
 code {

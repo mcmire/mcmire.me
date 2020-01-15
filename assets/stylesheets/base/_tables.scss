@@ -7,8 +7,9 @@ table {
 }
 
 th {
+  @include base-font($weight: 600);
+
   border-bottom: 1px solid shade($base-border-color, 25%);
-  font-weight: 600;
   padding: 0 $quarter-spacing $quarter-spacing;
   text-align: left;
 }

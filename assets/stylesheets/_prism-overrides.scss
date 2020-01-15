@@ -1,3 +1,15 @@
+.token.important {
+  @include code-font($weight: normal);
+}
+
+.token.bold {
+  @include code-font($weight: bold);
+}
+
+.token.italic {
+  @include code-font($weight: italic);
+}
+
 .token.keyword,
 .token.tag .token.tag,
 .token.selector,
@@ -31,7 +43,7 @@
 }
 
 .token.keyword {
-  font-style: italic;
+  @include code-font($style: italic);
 }
 
 .language-diff {

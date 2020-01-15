@@ -1,0 +1,20 @@
+#!/usr/bin/env node
+
+const fs = require("fs");
+const path = require("path");
+const dotenv = require("dotenv");
+
+const dotenvPath = path.resolve(process.cwd(), ".env");
+const config = dotenv.parse(fs.readFileSync(dotenvPath, { encoding: "UTF-8" }));
+const args = process.argv.slice(2);
+
+if (args.length > 0) {
+  const envVarName = args[0];
+
+  if (!(envVarName in config)) {
+    process.exit(1);
+  }
+} else {
+  console.error("USAGE: bin/env-has SOME_ENV_VAR");
+  process.exit(1);
+}

@@ -1,0 +1,5 @@
+@mixin heading-font($weight: normal, $style: normal) {
+  font-family: "Source Sans Pro";
+  font-weight: $weight;
+  font-style: $style;
+}

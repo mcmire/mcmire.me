@@ -4,7 +4,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: $heading-font-family;
+  @include heading-font;
+
   font-size: modular-scale(1);
   line-height: $heading-line-height;
   margin: 0 0 $small-spacing;

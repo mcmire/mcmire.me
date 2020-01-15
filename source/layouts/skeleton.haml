@@ -7,6 +7,7 @@
     %meta{name: "description",
       content: yield_content(:description)&.strip || "The personal site of Elliot Winkler."}
     %title= page_title(default: yield_content(:default_title))
+    = stylesheet_link_tag "fonts.bundle.css"
     = stylesheet_link_tag "all.bundle.css"
     - if build?
       = partial "shared/google_analytics"
@@ -19,4 +20,5 @@
         ~ yield
       = yield_content :bottom_of_container
     = yield_content :javascript
+    = javascript_include_tag "fonts.bundle.js"
     = javascript_include_tag "all.bundle.js"

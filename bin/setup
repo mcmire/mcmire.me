@@ -1,12 +1,320 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 set -euo pipefail
 
-echo "=== Installing frontend dependencies ==="
-yarn
+something_already_printed=0
 
-echo "=== Installing backend dependencies ==="
-bundle install
+cd "$(dirname "$(dirname "$0")")"
 
-echo
-echo "Done!"
+determine-platform() {
+  local uname=$(uname)
+
+  if [[ $uname == 'Darwin' ]]; then
+    echo 'mac'
+  else
+    echo 'linux'
+  fi
+}
+
+banner() {
+  print-with-color 34 "== $@ =="
+}
+
+success() {
+  print-with-color 32 "$@"
+}
+
+warning() {
+  print-with-color 33 "$@"
+}
+
+error() {
+  print-with-color 31 "$@"
+}
+
+print-with-color() {
+  pad-from-existing-output
+  echo -ne "\033[${1}m"
+  echo -n "${@:2}"
+  echo -e "\033[0m"
+  something_already_printed=1
+}
+
+print-wrapped() {
+  pad-from-existing-output
+  echo -n "$@" | fmt -w 80 | cat
+  something_already_printed=1
+}
+
+pad-from-existing-output() {
+  if [[ $something_already_printed -eq 1 ]]; then
+    echo
+  fi
+}
+
+print() {
+  pad-from-existing-output
+  echo "$@"
+  something_already_printed=1
+}
+
+has-executable() {
+  type "$1" &>/dev/null
+}
+
+is-running() {
+  pgrep "$1" >/dev/null
+}
+
+start() {
+  if has-executable brew; then
+    brew services start "$1"
+  else
+    sudo service "${2:-$1}" start
+  fi
+}
+
+install() {
+  local apt_package=""
+  local rpm_package=""
+  local brew_package=""
+  local default_package=""
+  local package=""
+
+  for arg in "$@"; do
+    case $arg in
+      apt=*)
+        apt_package="${arg#apt=}"
+        ;;
+      rpm=*)
+        rpm_package="${arg#rpm=}"
+        ;;
+      brew=*)
+        brew_package="${arg#brew=}"
+        ;;
+      *)
+        default_package="$arg"
+        ;;
+    esac
+  done
+
+  if has-executable brew; then
+    package="${brew_package:-$default_package}"
+
+    if [[ -n $package ]]; then
+      brew install "$package"
+    fi
+  elif has-executable apt-get; then
+    package="${apt_package:-$default_package}"
+
+    if [[ -n $package ]]; then
+      sudo apt-get install -y "$package"
+    fi
+  elif has-executable yum; then
+    package="${yum_package:-$default_package}"
+
+    if [[ -n $package ]]; then
+      sudo yum install -y "$package"
+    fi
+  else
+    error "Sorry, I'm not sure how to install $default_package."
+    exit 1
+  fi
+}
+
+check-for-package-manager() {
+  local platform=$(determine-platform)
+
+  if [[ $platform == "linux" ]]; then
+    if ! has-executable apt-get; then
+      error "You don't seem to have a package manager installed."
+      print-wrapped "\
+The setup script assumes you're using Debian or a Debian-derived flavor of
+Linux (i.e. something with Apt). If this is not the case, then we would
+gladly take a PR fixing this!"
+      exit 1
+    fi
+  else
+    if ! has-executable brew; then
+      error "You don't seem to have Homebrew installed."
+      print-wrapped "\
+Follow the instructions here to do this:
+
+    http://brew.sh
+
+Then re-run this script."
+      exit 1
+    fi
+
+    # TODO: Check that OS X Command Line Tools are installed?
+  fi
+}
+
+install-development-libraries() {
+  install rpm=zlib-devel
+}
+
+provision-node() {
+  if [[ -f .node-version ]]; then
+    REQUIRED_NODE_VERSION=$(cat .node-version)
+  elif [[ -f .nvmrc ]]; then
+    REQUIRED_NODE_VERSION=$(cat .nvmrc)
+  else
+    error "You don't seem to have a Node version set in your project."
+    print-wrapped "\
+You'll need to create a .node-version or .nvmrc file in your project before you
+can run this script.
+    "
+    exit 1
+  fi
+
+  ensure-node-installed
+  install-node-dependencies
+}
+
+ensure-node-installed() {
+  if has-executable nodenv; then
+    if ! (nodenv versions | grep $REQUIRED_NODE_VERSION'\>' &>/dev/null); then
+      banner "Installing Node $REQUIRED_NODE_VERSION with nodenv"
+      nodenv install --skip-existing "$REQUIRED_NODE_VERSION"
+    fi
+  elif has-executable nvm; then
+    if ! (nvm list | grep $required_node_version'\>' &>/dev/null); then
+      banner "Installing node $required_node_version with nvm"
+      nvm install $required_node_version
+      nvm use $required_node_version
+    fi
+  else
+    error "You don't seem to have a Node manager installed."
+    print-wrapped "\
+We recommend using nodenv. You can find instructions to install it here:
+
+    https://github.com/nodenv/nodenv#installation
+
+Make sure to follow the instructions to configure your shell so that nodenv is
+automatically loaded.
+
+When you're done, open up a new terminal tab and re-run this script."
+    exit 1
+  fi
+}
+
+install-node-dependencies() {
+  banner 'Installing Node dependencies'
+
+  if [[ -f package-lock.json ]]; then
+    npm install
+  elif [[ -f yarn.lock ]]; then
+    yarn install
+  else
+    error "Sorry, I'm not sure how to install your dependencies."
+    print-wrapped "\
+You'll need to create a package-lock.json or yarn.lock file in your project
+before you can run this script.
+    "
+    exit 1
+  fi
+}
+
+provision-ruby() {
+  if [[ -f .ruby-version ]]; then
+    REQUIRED_RUBY_VERSION=$(cat .ruby-version)
+  else
+    error "You don't seem to have a Ruby version set in your project."
+    print-wrapped "\
+You'll need to create a .ruby-version file in your project before you can run
+this script.
+    "
+    exit 1
+  fi
+
+  install-ruby-development-library
+  ensure-ruby-installed
+  install-ruby-dependencies
+}
+
+install-ruby-development-library() {
+  install apt=ruby-dev rpm=ruby-devel
+}
+
+ensure-ruby-installed() {
+  if has-executable rbenv; then
+    if ! (rbenv versions | grep $REQUIRED_RUBY_VERSION'\>' &>/dev/null); then
+      banner "Installing Ruby $REQUIRED_RUBY_VERSION with rbenv"
+      rbenv install --skip-existing "$REQUIRED_RUBY_VERSION"
+    fi
+  elif has-executable chruby-exec; then
+    PREFIX='' source /usr/local/share/chruby/chruby.sh
+    if ! (chruby '' | grep $REQUIRED_RUBY_VERSION'\>' &>/dev/null); then
+      if has-executable install-ruby; then
+      banner "Installing Ruby $REQUIRED_RUBY_VERSION with install-ruby"
+        install-ruby "$REQUIRED_RUBY_VERSION"
+      else
+        error "Please install Ruby $REQUIRED_RUBY_VERSION"
+      fi
+    fi
+  elif has-executable rvm; then
+    if ! (rvm list | grep $required_ruby_version'\>' &>/dev/null); then
+      banner "Installing Ruby $required_ruby_version with rvm"
+      rvm install $required_ruby_version
+      rvm use $required_ruby_version
+    fi
+  else
+    error "You don't seem to have a Ruby manager installed."
+    print-wrapped "\
+We recommend using rbenv. You can find instructions to install it here:
+
+    https://github.com/rbenv/rbenv#installation
+
+Make sure to follow the instructions to configure your shell so that rbenv is
+automatically loaded.
+
+When you're done, open up a new terminal tab and re-run this script."
+    exit 1
+  fi
+}
+
+install-ruby-dependencies() {
+  banner 'Installing Ruby dependencies'
+  gem install bundler -v '~> 1.0' --conservative
+  bundle check || bundle install
+}
+
+provision-netlify() {
+  if [[ ! -d ~/.netlify ]]; then
+    banner 'Authenticating with Netlify'
+    npx netlify login
+  fi
+}
+
+provision-env() {
+  banner 'Verifying .env'
+
+  if bin/env-has NETLIFY_AUTH_TOKEN; then
+    echo "Seems good!"
+  else
+    print-wrapped "\
+You need to specify an auth token for Netlify. Obtain the personal access token
+from your Netlify account page and paste it as an environment variable called
+NETLIFY_AUTH_TOKEN in .env. See this page for more:
+
+    https://docs.netlify.com/cli/get-started/#obtain-a-token-in-the-netlify-ui"
+    exit 1
+  fi
+}
+
+run-provisions() {
+  provision-node
+  provision-ruby
+  provision-netlify
+  provision-env
+}
+
+setup() {
+  check-for-package-manager
+  install-development-libraries
+  run-provisions
+  success "Done!"
+}
+
+setup

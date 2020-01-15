@@ -1,7 +1,7 @@
 .nav-wrapper {
+  @include heading-font($weight: 600);
+
   display: flex;
-  font-family: $heading-font-family;
-  font-weight: 600;
   margin-top: $base-spacing;
   font-size: 1.1em;
 }

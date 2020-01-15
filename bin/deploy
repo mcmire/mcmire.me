@@ -1,22 +1,22 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
-set -e
+set -euo pipefail
 
-function abort_with_usage() {
+abort_with_usage() {
   echo "USAGE: $0 ENVIRONMENT"
   echo "(where ENVIRONMENT is either 'staging' or 'production')"
   exit 1
 }
 
-environment="$1"
-
-if [ -z "$environment" ]; then
+if [[ $# -eq 0 ]]; then
   echo "Missing environment."
   echo
   abort_with_usage
 fi
 
-case "$environment" in
+environment="$1"
+
+case $environment in
   production|staging)
     export DEPLOYMENT_ENVIRONMENT="$environment"
     ;;
@@ -27,4 +27,10 @@ case "$environment" in
     ;;
 esac
 
-bundle exec middleman s3_sync --build --verbose
+bundle exec middleman build --verbose
+
+if [[ $environment == "production" ]]; then
+  npx netlify deploy --prod
+else
+  npx netlify deploy
+fi

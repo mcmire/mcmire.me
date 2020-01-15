@@ -27,14 +27,16 @@
   }
 
   .links {
+    @include base-font($style: italic);
+
     border-top: $base-border;
     padding-top: $half-spacing;
-    font-style: italic;
 
     @media (min-width: $larger-screen) {
+      @include base-font($weight: normal, $style: "italic");
+
       border: none;
       font-size: 0.95em;
-      font-weight: normal;
       margin-top: $base-spacing;
       padding-top: 0;
     }

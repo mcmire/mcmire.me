@@ -1,0 +1,5 @@
+@mixin code-font($weight: normal, $style: normal) {
+  font-family: "Fira Code";
+  font-weight: $weight;
+  font-style: $style;
+}

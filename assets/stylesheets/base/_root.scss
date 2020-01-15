@@ -8,8 +8,9 @@ body {
 }
 
 body {
+  @include base-font;
+
   color: $base-font-color;
-  font-family: $base-font-family;
   line-height: $base-line-height;
   padding-left: 10px;
   padding-right: 10px;
