@@ -1,5 +1,6 @@
 = wrap_layout :blog do
-  - content_for :description, current_article.data.teaser, flush: true
+  - if current_article
+    - content_for :description, current_article.data.teaser, flush: true
   .post
     %header
       %h2.post-title

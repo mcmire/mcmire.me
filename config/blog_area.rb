@@ -46,4 +46,8 @@ BlogAreaConfig = proc do
 
     page "blog/feed.xml", layout: false
   end
+
+  configure :build do
+    ignore "blog/sample-post.html.md"
+  end
 end
