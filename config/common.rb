@@ -13,7 +13,7 @@ CommonConfig = proc do
 
   activate :directory_indexes
   # FIXME: do this?
-  # activate :relative_assets
+  activate :relative_assets
 
   page "404.html", directory_index: false
   # FIXME as it's descending into other directories

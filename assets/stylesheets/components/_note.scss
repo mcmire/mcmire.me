@@ -1,6 +1,5 @@
 .note {
-  @include base-font($style: italic);
-
   background-color: $light-yellow;
+  font-style: italic;
   padding: $small-spacing;
 }

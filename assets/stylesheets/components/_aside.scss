@@ -15,8 +15,6 @@
   background-color: $light-red;
 
   &::before {
-    @include icomoon-font;
-
     content: "\f071";
     font-family: Icomoon;
   }

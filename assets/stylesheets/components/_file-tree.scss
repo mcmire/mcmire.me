@@ -1,8 +1,7 @@
 .file-tree {
-  @include code-font;
-
   padding: $small-spacing;
   margin: $small-spacing-with-extra 0;
+  font-family: $code-font-family;
   font-size: 0.85em;
   letter-spacing: -0.5px;
   border: 1px dashed $dark-gray;
@@ -35,8 +34,7 @@
   &::before,
   .directory::before,
   .file::before {
-    @include icomoon-font;
-
+    font-family: Icomoon;
     vertical-align: middle;
     display: inline-block;
     margin-right: 0.45em;

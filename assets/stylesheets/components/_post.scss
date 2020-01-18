@@ -7,7 +7,7 @@
   h2,
   h3,
   h4 {
-    @include heading-font($weight: 600);
+    font-weight: 600;
   }
 
   h2 {

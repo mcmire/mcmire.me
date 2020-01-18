@@ -3,8 +3,8 @@
 .DS_Store
 /.bundle
 /.cache
-/.env
-/.netlify
+/.env.production
+/.env.staging
 /.sass-cache
 /.tmp
 /build

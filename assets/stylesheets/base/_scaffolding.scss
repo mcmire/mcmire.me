@@ -6,16 +6,14 @@
 }
 
 .site-header {
-  @include heading-font;
-
   align-items: center;
   background-color: $blue;
   display: flex;
+  font-family: $heading-font-family;
   padding: $quarter-spacing $half-spacing;
 
   @media (min-width: $larger-screen) {
-    @include heading-font($weight: 600);
-
+    font-weight: 600;
     padding: $quarter-spacing $base-spacing;
     text-transform: uppercase;
   }
@@ -35,9 +33,9 @@
   }
 
   h1 {
-    @include heading-font($weight: 600);
-
+    font-family: inherit;
     font-size: inherit;
+    font-weight: 600;
     line-height: $base-line-height;
     margin-top: 0;
     margin-bottom: 0;

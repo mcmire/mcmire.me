@@ -22,14 +22,16 @@ Now visit <http://localhost:4567>.
 
 ## Deploying
 
-The site is deployed using Netlify.
+The site lives directly on S3, using its static website hosting feature.
+
+There's a staging bucket, which deploys to `http://staging.mcmire.me`, and a
+production bucket, which deploys to `http://mcmire.me`.
 
 This command will build the site and then upload any modified files to the
-staging environment, hosted at `http://staging.mcmire.me`:
+staging bucket:
 
     bin/deploy staging
 
-And this command will upload files to the production environment, hosted at
-`http://mcmire.me`:
+And this command will upload files to the production bucket:
 
     bin/deploy production

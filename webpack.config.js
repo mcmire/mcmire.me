@@ -72,10 +72,7 @@ const postcssLoader = {
 const config = {
   devtool: determineDevtool(),
   context: CONTEXT_DIR,
-  entry: {
-    fonts: "./" + path.join(JAVASCRIPTS_PATH, "fonts.js"),
-    all: "./" + path.join(JAVASCRIPTS_PATH, "all.js")
-  },
+  entry: { all: "./" + path.join(JAVASCRIPTS_PATH, "all.js") },
   resolve: {
     alias: {
       blog: path.resolve(__dirname, "../personal-content--blog/")

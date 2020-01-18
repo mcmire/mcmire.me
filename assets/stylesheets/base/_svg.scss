@@ -13,8 +13,7 @@ svg {
   }
 
   text {
-    @include base-font;
-
+    font-family: $base-font-family;
     font-size: inherit;
     text-anchor: inherit;
     alignment-baseline: inherit;

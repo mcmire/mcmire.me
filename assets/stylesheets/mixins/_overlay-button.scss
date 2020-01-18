@@ -1,7 +1,7 @@
 @mixin overlay-button {
-  @include heading-font($weight: bold)
-
   color: $overlay-button-color;
+  font-family: $heading-font-family;
+  font-weight: bold;
   position: absolute;
   text-decoration: none;
   text-transform: uppercase;
