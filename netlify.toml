@@ -2,7 +2,10 @@
   publish = "build"
 
 # Use max-age > 0 or else this won't work!
-# Source: <https://community.netlify.com/t/netlify-ignores-cache-control-for-304/2912/14>
+# Sources:
+# * <https://community.netlify.com/t/netlify-ignores-cache-control-for-304/2912/14>
+# * <https://simonhearne.com/2019/http-headers-fast-and-secure/#caching>
+# * <https://community.netlify.com/t/netlify-ignores-cache-control-for-304/2912>
 
 [[headers]]
   for = "/assets/javascripts/*.js"
