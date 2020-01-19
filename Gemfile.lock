@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/mcmire/middleman.git
-  revision: 40d1b85d2933a0e3d69141d5e0c4a9755cd7d18d
+  revision: e84a1c26d092e91e65fbd6b711e2a9580e2386e5
   branch: patches
   specs:
     middleman (4.3.5)
@@ -70,7 +70,7 @@ GEM
     execjs (2.7.0)
     fast_blank (1.0.0)
     fastimage (2.1.7)
-    ffi (1.11.3)
+    ffi (1.12.1)
     fog-aws (3.5.2)
       fog-core (~> 2.1)
       fog-json (~> 1.1)
@@ -122,7 +122,7 @@ GEM
       parallel
       ruby-progressbar
       unf
-    mime-types (3.3)
+    mime-types (3.3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2019.1009)
     mini_portile2 (2.4.0)
@@ -144,10 +144,10 @@ GEM
     pry-byebug (3.7.0)
       byebug (~> 11.0)
       pry (~> 0.10)
-    public_suffix (4.0.1)
+    public_suffix (4.0.3)
     puma (4.3.1)
       nio4r (~> 2.0)
-    rack (2.0.8)
+    rack (2.1.1)
     rack-contrib (2.1.0)
       rack (~> 2.0)
     rack-livereload (0.3.17)

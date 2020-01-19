@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "2.6.3"
 
 gem "middleman", github: "mcmire/middleman", branch: "patches"
+# gem "middleman", path: "#{ENV['HOME']}/code/vendor/middleman"
 gem "middleman-blog"
 gem "middleman-livereload"
 gem "middleman-s3_sync"
