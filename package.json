@@ -21,6 +21,7 @@
     "prismjs": "^1.8.4",
     "scopedQuerySelectorShim": "https://github.com/lazd/scopedQuerySelectorShim.git",
     "svg.js": "^2.6.3",
+    "typeface-fira-code": "^1.1.3",
     "typeface-pt-serif": "^0.0.44",
     "typeface-source-sans-pro": "^0.0.44"
   },
