@@ -38,6 +38,7 @@ $modal-close-z-index: $base-z-index + 1100;
 
 // Colors
 $blue: #376dc3;
+$light-blueish-gray: hsl(215, 10%, 55%);
 $lighter-blue: tint($blue, 20%);
 $light-blue: #eef3fb;
 $lightest-gray: #f5f5f5;
@@ -54,7 +55,7 @@ $light-reddish-gray: desaturate(lighten($red, 20%), 20%);
 // Applied Colors
 $base-font-color: $dark-gray;
 $action-color: $blue;
-$inactive-action-color: $reddish-gray;
+$inactive-action-color: $light-blueish-gray;
 $shadow-color: rgba(0, 0, 0, 0.15);
 $darker-shadow-color: rgba(0, 0, 0, 0.35);
 $overlay-button-color: #4f5b66;
