@@ -27,6 +27,15 @@ BlogAreaConfig = proc do
   files.watch(
     :source,
     path: File.expand_path(
+      "../../../personal-content--blog/assets",
+      __FILE__
+    ),
+    destination_dir: "blog/assets",
+    only: [/\.(?:svg|haml)$/]
+  )
+  files.watch(
+    :source,
+    path: File.expand_path(
       "../../../personal-content--blog/demos",
       __FILE__
     ),
