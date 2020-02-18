@@ -41,7 +41,13 @@ module SvgHelpers
 
     if resource
       logger.debug "== (svg) Resolving path: #{path} => #{resource.source_file}"
-      render_haml(File.read(resource.source_file))
+      content = File.read(resource.source_file)
+
+      if resource.source_file.end_with?(".haml")
+        render_haml(content)
+      else
+        content
+      end
     end
   end
 
