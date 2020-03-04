@@ -70,22 +70,22 @@ pre[class*="language-"]:after {
 .token.tag .token.tag,
 .token.selector,
 .token.response {
-  color: #3871e2;  // blue
+  color: color("code-blue");
 }
 
 .token.string,
 .token.char,
 .token.attr-value {
-  color: #549c0a;  // green
+  color: color("code-green");
 }
 
 .token.function,
 .token.attr-name {
-  color: #a465da;  // purple
+  color: color("code-purple");
 }
 
 .token.punctuation {
-  color: #b7bfc1;  // light gray
+  color: color("code-light-gray");
 }
 
 .token.command_leader,
@@ -127,16 +127,16 @@ pre[class*="language-"]:after {
   }
 
   .token.inserted {
-    background-color: #dffbd5;  // light green
+    background-color: color("code-light-green");
   }
 
   .token.deleted {
-    background-color: #f5e2e2;  // light red
+    background-color: color("code-light-red");
   }
 }
 
 .language-term {
-  color: #7D8B99;
+  color: color("code-medium-gray");
 
   .token.prompt {
     color: $base-font-color;

@@ -16,6 +16,13 @@ const COLORS = {
   red: "hsluv(12, 67%, 53.5%)",
   white: "hsluv(0, 0%, 100%)",
   black: "hsluv(0, 0%, 0%)",
+  codeBlue: "hsluv(257.5, 85%, 49.5%)",
+  codeGreen: "hsluv(117.5, 98.5%, 57.5%)",
+  codePurple: "hsluv(284, 71.5%, 54.5%)",
+  codeLightGray: "hsluv(209, 8%, 77%)",
+  codeLightGreen: "hsluv(118.5, 65%, 9%)",
+  codeLightRed: "hsluv(12, 58%, 91.5%)",
+  codeMediumGray: "hsluv(238, 21.5%, 57%)"
 };
 
 COLORS.lighterBlue = {
