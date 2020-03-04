@@ -1,21 +1,35 @@
-@import "prism-coy";
 @import "prism-overrides";
 
-pre, code {
+pre,
+pre[class*="language-"],
+code,
+code[class*="language-"] {
   font-family: $code-font-family;
 }
 
-code {
+code,
+code[class*="language-"] {
   font-size: 0.85em;
   letter-spacing: -0.5px;
 }
 
-:not(pre) > code {
+:not(pre) > code,
+:not(pre) > code[class*="language-"] {
   border-radius: $base-border-radius;
 }
 
-pre {
-  background-color: $lightest-gray;
+pre,
+pre[class*="language-"] {
+  @include form-fitting-shadow(
+    $x-offset: 0px,
+    $y-offset: 5px,
+    $blur: 2px,
+    $color: rgba(0, 0, 0, 0.1)
+  );
+
+  //background-color: $lightest-gray;
+  background-color: hsla(220, 20%, 96%, 1);
+  //box-shadow: -2px -2px 1px inset #dfe1e6;
   border-radius: 0;
   hyphens: none;
   margin: $small-spacing-with-extra 0;
@@ -34,6 +48,10 @@ pre {
 
   &[data-no-overflow] {
     overflow: auto;
+  }
+
+  &:not(.expanded) {
+    border-bottom: 1px solid hsla(0, 0%, 85%, 1);
   }
 
   &.overflows:not(.expanded) {

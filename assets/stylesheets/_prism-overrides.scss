@@ -1,3 +1,71 @@
+code[class*="language-"],
+pre[class*="language-"] {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  text-align: inherit;
+  white-space: inherit;
+  word-spacing: inherit;
+  word-break: inherit;
+  word-wrap: inherit;
+  line-height: inherit;
+  tab-size: inherit;
+  hyphens: inherit;
+}
+
+pre[class*="language-"] {
+  position: inherit;
+  margin: inherit;
+  overflow: inherit;
+  padding: inherit;
+}
+
+pre[class*="language-"] > code {
+  position: inherit;
+  border-left: inherit;
+  box-shadow: inherit;
+  background-color: inherit;
+  background-image: inherit;
+  background-size: inherit;
+  background-origin: inherit;
+  background-attachment: inherit;
+}
+
+code[class*="language"] {
+  max-height: inherit;
+  height: inherit;
+  padding: 0;
+  display: inherit;
+  overflow: inherit;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background-color: inherit;
+  box-sizing: inherit;
+  margin-bottom: inherit;
+}
+
+:not(pre) > code[class*="language-"] {
+  position: inherit;
+  padding: inherit;
+  border-radius: inherit;
+  color: inherit;
+  border: inherit;
+  display: inherit;
+  white-space: inherit;
+}
+
+pre[class*="language-"]:before,
+pre[class*="language-"]:after {
+  display: none;
+}
+
+:not(pre) > code[class*="language-"]:after,
+pre[class*="language-"]:after {
+  display: none;
+}
+
 .token.keyword,
 .token.tag .token.tag,
 .token.selector,
@@ -32,6 +100,13 @@
 
 .token.keyword {
   font-style: italic;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.token.variable {
+  background: transparent;
 }
 
 .language-diff {
