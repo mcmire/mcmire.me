@@ -2,6 +2,7 @@ import { map, invokeMap } from "lodash";
 
 import CodeBlock from "./components/code-block";
 import CodeModal from "./components/code-modal";
+import GithubEmbed from "./components/github-embed";
 import Grid from "./components/grid";
 import IllustrationWrapper from "./components/illustration-wrapper";
 import MathBlock from "./components/math-block";
@@ -37,11 +38,15 @@ function buildActivatedCodeModal() {
 function renderCodeBlocks(codeModal) {
   const elements = document.querySelectorAll("pre");
   const codeBlocks = map(elements, element => {
-    return new CodeBlock({
-      bodyElement: document.body,
-      codeModal: codeModal,
-      element: element
-    });
+    return new CodeBlock({ codeModal, element });
+  });
+  invokeMap(codeBlocks, "render");
+}
+
+function renderGithubEmbeds(codeModal) {
+  const elements = document.querySelectorAll("[data-role='github-embed']");
+  const codeBlocks = map(elements, element => {
+    return new GithubEmbed({ codeModal, element });
   });
   invokeMap(codeBlocks, "render");
 }
@@ -86,6 +91,7 @@ export default function init() {
 
   if (codeModal) {
     renderCodeBlocks(codeModal);
+    renderGithubEmbeds(codeModal);
   }
 
   renderMathBlocks();
