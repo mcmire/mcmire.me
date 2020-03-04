@@ -7,6 +7,10 @@ svg {
     dominant-baseline: central;
   }
 
+  .vertically-centered-text {
+    dominant-baseline: central;
+  }
+
   .cell text, .cell-text {
     font-size: 23px;
   }
@@ -68,6 +72,10 @@ svg {
 
   .pink-fill {
     fill: $light-reddish-gray;
+  }
+
+  .medium-text {
+    font-weight: 400;
   }
 
   use {
