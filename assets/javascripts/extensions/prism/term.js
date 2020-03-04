@@ -1,9 +1,11 @@
 export default function term(Prism) {
   Prism.languages.term = {
-    comment: {
-      pattern: /^\$.+/,
+    prompt: {
+      pattern: /^\$.+/m,
       inside: {
-        operator: /^\$/
+        selector: {
+          pattern: /^\$/
+        }
       }
     }
   };

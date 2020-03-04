@@ -134,3 +134,11 @@ pre[class*="language-"]:after {
     background-color: #f5e2e2;  // light red
   }
 }
+
+.language-term {
+  color: #7D8B99;
+
+  .token.prompt {
+    color: $base-font-color;
+  }
+}
