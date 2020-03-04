@@ -46,7 +46,7 @@ pre {
     }
 
     .horizontal-overflow-indicator {
-      background: image-url("horizontal-overflow-pattern.svg") repeat-y 3px 3px;
+      background: url("~horizontal-overflow-pattern.svg") repeat-y 3px 3px;
       height: 100%;
       position: absolute;
       right: 0;
@@ -56,7 +56,7 @@ pre {
     }
 
     .vertical-overflow-indicator {
-      background: image-url("vertical-overflow-pattern.svg") repeat-x 3px 3px;
+      background: url("~vertical-overflow-pattern.svg") repeat-x 3px 3px;
       bottom: 0;
       height: 7px;
       left: 0;

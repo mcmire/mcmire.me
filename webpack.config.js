@@ -3,18 +3,19 @@
 
 const path = require("path");
 const webpack = require("webpack");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const Clean = require("clean-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const bourbon = require("bourbon");
 
-const TMP_PATH = ".tmp";
 const PUBLIC_PATH = "assets";
 const JAVASCRIPTS_PATH = "javascripts";
 const STYLESHEETS_PATH = "stylesheets";
+const IMAGES_PATH = "images";
 const FONTS_PATH = "fonts";
 
-const TMP_DIR = path.resolve(__dirname, TMP_PATH);
+const TMP_DIR = path.resolve(__dirname, ".tmp");
 const CONTEXT_DIR = path.resolve(__dirname, "assets");
 
 function shouldOutputSourceMap() {
@@ -41,22 +42,27 @@ function determinePlugins() {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV)
       }
     }),
-    new Clean([TMP_PATH]),
-    new ExtractTextPlugin(
-      path.join(PUBLIC_PATH, STYLESHEETS_PATH, "[name].bundle.css")
-    )
+    new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin({
+      filename: path.join(PUBLIC_PATH, STYLESHEETS_PATH, "[name].bundle.css")
+    })
   ];
 
+  return plugins;
+}
+
+function determineMinimizer() {
   if (process.env.NODE_ENV === "production") {
-    plugins.push(
+    return [
       new UglifyJsPlugin({
         sourceMap: shouldOutputSourceMap(),
         uglifyOptions: { mangle: false }
-      })
-    );
+      }),
+      new OptimizeCSSAssetsPlugin({})
+    ];
+  } else {
+    return [];
   }
-
-  return plugins;
 }
 
 const postcssLoader = {
@@ -70,6 +76,7 @@ const postcssLoader = {
 };
 
 const config = {
+  mode: process.env.NODE_ENV,
   devtool: determineDevtool(),
   context: CONTEXT_DIR,
   entry: { all: "./" + path.join(JAVASCRIPTS_PATH, "all.js") },
@@ -80,6 +87,7 @@ const config = {
     modules: [
       path.resolve(CONTEXT_DIR, JAVASCRIPTS_PATH),
       path.resolve(CONTEXT_DIR, STYLESHEETS_PATH),
+      path.resolve(CONTEXT_DIR, IMAGES_PATH),
       "node_modules"
     ],
     extensions: [
@@ -98,40 +106,55 @@ const config = {
     filename: path.join(PUBLIC_PATH, JAVASCRIPTS_PATH, "[name].bundle.js")
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: "babel-loader"
+        use: "babel-loader"
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract({
-          use: ["css-loader", postcssLoader],
-          fallback: "style-loader"
-        })
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: {
+              importLoaders: 1,
+              sourceMap: shouldOutputSourceMap()
+            }
+          },
+          postcssLoader
+        ]
       },
       {
         test: /\.(scss|sass)$/,
-        loader: ExtractTextPlugin.extract({
-          use: [
-            {
-              loader: "css-loader",
-              options: {
-                sourceMap: shouldOutputSourceMap()
-              }
-            },
-            postcssLoader,
-            {
-              loader: "sass-loader",
-              options: {
-                sourceMap: shouldOutputSourceMap(),
-                includePaths: [bourbon.includePaths]
-              }
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: {
+              importLoaders: 2,
+              sourceMap: shouldOutputSourceMap()
             }
-          ],
-          fallback: "style-loader"
-        })
+          },
+          postcssLoader,
+          {
+            loader: "sass-loader",
+            options: {
+              sourceMap: shouldOutputSourceMap(),
+              includePaths: [bourbon.includePaths]
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: "file-loader",
+        options: {
+          name: "[name].[ext]",
+          publicPath: "../images/",
+          outputPath: path.join(PUBLIC_PATH, IMAGES_PATH, "/")
+        }
       },
       {
         test: /\.(eot|otf|ttf|woff|woff2)$/,
@@ -141,14 +164,13 @@ const config = {
           publicPath: "../fonts/",
           outputPath: path.join(PUBLIC_PATH, FONTS_PATH, "/")
         }
-      },
-      {
-        test: /\.svg$/,
-        loader: "file-loader"
       }
     ]
   },
-  plugins: determinePlugins()
+  plugins: determinePlugins(),
+  optimization: {
+    minimizer: determineMinimizer()
+  }
 };
 
 module.exports = config;
