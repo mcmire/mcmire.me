@@ -1,4 +1,8 @@
 {
-  "presets": ["env"],
-  "plugins": ["lodash"]
+  "presets": [
+    "@babel/preset-env"
+  ],
+  "plugins": [
+    "lodash"
+  ]
 }
