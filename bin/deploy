@@ -27,5 +27,6 @@ case "$environment" in
     ;;
 esac
 
+rm -rf .tmp build
 bundle exec middleman build --verbose
 bundle exec middleman s3_sync --verbose
