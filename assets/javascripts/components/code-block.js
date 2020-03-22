@@ -19,11 +19,11 @@ export default class CodeBlock {
       this.viewInFullButtonElement.addEventListener("click", this._expand);
 
       if (this._doesOverflowHorizontally()) {
-        this.element.appendChild(this.horizontalOverflowIndicatorElement);
+        this.element.classList.add("overflows-horizontally");
       }
 
       if (this._doesOverflowVertically()) {
-        this.element.appendChild(this.verticalOverflowIndicatorElement);
+        this.element.classList.add("overflows-vertically");
       }
     }
   }

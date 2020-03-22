@@ -22,10 +22,10 @@ pre[class*="language-"] {
 
 pre[class*="language-"] > code {
   position: inherit;
-  border-left: inherit;
+  border-left: none;
   box-shadow: inherit;
-  background-color: inherit;
-  background-image: inherit;
+  background-color: transparent;
+  background-image: none;
   background-size: inherit;
   background-origin: inherit;
   background-attachment: inherit;

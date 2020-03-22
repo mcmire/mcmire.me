@@ -7,17 +7,17 @@ const { execFileSync } = require("child_process");
 const sass = require("sass");
 const hsluv = require("hsluv");
 
-const COLORS = readColorsMap();
+const HsluvColor = require("./HsluvColor");
 
-//console.log("COLORS", COLORS);
+const COLORS = readColorsMap();
 
 function readColorsMap() {
   const output = execFileSync(path.resolve(__dirname, "map.js"));
 
   return _.reduce(
     JSON.parse(output),
-    (obj, value, name) => {
-      return { ...obj, [_.kebabCase(name)]: value };
+    (obj, colorValues, name) => {
+      return { ...obj, [_.kebabCase(name)]: HsluvColor.create(colorValues) };
     },
     {}
   );
@@ -45,40 +45,42 @@ function validateNumberWithUnit(name, arg) {
   }
 }
 
+function wrapAngle(angle) {
+  const wrappedAngle = angle % 360;
+  return wrappedAngle >= wrappedAngle ? wrappedAngle : 360 - wrappedAngle;
+}
+
 const limitPercentage = createLimiter(0, 100);
-const limitAlpha = createLimiter(0, 1);
+//const limitAlpha = createLimiter(0, 1);
 
-module.exports = {
-  hsluv(hArg, sArg, lArg) {
-    validateArgumentType("$h", hArg, sass.types.Number);
-    validateUnitlessNumber("$h", hArg);
+const sassFunctions = {
+  hsluv(hueArg, saturationArg, lightnessArg) {
+    validateArgumentType("$hue", hueArg, sass.types.Number);
+    validateUnitlessNumber("$hue", hueArg);
 
-    validateArgumentType("$s", sArg, sass.types.Number);
-    validateNumberWithUnit("$s", sArg, "%");
+    validateArgumentType("$saturation", saturationArg, sass.types.Number);
+    validateNumberWithUnit("$saturation", saturationArg, "%");
 
-    validateArgumentType("$l", lArg, sass.types.Number);
-    validateNumberWithUnit("$l", lArg, "%");
+    validateArgumentType("$lightness", lightnessArg, sass.types.Number);
+    validateNumberWithUnit("$lightness", lightnessArg, "%");
 
-    const h = hArg.getValue();
-    const s = limitPercentage(sArg.getValue());
-    const l = limitPercentage(lArg.getValue());
+    const h = wrapAngle(hueArg.getValue());
+    const s = limitPercentage(saturationArg.getValue());
+    const l = limitPercentage(lightnessArg.getValue());
 
-    const values = hsluv
-      .hsluvToRgb([h, s, l])
-      .map(n => Math.floor(n * 255 + 0.5));
-
-    return new sass.types.Color(...values);
+    return new HsluvColor(h, s, l).toSassColor();
   },
 
-  hsluva(hArg, sArg, lArg, aArg) {
-    validateArgumentType("$h", hArg, sass.types.Number);
-    validateUnitlessNumber("$h", hArg);
+  /*
+  hsluva(hueArg, saturationArg, lightnessArg, aArg) {
+    validateArgumentType("$hue", hueArg, sass.types.Number);
+    validateUnitlessNumber("$hue", hueArg);
 
-    validateArgumentType("$s", sArg, sass.types.Number);
-    validateNumberWithUnit("$s", sArg, "%");
+    validateArgumentType("$saturation", saturationArg, sass.types.Number);
+    validateNumberWithUnit("$saturation", saturationArg, "%");
 
-    validateArgumentType("$l", lArg, sass.types.Number);
-    validateNumberWithUnit("$l", lArg, "%");
+    validateArgumentType("$lightness", lightnessArg, sass.types.Number);
+    validateNumberWithUnit("$lightness", lightnessArg, "%");
 
     console.log("aArg", aArg);
 
@@ -87,9 +89,9 @@ module.exports = {
       validateUnitlessNumber("$a", aArg);
     }
 
-    const h = hArg.getValue();
-    const s = limitPercentage(sArg.getValue());
-    const l = limitPercentage(lArg.getValue());
+    const h = hueArg.getValue();
+    const s = limitPercentage(saturationArg.getValue());
+    const l = limitPercentage(lightnessArg.getValue());
     const a = aArg == null ? 1 : limitAlpha(aArg.getValue());
 
     const values = [
@@ -99,6 +101,7 @@ module.exports = {
 
     return new sass.types.Color(...values);
   },
+  */
 
   color(nameArg) {
     validateArgumentType("$name", nameArg, sass.types.String);
@@ -106,7 +109,17 @@ module.exports = {
     const name = nameArg.getValue();
 
     if (name in COLORS) {
-      return new sass.types.Color(...COLORS[name].rgbValues);
+      /*
+      if (name === "code-almost-white") {
+        console.log(
+          "color",
+          COLORS[name],
+          "sassColor",
+          COLORS[name].toSassColor()
+        );
+      }
+      */
+      return COLORS[name].toSassColor();
     } else {
       throw new Error(`${name} is not a defined color!`);
     }
@@ -118,9 +131,63 @@ module.exports = {
     _.each(Object.keys(COLORS), (name, index) => {
       const color = COLORS[name];
       map.setKey(index, new sass.types.String(name));
-      map.setValue(index, new sass.types.Color(...color.rgbValues));
+      map.setValue(index, color.toSassColor());
     });
 
     return map;
+  },
+
+  adjustHsluvColor(colorArg, hueArg, saturationArg, lightnessArg) {
+    validateArgumentType("$color", colorArg, sass.types.Color);
+
+    validateArgumentType("$hue", hueArg, sass.types.Number);
+    validateUnitlessNumber("$hue", hueArg);
+    const hue = hueArg.getValue();
+
+    validateArgumentType("$saturation", saturationArg, sass.types.Number);
+    const saturation =
+      saturationArg.getUnit() === "%"
+        ? saturationArg.getValue()
+        : saturationArg.getValue() * 100;
+
+    validateArgumentType("$lightness", lightnessArg, sass.types.Number);
+    const lightness =
+      lightnessArg.getUnit() === "%"
+        ? lightnessArg.getValue()
+        : lightnessArg.getValue() * 100;
+
+    const hsluvColor = HsluvColor.create(colorArg);
+    const changedHsluvColor = hsluvColor.cloneWith({
+      h: hsluvColor.h + hue,
+      s: hsluvColor.s + saturation,
+      l: hsluvColor.l + lightness
+    });
+    /*
+    console.log(
+      "adjustHsluvColor",
+      "colorArg",
+      colorArg,
+      "hsluvColor",
+      hsluvColor,
+      "changedHsluvColor",
+      changedHsluvColor,
+      "hue",
+      hue,
+      "saturation",
+      saturation,
+      "lightness",
+      lightness
+    );
+    */
+    return changedHsluvColor.toSassColor();
   }
+};
+
+module.exports = {
+  "hsluv($hue, $saturation, $lightness)": sassFunctions.hsluv,
+  //"hsluva($hue, $saturation, $lightness, $alpha)": sassFunctions.hsluva,
+  "color($name)": sassFunctions.color,
+  "get-colors()": sassFunctions.getColors,
+  "adjust-hsluv-color($color, $hue: 0, $saturation: 0, $lightness: 0)":
+    sassFunctions.adjustHsluvColor
 };

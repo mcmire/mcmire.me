@@ -146,13 +146,7 @@ const config = {
               sourceMap: shouldOutputSourceMap(),
               sassOptions: {
                 includePaths: [bourbon.includePaths],
-                functions: {
-                  "hsluv($hue, $saturation, $lightness)": sassFunctions.hsluv,
-                  "hsluva($hue, $saturation, $lightness, $alpha)":
-                    sassFunctions.hsluva,
-                  "color($name)": sassFunctions.color,
-                  "get-colors()": sassFunctions.getColors
-                }
+                functions: sassFunctions
               }
             }
           }

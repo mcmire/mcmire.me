@@ -1,14 +1,5 @@
-.site-container {
-  transition: filter $base-duration;
-}
-
 body.code-modal-open {
   overflow: hidden;
-
-  .site-container {
-    filter: blur(4px);
-    transition: filter $base-duration;
-  }
 }
 
 .modal-overlay,
@@ -44,7 +35,7 @@ body.code-modal-open {
 
 .modal-window {
   overflow: scroll;
-  padding: $small-spacing;
+  background: color("code-almost-white");
 
   &.open {
     visibility: visible;
@@ -61,15 +52,19 @@ body.code-modal-open {
   .modal-content {
     align-self: left;
     display: inline-block;
-    margin-top: $base-spacing * 2;
+    padding: $base-spacing * 2 $base-spacing $base-spacing $base-spacing;
     z-index: $pre-expanded-z-index;
+    background-color: color("white");
 
     pre {
+      -webkit-filter: none;
+      filter: none;
       margin: 0;
       background: transparent;
       max-height: none;
       overflow: visible;
       padding: 0;
+      border: none;
     }
 
     @media (min-width: $mobile-large) {
@@ -86,6 +81,7 @@ body.code-modal-open {
     padding: 0.5em 0.8em;
     position: fixed;
     z-index: $modal-close-z-index;
+    margin-top: 0.5em;
 
     &:hover {
       color: black;
