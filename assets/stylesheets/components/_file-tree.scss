@@ -4,7 +4,7 @@
   font-family: $code-font-family;
   font-size: 0.85em;
   letter-spacing: -0.5px;
-  border: 1px dashed $dark-gray;
+  border: 1px dashed color("dark-gray");
   border-radius: 5px;
 
   &, ul {
@@ -44,12 +44,12 @@
   &::before {
     content: "\f078";
     vertical-align: top;
-    color: $medium-gray;
+    color: color("medium-gray");
   }
 
   .directory::before,
   .directory span {
-    color: $blue;
+    color: color("blue");
   }
 
   .directory::before {

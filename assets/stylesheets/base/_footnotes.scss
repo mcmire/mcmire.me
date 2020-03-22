@@ -1,5 +1,7 @@
+@use "sass:map";
+
 .footnotes {
-  color: $medium-gray;
+  color: color("medium-gray");
   font-size: 0.9em;
 }
 

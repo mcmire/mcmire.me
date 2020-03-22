@@ -6,7 +6,7 @@
   cursor: pointer;
 
   &.revealed {
-    color: $dark-gray;
+    color: color("dark-gray");
     background: none;
     border-bottom: none;
     cursor: normal;

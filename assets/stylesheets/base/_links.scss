@@ -5,7 +5,7 @@ a {
 
   &:hover, &:active {
     color: $action-color;
-    border-bottom: 1px solid tint($blue, 20%);
+    border-bottom: 1px solid tint(color("blue"), 20%);
   }
 
   &:visited {

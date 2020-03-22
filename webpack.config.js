@@ -9,6 +9,8 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const bourbon = require("bourbon");
 
+const sassFunctions = require("./config/colors/sass-functions.js");
+
 const PUBLIC_PATH = "assets";
 const JAVASCRIPTS_PATH = "javascripts";
 const STYLESHEETS_PATH = "stylesheets";
@@ -142,7 +144,16 @@ const config = {
             loader: "sass-loader",
             options: {
               sourceMap: shouldOutputSourceMap(),
-              includePaths: [bourbon.includePaths]
+              sassOptions: {
+                includePaths: [bourbon.includePaths],
+                functions: {
+                  "hsluv($hue, $saturation, $lightness)": sassFunctions.hsluv,
+                  "hsluva($hue, $saturation, $lightness, $alpha)":
+                    sassFunctions.hsluva,
+                  "color($name)": sassFunctions.color,
+                  "get-colors()": sassFunctions.getColors
+                }
+              }
             }
           }
         ]

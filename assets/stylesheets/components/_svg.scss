@@ -22,7 +22,7 @@ svg {
   .paragraph-text {
     dominant-baseline: alphabetic;
     text-anchor: start;
-    fill: $dark-gray;
+    fill: color("dark-gray");
   }
 
   .monospace-text {
@@ -31,15 +31,15 @@ svg {
   }
 
   .black-stroke {
-    stroke: black;
+    stroke: color("black");
   }
 
   .white-stroke {
-    stroke: white;
+    stroke: color("white");
   }
 
   .red-stroke {
-    stroke: $red;
+    stroke: color("red");
   }
 
   .dashed {
@@ -47,31 +47,31 @@ svg {
   }
 
   .white-fill {
-    fill: white;
+    fill: color("white");
   }
 
   .black-fill {
-    fill: black;
+    fill: color("black");
   }
 
   .grey-fill {
-    fill: $medium-light-gray;
+    fill: color("medium-light-gray");
   }
 
   .dark-grey-fill {
-    fill: $medium-gray;
+    fill: color("medium-gray");
   }
 
   .red-fill {
-    fill: $red;
+    fill: color("red");
   }
 
   .blue-fill {
-    fill: $blue;
+    fill: color("blue");
   }
 
   .pink-fill {
-    fill: $light-reddish-gray;
+    fill: color("light-reddish-gray");
   }
 
   .medium-text {

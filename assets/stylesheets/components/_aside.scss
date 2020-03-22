@@ -12,7 +12,7 @@
 }
 
 .aside--heads-up {
-  background-color: $light-red;
+  background-color: color("light-red");
 
   &::before {
     content: "\f071";
@@ -21,7 +21,7 @@
 }
 
 .aside--tip {
-  background-color: $light-yellow;
+  background-color: color("light-yellow");
 
   &::before {
     content: "\e901";

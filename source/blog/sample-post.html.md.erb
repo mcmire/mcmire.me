@@ -4,6 +4,7 @@ title: Making Minesweeper in JavaScript, Part 1 and This Is Just a Really Long T
 date: 2015-08-14
 layout: blog_article
 published: false
+vi: ft=ghmarkdown
 ---
 
 Lorem ipsum dolor sit amet, <i>consectetur adipiscing elit</i>. Integer vel mi
@@ -212,7 +213,7 @@ aliquet vehicula.
 ### Colors!
 
 <div class="swatches">
-  <div class="swatch blue-swatch">blue</div>
-  <div class="swatch dark-gray-swatch">dark gray</div>
-  <div class="swatch light-gray-swatch">light gray</div>
+<% color_names.each do |color_name| -%>
+  <div class="swatch <%= color_name %>-swatch"><%= color_name %></div>
+<% end -%>
 </div>

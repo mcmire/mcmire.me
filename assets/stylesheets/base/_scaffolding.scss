@@ -7,7 +7,7 @@
 
 .site-header {
   align-items: center;
-  background-color: $blue;
+  background-color: color("blue");
   display: flex;
   font-family: $heading-font-family;
   padding: $quarter-spacing $half-spacing;
@@ -19,13 +19,13 @@
   }
 
   &, a {
-    color: white;
+    color: color("white");
     border: none;
   }
 
   a:hover, a:visited:hover {
     color: inherit;
-    border-bottom: 1px solid tint($blue, 40%);
+    border-bottom: 1px solid tint(color("blue"), 40%);
   }
 
   h1, nav {
@@ -78,7 +78,7 @@
 }
 
 .site-content {
-  background-color: white;
+  background-color: color("white");
   padding: $half-spacing;
 
   @media (min-width: $larger-screen) {
@@ -87,9 +87,9 @@
 }
 
 .site-footer {
-  background-color: $lightest-gray;
+  background-color: color("lightest-gray");
   border-top: $base-border;
-  color: $medium-gray;
+  color: color("medium-gray");
   font-size: 0.8em;
   line-height: $footer-line-height;
   padding: $small-spacing;

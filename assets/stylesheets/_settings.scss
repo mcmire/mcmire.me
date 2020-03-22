@@ -1,4 +1,7 @@
+@use "sass:map";
+
 @import "./shared-settings";
+@import "./util";
 
 // Grid settings
 $container-width: 40em;
@@ -37,31 +40,18 @@ $pre-expanded-z-index: $base-z-index + 1000;
 $modal-close-z-index: $base-z-index + 1100;
 
 // Colors
-$blue: #376dc3;
-$light-blueish-gray: hsl(215, 10%, 55%);
-$lighter-blue: tint($blue, 20%);
-$light-blue: #eef3fb;
-$lightest-gray: #f5f5f5;
-$light-gray: #eaeaea;
-$medium-light-gray: #ddd;
-$medium-gray: #999;
-$dark-gray: #333;
-$light-yellow: #fdfaf2;
-$light-red: #feecef;
-$reddish-gray: #a29696;
-$red: #e24949;
-$light-reddish-gray: desaturate(lighten($red, 20%), 20%);
+// (are now defined in config/colors/map.js)
 
 // Applied Colors
-$base-font-color: $dark-gray;
-$action-color: $blue;
-$inactive-action-color: $light-blueish-gray;
+$base-font-color: color("dark-gray");
+$action-color: color("blue");
+$inactive-action-color: color("light-blueish-gray");
 $shadow-color: rgba(0, 0, 0, 0.15);
 $darker-shadow-color: rgba(0, 0, 0, 0.35);
-$overlay-button-color: #4f5b66;
+$overlay-button-color: color("medium-blueish-gray");
 
 // Border
-$base-border-color: $light-gray;
+$base-border-color: color("light-gray");
 $base-border: 1px solid $base-border-color;
 $base-border-radius: 5px;
 
@@ -69,11 +59,11 @@ $base-border-radius: 5px;
 $base-box-shadow: 0 2px 4px $shadow-color;
 
 // Background Colors
-$base-background-color: #fff;
+$base-background-color: color("white");
 $secondary-background-color: tint($base-border-color, 75%);
 
 // Forms
-$form-box-shadow: inset 0 1px 3px rgba(#000, 0.06);
+$form-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
 $form-box-shadow-focus: $form-box-shadow, 0 0 5px adjust-color($action-color, $lightness: -5%, $alpha: -0.3);
 
 // Animations

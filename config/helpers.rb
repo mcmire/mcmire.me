@@ -1,3 +1,4 @@
+require_relative "helpers/color_helpers"
 require_relative "helpers/flickr_photo_helpers"
 require_relative "helpers/haml_helpers"
 require_relative "helpers/map_helpers"
@@ -7,6 +8,7 @@ require_relative "helpers/title_helpers"
 require_relative "helpers/youtube_video_helpers"
 
 HelpersConfig = proc do
+  helpers ColorHelpers
   helpers FlickrPhotoHelpers
   helpers HamlHelpers
   helpers MapHelpers
