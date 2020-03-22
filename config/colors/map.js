@@ -22,7 +22,9 @@ const COLORS = {
   codeLightGray: "hsluv(209, 8%, 77%)",
   codeLightGreen: "hsluv(118.5, 65%, 9%)",
   codeLightRed: "hsluv(12, 58%, 91.5%)",
-  codeMediumGray: "hsluv(238, 21.5%, 57%)"
+  codeMediumGray: "hsluv(238, 21.5%, 57%)",
+  yellow: "hsluv(86, 90%, 95%)",
+  yellowishGray: "hsluv(86, 22%, 53%)"
 };
 
 COLORS.lighterBlue = {

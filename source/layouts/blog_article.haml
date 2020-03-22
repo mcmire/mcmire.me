@@ -4,8 +4,11 @@
   .post
     %header
       %h2.post-title
+        %span
         - if current_article
           = current_article.title
         - else
           = current_page.data.title
+        - if !current_article.data.published
+          %span.draft draft
     ~ yield

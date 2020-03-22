@@ -1,6 +1,26 @@
 .posts .post {
   margin-bottom: $small-spacing;
 
+  &.draft {
+    opacity: 0.5;
+    transition: opacity 150ms linear;
+    position: relative;
+
+    &::before {
+      @include draft-post-ribbon;
+
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: rotate(45deg);
+      content: "draft";
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
   h2 {
     font-size: 1.25em;
 

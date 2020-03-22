@@ -15,6 +15,17 @@
     margin-bottom: $quarter-spacing;
   }
 
+  .post-title > span {
+    display: inline-block;
+    vertical-align: baseline;
+  }
+
+  .draft {
+    @include draft-post-ribbon;
+
+    margin-left: 0.5em;
+  }
+
   .post-date {
     color: color("medium-gray");
     text-transform: uppercase;
