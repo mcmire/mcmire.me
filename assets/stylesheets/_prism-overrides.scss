@@ -1,6 +1,6 @@
 code[class*="language-"],
 pre[class*="language-"] {
-  color: inherit;
+  //color: inherit;
   font-family: inherit;
   font-size: inherit;
   text-align: inherit;
@@ -50,7 +50,7 @@ pre[class*="language-"] {
   position: inherit;
   padding: inherit;
   border-radius: inherit;
-  color: inherit;
+  //color: inherit;
   border: inherit;
   display: inherit;
   white-space: inherit;
@@ -66,6 +66,7 @@ pre[class*="language-"]:after {
   display: none;
 }
 
+/*
 .token.keyword,
 .token.tag .token.tag,
 .token.selector,
@@ -87,6 +88,7 @@ pre[class*="language-"]:after {
 .token.punctuation {
   color: color("code-light-gray");
 }
+*/
 
 .token.command_leader,
 .token.response_leader {
@@ -98,9 +100,11 @@ pre[class*="language-"]:after {
   left: -1px;
 }
 
+/*
 .token.keyword {
   font-style: italic;
 }
+*/
 
 .token.operator,
 .token.entity,
@@ -120,7 +124,6 @@ pre[class*="language-"]:after {
   .token.unchanged,
   .token.inserted,
   .token.deleted {
-    //padding-left: $small-spacing;
     padding-right: $small-spacing;
     display: inline-block;
     width: 100%;
@@ -132,6 +135,21 @@ pre[class*="language-"]:after {
 
   .token.deleted {
     background-color: color("code-light-red");
+  }
+}
+
+.language-prompt {
+  .token.command {
+    //color: $solarized-base03;
+  }
+
+  .token.command_leader,
+  .token.response_leader {
+    color: $solarized-base1;
+  }
+
+  .token.response {
+    color: $solarized-cyan;
   }
 }
 

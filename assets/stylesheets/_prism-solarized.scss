@@ -1,0 +1,182 @@
+/*
+ * Solarized Color Schemes originally by Ethan Schoonover
+ * http://ethanschoonover.com/solarized
+ *
+ * Ported for PrismJS by Hector Matos
+ * Website: https://krakendev.io
+ * Twitter Handle: https://twitter.com/allonsykraken)
+ *
+ * Further modified to match Solarized Vim colorscheme
+ */
+
+$solarized-base03: #002b36;
+$solarized-base02: #073642;
+$solarized-base01: #586e75;
+$solarized-base00: #657b83;
+$solarized-base0: #839496;
+$solarized-base1: #93a1a1;
+$solarized-base2: #eee8d5;
+$solarized-base3: #fdf6e3;
+$solarized-yellow: #b58900;
+$solarized-orange: #cb4b16;
+$solarized-red: #dc322f;
+$solarized-magenta: #d33682;
+$solarized-violet: #6c71c4;
+$solarized-blue: #268bd2;
+$solarized-cyan: #2aa198;
+$solarized-green: #859900;
+
+code[class*="language-"],
+pre[class*="language-"] {
+  color: $solarized-base00;
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-size: 1em;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+
+  line-height: 1.5;
+
+  tab-size: 4;
+
+  hyphens: none;
+
+  &::selection,
+  ::selection {
+    background: $solarized-base2;
+  }
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+  border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background-color: $solarized-base3;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+}
+
+.token {
+  &.comment,
+  &.doctype {
+    color: $solarized-base1;
+  }
+
+  &.constant,
+  &.string,
+  &.attr-value,
+  &.number {
+    color: $solarized-cyan;
+  }
+
+  &.function,
+  &.class-name,
+  &.assign-left,
+  &.tag,
+  &.selector {
+    color: $solarized-blue;
+  }
+
+  &.variable {
+    color: $solarized-orange;
+  }
+
+  &.builtin,
+  &.operator {
+    color: $solarized-green;
+  }
+
+  &.property,
+  &.keyword {
+    color: $solarized-yellow;
+  }
+
+  &.punctuation {
+    color: $solarized-base00;
+  }
+}
+
+/*
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: $solarized-base1;
+}
+
+.token.punctuation {
+  color: $solarized-base01;
+}
+*/
+
+.token.namespace {
+  opacity: 0.7;
+}
+
+/*
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: $solarized-blue;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.url,
+.token.inserted {
+  color: $solarized-cyan;
+}
+
+.token.entity {
+  color: $solarized-base00;
+  background: $solarized-base2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: $solarized-green;
+}
+
+.token.function,
+.token.class-name {
+  color: $solarized-yellow;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: $solarized-orange;
+}
+*/
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}

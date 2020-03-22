@@ -1,3 +1,4 @@
+@import "../prism-solarized";
 @import "../prism-overrides";
 
 pre,
@@ -5,6 +6,11 @@ pre[class*="language-"],
 code,
 code[class*="language-"] {
   font-family: $code-font-family;
+}
+
+pre[class*="language-"],
+code[class*="language-"] {
+  line-height: inherit;
 }
 
 code,
@@ -53,9 +59,14 @@ pre[class*="language-"] {
     cursor: pointer;
 
     &:hover {
-      .view-in-full,
-      .overlay {
+      .view-in-full {
         opacity: 1;
+      }
+
+      &.overflows-vertically {
+        .overlay {
+          background-image: linear-gradient(to top, white 1%, rgba(0, 0, 0, 0.03) 30%);
+        }
       }
 
       & > code {
@@ -64,7 +75,9 @@ pre[class*="language-"] {
     }
 
     &.overflows-vertically {
-      background-image: linear-gradient(to top, rgba(0, 0, 0, 0.1) 1%, transparent 15%);
+      .overlay {
+        background-image: linear-gradient(to top, white 1%, transparent 30%);
+      }
     }
 
     .horizontal-overflow-indicator {
@@ -88,12 +101,12 @@ pre[class*="language-"] {
     }
 
     .overlay {
-      background: rgba(0, 0, 0, 0.03);
+      background: transparent;
       height: 100%;
       left: 0;
-      opacity: 0;
+      opacity: 1;
       position: absolute;
-      transition: opacity $base-duration;
+      transition: background $base-duration;
       top: 0;
       width: 100%;
       z-index: $pre-overlay-z-index;
