@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-nodemon --exec "bundle exec middleman"
+nodemon --watch . --watch config --exec "bundle exec middleman"
