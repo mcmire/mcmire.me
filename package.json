@@ -8,8 +8,8 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "start": "NODE_ENV=development ./node_modules/.bin/webpack --watch --debug --color",
-    "build": "NODE_ENV=production ./node_modules/.bin/webpack --bail -p"
+    "start": "NODE_ENV=development webpack --watch --debug --color",
+    "build": "NODE_ENV=production webpack --bail -p"
   },
   "dependencies": {
     "bourbon": "https://github.com/thoughtbot/bourbon",
@@ -42,6 +42,7 @@
     "js-yaml": "^3.13.1",
     "mem": "^4.0.0",
     "mini-css-extract-plugin": "^0.9.0",
+    "nodemon": "^2.0.2",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss": "^6.0.14",
     "postcss-loader": "^3.0.0",
