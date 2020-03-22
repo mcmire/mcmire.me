@@ -6,7 +6,6 @@ const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const bourbon = require("bourbon");
 
 const sassFunctions = require("./config/colors/sass-functions.js");
@@ -44,7 +43,6 @@ function determinePlugins() {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV)
       }
     }),
-    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: path.join(PUBLIC_PATH, STYLESHEETS_PATH, "[name].bundle.css")
     })
