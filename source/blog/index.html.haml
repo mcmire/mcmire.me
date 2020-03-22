@@ -6,7 +6,7 @@ layout: blog
 .posts
   - if blog.articles.any?
     - blog.articles.sort_by(&:title).each_with_index do |article, i|
-      .post{class: "#{'draft' if !article.data.published}"}
+      .post{class: "#{'draft' unless article.published?}"}
         .post-title-and-summary
           %h2.post-title
             %a(href="#{article.url}")= article.title
