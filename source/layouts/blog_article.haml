@@ -12,7 +12,21 @@
         - if current_article && !current_article.published?
           %span.draft draft
     ~ yield
-    - if current_article && current_article.data.last_updated
-      %p.post-last-updated
-        = surround '(Last updated: ', ')' do
-          = current_article.data.last_updated.strftime("%B %d, %Y")
+    - if current_article
+      - if current_article.data.last_updated
+        %p.post-last-updated
+          = surround '(Last updated: ', ')' do
+            = current_article.data.last_updated.strftime("%B %d, %Y")
+      - if current_article.data.previous_post || current_article.data.next_post || current_article.data.next_post_coming_soon
+        .nav-wrapper
+          - if current_article.data.previous_post
+            .nav.nav--left
+              = link_to "← Go back", current_article.data.previous_post
+          - if current_article.data.next_post
+            .nav.nav--right
+              = link_to "Continue →", current_article.data.next_post
+          - elsif current_article.data.next_post_coming_soon
+            .nav.nav--right.next-post-coming-soon
+              %s Continue
+              (Coming soon!)
+              →
