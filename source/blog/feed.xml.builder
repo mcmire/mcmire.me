@@ -15,7 +15,7 @@ xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
   xml.title "Technobabble"
 
   if blog.articles.any?
-    xml.updated(blog.articles.first.date.to_time.iso8601)
+    xml.updated(blog.articles.sort_by(&:date).last.date.to_time.iso8601)
   end
 
   xml.author do
