@@ -12,3 +12,7 @@
         - if current_article && !current_article.published?
           %span.draft draft
     ~ yield
+    - if current_article && current_article.data.last_updated
+      %p.post-last-updated
+        = surround '(Last updated: ', ')' do
+          = current_article.data.last_updated.strftime("%B %d, %Y")

@@ -35,4 +35,9 @@
   h3, h4 {
     margin-top: $base-spacing;
   }
+
+  .post-last-updated {
+    text-align: right;
+    font-style: italic;
+  }
 }
