@@ -1,0 +1,6 @@
+@mixin hidden-post-ribbon {
+  @include post-ribbon;
+
+  background: hsluv(16, 80%, 93%);
+  color: hsluv(16, 20%, 30%);
+}

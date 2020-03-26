@@ -51,7 +51,7 @@ BlogAreaConfig = proc do
     blog.permalink = "{title}"
     blog.layout = "blog_article"
     blog.default_extension = ".md"
-    blog.publish_future_dated = (ENV.fetch("PUBLISH_DRAFTS", "false") == "true")
+    blog.publish_future_dated = (ENV.fetch("PUBLISH_FUTURE_DATED", "false") == "true")
 
     page "blog/feed.xml", layout: false
   end

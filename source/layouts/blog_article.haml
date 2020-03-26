@@ -9,8 +9,11 @@
           = current_article.title
         - else
           = current_page.data.title
-        - if current_article && !current_article.published?
-          %span.draft draft
+        - if current_article
+          - if current_article.date.future?
+            %span.draft draft
+          - elsif current_article.data.published == false
+            %span.hidden hidden
     ~ yield
     - if current_article
       - if current_article.data.last_updated

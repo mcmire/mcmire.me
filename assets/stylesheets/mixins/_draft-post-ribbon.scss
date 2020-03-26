@@ -1,10 +1,6 @@
 @mixin draft-post-ribbon {
-  background: color("yellow");
-  padding: 5px 10px;
-  font-size: 0.8em;
-  font-family: $heading-font-family;
-  box-shadow: 1px 1px 3px rgb(0, 0, 0, 0.5);
-  text-transform: uppercase;
-  color: color("yellowish-gray");
-  font-weight: bold;
+  @include post-ribbon;
+
+  background: hsluv(85, 80%, 97%);
+  color: hsluv(85, 20%, 30%);
 }

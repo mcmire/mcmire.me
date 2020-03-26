@@ -26,6 +26,12 @@
     margin-left: 0.5em;
   }
 
+  .hidden {
+    @include hidden-post-ribbon;
+
+    margin-left: 0.5em;
+  }
+
   .post-date {
     color: color("medium-gray");
     text-transform: uppercase;

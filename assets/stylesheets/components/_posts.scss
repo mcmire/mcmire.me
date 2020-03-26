@@ -1,23 +1,37 @@
 .posts .post {
   margin-bottom: $small-spacing;
 
-  &.draft {
+  &.draft,
+  &.hidden {
     opacity: 0.5;
     transition: opacity 150ms linear;
     position: relative;
 
     &::before {
-      @include draft-post-ribbon;
-
       position: absolute;
       top: 0;
       right: 0;
       transform: rotate(45deg);
-      content: "draft";
     }
 
     &:hover {
       opacity: 1;
+    }
+  }
+
+  &.draft {
+    &::before {
+      @include draft-post-ribbon;
+
+      content: "draft";
+    }
+  }
+
+  &.hidden {
+    &::before {
+      @include hidden-post-ribbon;
+
+      content: "hidden";
     }
   }
 
