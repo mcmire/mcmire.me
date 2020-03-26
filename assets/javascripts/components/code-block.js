@@ -2,6 +2,7 @@ export default class CodeBlock {
   constructor({ codeModal, element }) {
     this.codeModal = codeModal;
     this.element = element;
+    this.codeElement = element.querySelector("code");
     this.horizontalOverflowIndicatorElement = this._createHorizontalOverflowIndicatorElement();
     this.verticalOverflowIndicatorElement = this._createVerticalOverflowIndicatorElement();
     this.overlayElement = this._createOverlayElement();
@@ -69,10 +70,10 @@ export default class CodeBlock {
   }
 
   _doesOverflowHorizontally() {
-    return this.element.scrollWidth > this.element.clientWidth;
+    return this.codeElement.scrollWidth > this.codeElement.clientWidth;
   }
 
   _doesOverflowVertically() {
-    return this.element.scrollHeight > this.element.clientHeight;
+    return this.codeElement.scrollHeight > this.codeElement.clientHeight;
   }
 }

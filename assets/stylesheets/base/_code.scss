@@ -38,7 +38,7 @@ pre[class*="language-"] {
   border-radius: 0;
   hyphens: none;
   margin: $small-spacing-with-extra 0;
-  padding: $small-spacing;
+  padding: 0;
   position: relative;
   tab-size: 2;
   white-space: pre;
@@ -69,6 +69,20 @@ pre[class*="language-"] {
         }
       }
 
+      &.overflows-horizontally {
+        .overlay {
+          background-image: linear-gradient(to left, white 1%, rgba(0, 0, 0, 0.03) 30%);
+        }
+      }
+
+      &.overflows-vertically.overflows-horizontally {
+        .overlay {
+          background-image:
+            linear-gradient(to top, white 1%, rgba(0, 0, 0, 0.03) 30%),
+            linear-gradient(to left, white 1%, rgba(0, 0, 0, 0.03) 30%);
+        }
+      }
+
       & > code {
         opacity: 0.8;
       }
@@ -77,6 +91,20 @@ pre[class*="language-"] {
     &.overflows-vertically {
       .overlay {
         background-image: linear-gradient(to top, white 1%, transparent 30%);
+      }
+    }
+
+    &.overflows-horizontally {
+      .overlay {
+        background-image: linear-gradient(to left, white 1%, transparent 30%);
+      }
+    }
+
+    &.overflows-vertically.overflows-horizontally {
+      .overlay {
+        background-image:
+          linear-gradient(to top, white 1%, transparent 30%),
+          linear-gradient(to left, white 1%, transparent 30%);
       }
     }
 
@@ -146,5 +174,6 @@ pre[class*="language-"] {
 
   > code {
     display: block;
+    padding: $small-spacing;
   }
 }
