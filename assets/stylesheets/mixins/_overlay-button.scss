@@ -1,9 +1,19 @@
-@mixin overlay-button {
+@mixin overlay-button($background-color: $action-color) {
+  @include button($background-color, $hover: false);
+
+  border: $base-border;
+  box-shadow: $base-box-shadow;
   color: $overlay-button-color;
   font-family: $heading-font-family;
   font-weight: bold;
-  position: absolute;
+  line-height: 1.5rem;
+  padding: 0.5em 0.8em;
   text-decoration: none;
   text-transform: uppercase;
-  transition: opacity $base-duration;
+  transition: opacity $base-duration, color $base-duration;
+
+  &:hover {
+    color: black;
+    border-bottom-color: $base-border-color;
+  }
 }

@@ -29,7 +29,8 @@ export default class CodeBlock {
     }
   }
 
-  _expand() {
+  _expand(event) {
+    event.preventDefault();
     this.codeModal.open(this.element);
   }
 
@@ -56,7 +57,8 @@ export default class CodeBlock {
   }
 
   _createViewInFullButtonElement() {
-    const element = document.createElement("div");
+    const element = document.createElement("a");
+    element.setAttribute("href", "#");
     element.classList.add("view-in-full");
     element.innerHTML = "View in full";
     return element;

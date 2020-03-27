@@ -72,19 +72,28 @@ body.code-modal-open {
     }
   }
 
-  .modal-close {
-    @include overlay-button;
-
-    background: white;
-    border: $base-border;
-    box-shadow: $base-box-shadow;
-    padding: 0.5em 0.8em;
+  .modal-controls {
     position: fixed;
     z-index: $modal-close-z-index;
-    margin-top: 0.5em;
+    margin-top: $small-spacing;
+  }
 
-    &:hover {
-      color: black;
+  .modal-close,
+  .modal-copy-button {
+    @include overlay-button($background-color: white);
+
+    display: inline-block;
+    margin-right: $small-spacing;
+    vertical-align: middle;
+  }
+
+  .modal-copy-button {
+    border-radius: 0;
+    font-size: inherit;
+    line-height: inherit;
+
+    &.copied {
+      color: color("code-green");
     }
   }
 }

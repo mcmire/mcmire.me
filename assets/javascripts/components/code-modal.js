@@ -17,7 +17,10 @@ export default class CodeModal {
     this.bodyElement = bodyElement;
     this.modalOverlay = modalOverlay;
     this.modalWindow = modalWindow;
-    this.closeButton = this.modalWindow.querySelector(
+    this.modalControls = this.modalWindow.querySelector(
+      "[data-role='modal-controls']"
+    );
+    this.closeButton = this.modalControls.querySelector(
       "[data-role='modal-close']"
     );
     this.contentElement = this.modalWindow.querySelector(
@@ -27,6 +30,8 @@ export default class CodeModal {
     this.close = this.close.bind(this);
     this._stopPropagation = this._stopPropagation.bind(this);
     this._clear = this._clear.bind(this);
+    this._copyContent = this._copyContent.bind(this);
+    this._resetCopyButton = this._resetCopyButton.bind(this);
   }
 
   activate() {
@@ -34,6 +39,19 @@ export default class CodeModal {
   }
 
   open(codeBlock) {
+    if (this.clearTimer != null) {
+      clearTimeout(this.clearTimer);
+      this.clearTimer = null;
+    }
+    if (this.resetCopyButtonTimer != null) {
+      clearTimeout(this.resetCopyButtonTimer);
+      this.resetCopyButtonTimer = null;
+    }
+
+    this.copyButton = this._createCopyButton();
+    this.copyButton.addEventListener("click", this._copyContent);
+    this.modalControls.appendChild(this.copyButton);
+
     const copyOfCodeBlock = copyCodeBlock(codeBlock);
     copyOfCodeBlock.classList.add("expanded");
 
@@ -60,15 +78,38 @@ export default class CodeModal {
 
     this.modalWindow.classList.remove("open");
     this.modalWindow.classList.add("closed");
-    this.modalWindow.addEventListener(transitionEndEventName, this._clear);
+    this.clearTimer = setTimeout(this._clear, 300);
+  }
+
+  _createCopyButton() {
+    const element = document.createElement("button");
+    element.classList.add("modal-copy-button");
+    element.innerText = "Copy";
+    return element;
   }
 
   _clear() {
     this.modalWindow.removeEventListener(transitionEndEventName, this._clear);
     this.contentElement.innerHTML = "";
+    this.modalControls.removeChild(this.copyButton);
+    this.copyButton = null;
   }
 
   _stopPropagation(event) {
     event.stopPropagation();
+  }
+
+  _copyContent(event) {
+    event.preventDefault();
+    navigator.clipboard.writeText(this.contentElement.innerText);
+    this.copyButton.classList.add("copied");
+    this.copyButton.innerHTML = "Copied! &nbsp;✔︎";
+
+    this.resetCopyButtonTimer = setTimeout(this._resetCopyButton, 3000);
+  }
+
+  _resetCopyButton() {
+    this.copyButton.classList.remove("copied");
+    this.copyButton.innerText = "Copy";
   }
 }

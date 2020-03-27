@@ -141,14 +141,11 @@ pre[class*="language-"] {
     }
 
     .view-in-full {
-      @include overlay-button;
+      @include overlay-button($background-color: rgba(255, 255, 255, 0.9));
 
-      background: rgba(255, 255, 255, 0.9);
-      border: $base-border;
-      box-shadow: $base-box-shadow;
       font-size: 0.9em;
       opacity: 1;
-      padding: 0.5em 0.8em;
+      position: absolute;
       left: 50%;
       transform: translateX(-50%);
       top: 1em;

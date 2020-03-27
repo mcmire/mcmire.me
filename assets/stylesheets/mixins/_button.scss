@@ -1,0 +1,49 @@
+@mixin button($background-color: $action-color, $hover: true) {
+  appearance: none;
+  background-color: $background-color;
+  border: none;
+  border-radius: $base-border-radius;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+  font-weight: 600;
+  line-height: 1;
+  padding: $small-spacing $base-spacing;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color $base-duration $base-timing;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  @if ($hover) {
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: shade($background-color, 20%);
+      color: #fff;
+    }
+
+    &:hover {
+      border-bottom: none;
+    }
+  }
+
+  &:active,
+  &:focus {
+    outline: -webkit-focus-ring-color auto 5px;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+
+    @if ($hover) {
+      &:hover {
+        background-color: $background-color;
+      }
+    }
+  }
+}

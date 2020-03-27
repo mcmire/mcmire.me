@@ -15,6 +15,7 @@
   - content_for :javascript do
     .modal-overlay(data-role="modal-overlay")
     .modal-window(data-role="modal-window")
-      %a.modal-close(href="#" data-role="modal-close") Close
+      .modal-controls(data-role="modal-controls")
+        %a.modal-close(href="#" data-role="modal-close") Close
       .modal-content(data-role="modal-content")
   ~ yield
