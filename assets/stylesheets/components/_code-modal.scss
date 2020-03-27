@@ -50,11 +50,14 @@ body.code-modal-open {
   }
 
   .modal-content {
-    align-self: left;
+    align-self: flex-start;
     display: inline-block;
-    padding: $base-spacing * 2 $base-spacing $base-spacing $base-spacing;
+    padding-top: $base-spacing * 2;
     z-index: $pre-expanded-z-index;
     background-color: color("white");
+    border-left: $base-border;
+    border-right: $base-border;
+    height: 100%;
 
     pre {
       -webkit-filter: none;
@@ -69,6 +72,9 @@ body.code-modal-open {
 
     @media (min-width: $mobile-large) {
       align-self: unset;
+      padding-right: $base-spacing;
+      padding-bottom: $base-spacing;
+      padding-left: $base-spacing;
     }
   }
 

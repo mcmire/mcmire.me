@@ -4,4 +4,5 @@ import "./vendor/prism";
 import "./fonts";
 import "all.scss";
 
-init();
+// DOMContentLoaded needed on mobile
+window.addEventListener("DOMContentLoaded", init);

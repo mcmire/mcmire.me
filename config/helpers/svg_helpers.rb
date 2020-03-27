@@ -17,9 +17,15 @@ module SvgHelpers
     if svg_content
       doc = Nokogiri::XML.parse(svg_content)
       svg = doc.at_css("svg")
+      svg.remove_attribute('width')
+      svg.remove_attribute('height')
       dimensions = extract_dimensions_from(attributes)
-      svg[:style] = build_style_from_dimensions(dimensions)
-      # SvgOptimizer.optimize(doc.to_xml)
+      if dimensions[:width]
+        svg["data-width"] = dimensions[:width]
+      end
+      if dimensions[:height]
+        svg["data-height"] = dimensions[:height]
+      end
       doc.to_xml
     else
       <<-SVG
@@ -76,6 +82,6 @@ module SvgHelpers
   def extract_dimensions_from(attributes)
     width = attributes.delete(:width)
     height = attributes.delete(:height)
-    { width: width, height: height }
+    { width: width, height: height }.compact
   end
 end

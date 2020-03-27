@@ -7,6 +7,7 @@ import Grid from "./components/grid";
 import IllustrationWrapper from "./components/illustration-wrapper";
 import MathBlock from "./components/math-block";
 import Spoiler from "./components/spoiler";
+import Svg from "./components/svg";
 
 import illustrationRegistry from "./services/illustration-registry";
 
@@ -40,6 +41,7 @@ function renderCodeBlocks(codeModal) {
   const codeBlocks = map(elements, element => {
     return new CodeBlock({ codeModal, element });
   });
+  invokeMap(codeBlocks, "activate");
   invokeMap(codeBlocks, "render");
 }
 
@@ -84,6 +86,14 @@ function initIllustrations() {
   });
 }
 
+function initSvg() {
+  document.querySelectorAll("svg").forEach(element => {
+    const svg = new Svg(element);
+    svg.activate();
+    svg.render();
+  });
+}
+
 export default function init() {
   renderGrid();
 
@@ -97,4 +107,5 @@ export default function init() {
   renderMathBlocks();
   initSpoilers();
   initIllustrations();
+  initSvg();
 }

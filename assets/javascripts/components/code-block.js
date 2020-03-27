@@ -1,3 +1,7 @@
+import { throttle } from "lodash";
+
+const THROTTLE_TIMEOUT = 150;
+
 export default class CodeBlock {
   constructor({ codeModal, element }) {
     this.codeModal = codeModal;
@@ -8,7 +12,12 @@ export default class CodeBlock {
     this.overlayElement = this._createOverlayElement();
     this.viewInFullButtonElement = this._createViewInFullButtonElement();
 
+    this.render = throttle(this.render.bind(this), THROTTLE_TIMEOUT);
     this._expand = this._expand.bind(this);
+  }
+
+  activate() {
+    window.addEventListener("resize", this.render);
   }
 
   render() {
