@@ -2,6 +2,11 @@
 
 set -euo pipefail
 
+if ! type ngrok &>/dev/null; then
+  echo "=== Installing ngrok ==="
+  brew cask install ngrok
+fi
+
 echo "=== Installing frontend dependencies ==="
 yarn
 
