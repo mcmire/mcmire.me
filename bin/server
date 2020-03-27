@@ -1,3 +1,8 @@
 #!/usr/bin/env sh
 
-nodemon --watch . --watch config --exec "bundle exec middleman"
+nodemon \
+  --watch . \
+  --watch bin \
+  --watch config \
+  --ext rb,js,scss \
+  --exec "bundle exec middleman"
