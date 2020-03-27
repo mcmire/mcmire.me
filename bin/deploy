@@ -1,32 +1,74 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 set -e
 
-function abort_with_usage() {
+abort-with-usage() {
   echo "USAGE: $0 ENVIRONMENT"
   echo "(where ENVIRONMENT is either 'staging' or 'production')"
   exit 1
 }
 
+load-dotenv-file() {
+  local file="$1"
+
+  # Source: <https://gist.github.com/judy2k/7656bfe3b322d669ef75364a46327836#gistcomment-2799409>
+  if ! [[ -f $file ]]; then
+    echo "ERROR: No $file exists!"
+    exit 1
+  fi
+
+  set -o allexport
+  source $file
+  set +o allexport
+}
+
 environment="$1"
 
-if [ -z "$environment" ]; then
-  echo "Missing environment."
+if [[ -z $environment ]]; then
+  echo "ERROR: Missing environment."
   echo
-  abort_with_usage
+  abort-with-usage
+fi
+
+dotenv_file=".env.${environment}"
+
+if ! type aws &>/dev/null; then
+  echo "ERROR: aws-cli is not installed. Please run \`brew install aws-cli\` first."
+  exit 1
+fi
+
+load-dotenv-file "$dotenv_file"
+
+if [[ -z $AWS_ACCESS_KEY_ID ]]; then
+  echo "ERROR: AWS_ACCESS_KEY_ID must be set in $dotenv_file"
+  exit 1
+fi
+
+if [[ -z $AWS_SECRET_ACCESS_KEY ]]; then
+  echo "ERROR: AWS_SECRET_ACCESS_KEY must be set in $dotenv_file"
+  exit 1
+fi
+
+if [[ -z $CDN_DISTRIBUTION_ID ]]; then
+  echo "ERROR: CDN_DISTRIBUTION_ID must be set in $dotenv_file"
+  exit 1
 fi
 
 case "$environment" in
-  production|staging)
+  production | staging)
     export DEPLOYMENT_ENVIRONMENT="$environment"
     ;;
   *)
-    echo "Invalid environment."
+    echo "ERROR: Invalid environment '$environment'."
     echo
-    abort_with_usage
+    abort-with-usage
     ;;
 esac
 
 rm -rf .tmp build
 bundle exec middleman build --verbose
 bundle exec middleman s3_sync --verbose
+aws cloudfront create-invalidation \
+  --distribution-id $CDN_DISTRIBUTION_ID \
+  --paths "/*" \
+  --paths "/blog/*" &>/dev/null
