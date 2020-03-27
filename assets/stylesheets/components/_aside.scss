@@ -9,6 +9,10 @@
     top: 0.1em;
     margin-right: 0.5em;
   }
+
+  pre:last-child {
+    margin-bottom: $extra-spacing;
+  }
 }
 
 .aside--heads-up {
