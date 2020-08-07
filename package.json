@@ -19,7 +19,7 @@
     "katex": "^0.9.0-alpha1",
     "lodash": "^4.17.4",
     "physics": "^1.0.1",
-    "prismjs": "^1.18.0",
+    "prismjs": "^1.21.0",
     "scopedQuerySelectorShim": "https://github.com/lazd/scopedQuerySelectorShim.git",
     "svg.js": "^2.6.3",
     "typeface-fira-code": "^1.1.3",
